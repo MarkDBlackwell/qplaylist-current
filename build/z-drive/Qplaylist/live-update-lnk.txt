@@ -1,0 +1,16 @@
+Make a (Windows) shortcut. Give it a icon. We like the 'Tree':
+
+Name:
+  live-update
+
+Target:
+  C:\Windows\System32\cscript.exe Z:\QPlaylist\live-update.vbs Z:\NowPlaying.xml
+
+Start in (perhaps this should be blank, or some default value):
+  C:\QPlaylist
+
+Shortcut key:
+  None
+
+Run:
+  Normal window
