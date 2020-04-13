@@ -1,5 +1,25 @@
 @echo off
 
+rem Author: Mark D. Blackwell (google me)
+rem October 9, 2013 - created
+rem October 10, 2013 - comment out firewall-blocked ftp
+rem November 8, 2013 - Set variable for server drive
+rem April 20, 2016 - Allow Git updating
+
+rem --------------
+rem Description:
+rem  This Windows batch file:
+rem 1. Obtains the input files for a certain program;
+rem 2. Runs that program;
+rem 3. Copies the program's output files to another directory (wherever
+rem    desired);
+rem 4. Runs an FTP program to upload those output files.
+
+rem This batch file, along with the associated program and its input
+rem  and output files, should not reside on a WideOrbit server
+rem  computer. The purpose of this recommendation is in order to
+rem  minimize this software's drag on WideOrbit's resources.
+
 rem --------------
 rem %cd:~0,2% is the current drive:
 set original-working-drive=%cd:~0,2%
@@ -48,7 +68,7 @@ rem Program files location:
 set program-location=%volatiles-location%
 
 rem --------------
-rem Process the FM song stream:
+rem Process the HD2 song stream:
 
 rem Navigate in order to copy files:
 %script-drive%
@@ -59,7 +79,7 @@ start /wait cmd /C copy /Y  %mustache-location%\NowPlaying.mustache      now_pla
 start /wait cmd /C copy /Y  %mustache-location%\LatestFive.mustache      latest_five.mustache
 start /wait cmd /C copy /Y  %mustache-location%\LatestFive.json.mustache latest_five.json.mustache
 start /wait cmd /C copy /Y  %mustache-location%\RecentSongs.mustache     recent_songs.mustache
-start /wait cmd /C copy /Y  %WideOrbit-file-location%\NowPlaying.XML     now_playing.xml
+start /wait cmd /C copy /Y  %WideOrbit-file-location%\NowPlayingHD2.XML  now_playing.xml
 
 rem Navigate in order to run the Ruby program:
 %script-drive%
