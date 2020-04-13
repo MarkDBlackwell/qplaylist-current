@@ -1,0 +1,11 @@
+open wtmd.org
+nowplaying@wtmd.org
+{password}
+cd /radio/
+put C:\QPlaylist-FM\var\NowPlaying.html   NowPlaying.html
+put C:\QPlaylist-FM\var\LatestFive.html   LatestFive.html
+put C:\QPlaylist-FM\var\RecentSongs.html  RecentSongs.html
+cd /player/
+put C:\QPlaylist-FM\var\LatestFive.html   LatestFive.html
+disconnect
+quit
