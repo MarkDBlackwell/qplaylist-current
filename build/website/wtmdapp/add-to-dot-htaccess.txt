@@ -1,0 +1,21 @@
+# 06-14-17 Mark Blackwell - Enable precompressed QPlaylist song files.
+<IfModule mod_headers.c>
+    <FilesMatch "^(NowPlaying|LatestFive|RecentSongs)(HD2|)(\.html|\.json)\.gz$">
+        # Serve correct encoding type.
+        Header append Content-Encoding gzip
+
+        # Force proxies to cache gzipped &
+        # non-gzipped QPlaylist files separately.
+        Header append Vary Accept-Encoding
+    </FilesMatch>
+
+    # If the gzip compressed QPlaylist files exist
+    # and the client accepts gzip...
+    RewriteCond "%{HTTP:Accept-encoding}" gzip
+    RewriteCond "%{REQUEST_FILENAME}.gz" -s
+    # Append ".gz".
+    RewriteRule "^(NowPlaying|LatestFive|RecentSongs)(HD2|)(\.html|\.json)$" "$1$2$3.gz" [QSA]
+    # Serve the correct media type, and prevent mod_deflate double gzip.
+    RewriteRule "^(NowPlaying|LatestFive|RecentSongs)(HD2|)\.html\.gz$" "-" [T=text/html,E=no-gzip:1]
+    RewriteRule "^(NowPlaying|LatestFive|RecentSongs)(HD2|)\.json\.gz$" "-" [T=application/json,E=no-gzip:1]
+</IfModule>

@@ -1,0 +1,82 @@
+/* Styling for Recent Songs elements (for QPlaylist),
+   revised by Mark D. Blackwell 6/30/2017 */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    line-height: 2;
+    color: White;
+    background: #161616;
+}
+div#recent-songs {
+    margin: 0;
+    padding: 8px 0 8px 0;
+}
+div#recent-songs > p {
+    margin: 0 8px 0 8px;
+    padding: 2px 14px 4px 14px;
+}
+/* Contain all floated elements,
+   see: https://developer.mozilla.org/en-US/docs/Web/CSS/clear
+*/
+div#recent-songs > p:after {
+    display: block;
+    clear: both;
+    content: "";
+}
+div#recent-songs > p:nth-of-type(even) {
+    border-radius: 5px;
+    background: #363738;
+}
+div#recent-songs > p > i {
+    font-style: normal;
+}
+/* start time */
+div#recent-songs > p > i:first-of-type {
+    font-size: 11px;
+    font-weight: bold;
+    color: #ee7500;
+}
+/* separate start time, from song title */
+div#recent-songs > p > i:nth-of-type(2):before {
+    padding-left: 13.5px;
+    content: "-";
+}
+div#recent-songs > p > i:nth-of-type(2):after {
+    padding-right: 4.3px;
+    padding-left: 13.3px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #ee7500;
+    content: "Title:";
+}
+/* separate song title, from artist */
+div#recent-songs > p > i:last-of-type:before {
+    padding-left: 13.5px;
+    content: "-";
+}
+div#recent-songs > p > i:last-of-type:after {
+    padding-right: 4.3px;
+    padding-left: 13.3px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #ee7500;
+    content: "Artist:";
+}
+/* link to buy song */
+div#recent-songs > p > a {
+    float: right;
+    padding-top: 7px;
+    font-size: 11px;
+    font-weight: bold;
+    text-decoration: underline;
+    color: #f7ba80;
+}
+div#recent-songs > p > a:hover {
+    color: #ee7500;
+}
+div#recent-songs > p > a:after {
+    content: "Buy Song";
+}

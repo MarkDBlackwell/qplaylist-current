@@ -1,0 +1,60 @@
+/* Styling for Now Playing elements (for QPlaylist),
+   revised by Mark D. Blackwell 6/30/2017 */
+
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'PT Sans Narrow', Arial, Helvetica, sans-serif;
+    font-size: 0;
+    line-height: 0;
+    color: White;
+    background: Black;
+}
+div#now-playing-song {
+    margin: 0;
+    padding: 0;
+}
+div#now-playing-song > p {
+    margin: 0;
+    padding: 0 4px 0 2px;
+    line-height: 1.5;
+}
+/* start time, and link to buy song */
+div#now-playing-song > p:first-of-type {
+    font-size: 10px;
+}
+/* Contain all floated elements,
+   see: https://developer.mozilla.org/en-US/docs/Web/CSS/clear
+*/
+div#now-playing-song > p:first-of-type:after {
+    display: block;
+    clear: both;
+    content: "";
+}
+/* link to buy song */
+div#now-playing-song > p:first-of-type > a {
+    float: right;
+    font-size: 12px;
+    font-weight: bold;
+    text-decoration: underline;
+    color: #f7ba80;
+}
+div#now-playing-song > p:first-of-type > a:hover {
+    color: #ee7500;
+}
+div#now-playing-song > p:first-of-type > a:after {
+    content: "Buy Song";
+}
+/* artist and song title */
+div#now-playing-song > p:last-of-type {
+    font-size: 15px;
+    font-weight: bold;
+}
+/* artist */
+div#now-playing-song > p:last-of-type > i {
+    padding-right: 4.3px;
+    font-style: normal;
+}
+div#now-playing-song > p:last-of-type > i:after {
+    content: ":";
+}
