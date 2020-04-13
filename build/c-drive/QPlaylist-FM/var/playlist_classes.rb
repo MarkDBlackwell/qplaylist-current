@@ -37,19 +37,36 @@ module Playlist
     def initialize
       set_non_xml_values
       set_xml_values
-      category_check
     end
 
     def blacklisted
-      @@blacklisted
+      return @@blacklisted_value if defined? @@blacklisted_value
+#  Allow blacklisting of these categories of NowPlaying.XML data:
+# UWR - Underwriting Announcement
+# PRO - House Promotional Spot
+      blacklist = %w[ PRO UWR ]
+      @@blacklisted_value = blacklist.include? category
+    end
+
+    def channel_main
+      return @@channel_main_value if defined? @@channel_main_value
+      main_sign = '-FM'
+      channel = xml_tree['Call'].first.strip
+      @@channel_main_value = channel.end_with? main_sign
     end
 
     def prerecorded
-      @@prerecorded
+      return @@prerecorded_value if defined? @@prerecorded_value
+#  Allow additional handling of this category of NowPlaying.XML data:
+# SPL - Special Program
+      @@prerecorded_value = 'SPL' == category
     end
 
     def song_automatic
-      @@song_automatic
+      return @@song_automatic_value if defined? @@song_automatic_value
+#  Allow additional handling of this category of NowPlaying.XML data:
+# MUS - Music
+      @@song_automatic_value = 'MUS' == category
     end
 
     def values
@@ -59,39 +76,11 @@ module Playlist
     protected
 
     def category
-      return @@category if defined? @@category
-      @@category = relevant_hash['CatId'].first.strip
-    end
-
-    def category_check
-      category_check_blacklist
-      category_check_prerecorded
-      category_check_song_automatic
-    end
-
-    def category_check_blacklist
-#  Allow blacklisting of these categories of NowPlaying.XML data:
-# UWR - Underwriting Announcement
-# PRO - House Promotional Spot
-      blacklist = %w[ PRO UWR ]
-      @@blacklisted = blacklist.include? category
-    end
-
-    def category_check_prerecorded
-#  Allow additional handling of this category of NowPlaying.XML data:
-# SPL - Special Program
-      @@prerecorded = 'SPL' == category
-    end
-
-    def category_check_song_automatic
-#  Allow additional handling of this category of NowPlaying.XML data:
-# MUS - Music
-      @@song_automatic = 'MUS' == category
+      @@category_value ||= relevant_hash['CatId'].first.strip
     end
 
     def relevant_hash
-      return @@relevant_hash if defined? @@relevant_hash
-      @@relevant_hash = xml_tree['Events'].first['SS32Event'].first
+      @@relevant_hash_value ||= xml_tree['Events'].first['SS32Event'].first
     end
 
     def set_non_xml_values
@@ -107,16 +96,12 @@ module Playlist
     end
 
     def set_xml_values
-      return if defined? @@xml_values
-      @@xml_values = XML_KEYS.map(&:capitalize).map{|k| relevant_hash[k].first.strip}
+      @@xml_values ||= XML_KEYS.map(&:capitalize).map{|k| relevant_hash[k].first.strip}
     end
 
     def xml_tree
 # See http://xml-simple.rubyforge.org/
-      result = XmlSimple.xml_in 'now_playing.xml', { KeyAttr: 'name' }
-#puts result
-#print result.to_yaml
-      result
+      @@xml_tree_value ||= XmlSimple.xml_in 'now_playing.xml', { KeyAttr: 'name' }
     end
   end #class
 
@@ -295,20 +280,21 @@ module Playlist
 # If the song is unchanged, then indicate so, and stop:
       ::Kernel::exit 1 if 'same' == (compare_recent now_playing)
 
-# If the category is Prerecorded, then start the prerecorded-show runner:
-      if snapshot.prerecorded
-        filename = 'Z:/QPlaylist-runner/qplaylist-runner-daemon.rb'
+# If the category is Prerecorded, and this is the main channel, then start the prerecorded-show runner:
+      if snapshot.prerecorded && snapshot.channel_main
+        filename = 'Z:/QPlaylist-runner/lib/runner.rb'
         command = "start %COMSPEC% /C ruby #{filename}"
         ::Kernel.system command
       end
 
-# If the category is Song-Automatic, then stop all running prerecorded-show runners:
-      if snapshot.song_automatic
-        filename = 'Z:/QPlaylist-runner/qplaylist-runner-daemon-killer.rb'
+# If the category is Song-Automatic, and this is the main channel, then stop all running prerecorded-show runners:
+      if snapshot.song_automatic && snapshot.channel_main
+        filename = 'Z:/QPlaylist-runner/lib/killer.rb'
         command = "start %COMSPEC% /C ruby #{filename}"
         ::Kernel.system command
       end
 
+# Else
       now_playing_substitutions = Playlist::NowPlayingSubstitutions.new now_playing
       create_output now_playing_substitutions, 'now_playing.mustache', 'now_playing.html'
       MyFile.make_gzipped 'now_playing.html'
