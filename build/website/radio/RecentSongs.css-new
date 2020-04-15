@@ -84,7 +84,7 @@ div#recent-songs > p > a:after {
 https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries
 */
 
-@media only screen and (max-width: 800px) {
+@media only screen and (any-hover: none) {
 
     div#recent-songs > p {
         margin: 0 1px 0 1px;
