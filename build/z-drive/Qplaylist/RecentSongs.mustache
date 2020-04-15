@@ -1,37 +1,16 @@
 <html>
 <head>
+<meta charset="UTF-8">
 <!-- <meta http-equiv="refresh" content="120"> -->
-<style type="text/css">
-html, body {
-font-family: arial, helvetica, sans-serif;
-font-size:16px;
-line-height:1.5;
-}
-
-.small {
-font-size:13px;
-}
-
-div.song{
-border-bottom:3px solid #aaaaaa;
-}
-
-div.song p {
-margin-bottom:0;
-}
-
-a {
-color:AA0000;
-font-weight:bold;
-text-decoration:none;
-}
-</style>
+<link rel="stylesheet" type="text/css" href="RecentSongs.css">
+<title>Recent Songs - WTMD</title>
 </head>
-
+<body>
+<div id="recent-songs">
 {{#songs}}
-  <div class="song">
-   <p><span class="small">{{month}}/{{day}} {{hour}}:{{minute}} {{meridian}}</span>   &nbsp; - &nbsp;   <span class="small">Title:</span>   {{title}} &nbsp; - &nbsp;   <span class="small">Artist:</span>  {{artist}}
-    </p>
-  </div>
+<p><i>{{month}}/{{day}} {{hour}}:{{minute}} {{meridian}}</i><i></i>{{title}}<i></i>{{artist}}
+<a target="_blank" href="http://www.amazon.com/s/ref=nb_sb_noss?tag=wtmdradio-20&url=search-alias%3Ddigital-music&field-keywords={{title}}+{{artist}}"></a></p>
 {{/songs}}
+</div>
+</body>
 </html>

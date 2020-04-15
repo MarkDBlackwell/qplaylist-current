@@ -1,66 +1,38 @@
 <html>
 <head>
-<meta http-equiv="refresh" content="30">
-<style type="text/css">
-html, body {
-font-family: arial, helvetica, sans-serif;
-font-size:13px;
-line-height:1.5;
-}
-
-.small {
-font-size:11px;
-}
-
-div.song{
-margin-bottom:0;
-border-bottom:1px solid #aaaaaa;
-}
-
-div.song p {
-margin-bottom:0;
-}
-
-a {
-color:AA0000;
-font-weight:bold;
-text-decoration:none;
-}
-</style>
+<meta charset="UTF-8">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="refresh" content="120">
+<link rel="stylesheet" type="text/css" href="LatestFive.css">
+<title>Latest Five - WTMD</title>
 </head>
-
-
-
-<div class="song">
-<p><span class="small">{{start_time1}}</span><br>
-Title:   {{title1}}<br>
-Artist:   {{artist1}}</p>
+<body>
+<div id="latest-few-songs">
+<div>
+<p>{{start_time1}}<a target="_blank" href="http://www.amazon.com/s/ref=nb_sb_noss?tag=wtmdradio-20&url=search-alias%3Ddigital-music&field-keywords={{title1}}+{{artist1}}"></a></p>
+<p>{{title1}}</p>
+<p>{{artist1}}</p>
 </div>
-
-<div class="song">
-<p><span class="small"> {{start_time2}}</span><br>
-Title:   {{title2}}<br>
-Artist:   {{artist2}}</p>
+<div>
+<p>{{start_time2}}<a target="_blank" href="http://www.amazon.com/s/ref=nb_sb_noss?tag=wtmdradio-20&url=search-alias%3Ddigital-music&field-keywords={{title2}}+{{artist2}}"></a></p>
+<p>{{title2}}</p>
+<p>{{artist2}}</p>
 </div>
-
-<div class="song">
-<p><span class="small"> {{start_time3}}</span><br>
-Title:   {{title3}}<br>
-Artist:   {{artist3}}</p>
+<div>
+<p>{{start_time3}}<a target="_blank" href="http://www.amazon.com/s/ref=nb_sb_noss?tag=wtmdradio-20&url=search-alias%3Ddigital-music&field-keywords={{title3}}+{{artist3}}"></a></p>
+<p>{{title3}}</p>
+<p>{{artist3}}</p>
 </div>
-
-<div class="song">
-<p><span class="small"> {{start_time4}}</span><br>
-Title:   {{title4}}<br>
-Artist:   {{artist4}}</p>
+<div>
+<p>{{start_time4}}<a target="_blank" href="http://www.amazon.com/s/ref=nb_sb_noss?tag=wtmdradio-20&url=search-alias%3Ddigital-music&field-keywords={{title4}}+{{artist4}}"></a></p>
+<p>{{title4}}</p>
+<p>{{artist4}}</p>
 </div>
-
-<div class="song">
-<p><span class="small"> {{start_time5}}</span><br>
-Title:   {{title5}}<br>
-Artist:   {{artist5}}</p>
+<div>
+<p>{{start_time5}}<a target="_blank" href="http://www.amazon.com/s/ref=nb_sb_noss?tag=wtmdradio-20&url=search-alias%3Ddigital-music&field-keywords={{title5}}+{{artist5}}"></a></p>
+<p>{{title5}}</p>
+<p>{{artist5}}</p>
 </div>
-<!-- <p class="small">Updated {{current_time}}</p> -->
-
-<!-- <p><a href="LatestFive.html">Refresh...</a></p> -->
+</div>
+</body>
 </html>
