@@ -1,3 +1,9 @@
+# 4-4-17 Megan - Trying to avoid empty html5 controls possibly caused by caching of mp3 file
+<IfModule mod_expires.c>
+# disable caching for this directory mod_expires for this directory
+ExpiresActive off
+</IfModule>
+
 # 06-28-17 Mark D. Blackwell - Enable uploading precompressed QPlaylist song files.
 <IfModule mod_rewrite.c>
     <IfModule mod_headers.c>
