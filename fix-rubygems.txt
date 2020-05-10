@@ -1,0 +1,35 @@
+# This is the same (64-bit) Ruby version present on the WTMD computer on 2016-04-22:
+Mark@Mycroft$ ruby --version
+ruby 2.0.0p353 (2013-11-22) [x64-mingw32]
+
+Mark@Mycroft$ gem --version
+2.0.14
+
+Mark@Mycroft$ gem install bundler
+ERROR:  Could not find a valid gem 'bundler' (>= 0), here is why:
+          Unable to download data from https://rubygems.org/ - SSL_connect returned=1 errno=0 state=SSLv3 read server certificate B: certificate verify failed (https://rubygems.org/latest_specs.4.8.gz)
+
+See:
+https://gist.github.com/luislavena/f064211759ee0f806c88
+https://github.com/rubygems/rubygems/releases/tag/v2.0.15
+
+Download:
+https://github.com/rubygems/rubygems/releases/download/v2.0.15/rubygems-update-2.0.15.gem
+
+Move it to C:\Install\tiny
+
+Start cmd.exe
+
+C:\>gem install --local C:\Install\tiny\rubygems-update-2.0.15.gem
+C:\>update_rubygems --no-ri --no-rdoc
+
+Now, this should change to say "2.0.15":
+C:\>gem --version
+
+Uninstall the rubygems-update gem:
+
+C:\>gem uninstall rubygems-update -x
+
+Now, we can install bundler:
+
+Mark@Mycroft$ gem install bundler

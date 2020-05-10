@@ -1,0 +1,7 @@
+On WTMD_Prod computer:
+
+===============
+Ruby version:
+
+$ ruby --version
+ruby 2.0.0p353 (2013-11-22) [x64-mingw32]
