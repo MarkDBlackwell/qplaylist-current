@@ -80,3 +80,47 @@ div#recent-songs > p > a:hover {
 div#recent-songs > p > a:after {
     content: "Buy Song";
 }
+/* See:
+https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries
+*/
+
+@media only screen and (any-hover: none) {
+
+    div#recent-songs > p {
+        margin: 0 1px 0 1px;
+        padding: 2px 2px 4px 2px;
+        font-size: 15px;
+        line-height: 1.4;
+    }
+
+    /* separate start time, from song title */
+    div#recent-songs > p > i:nth-of-type(2):before {
+        padding-left: 0px;
+        content: "\A";
+        white-space: pre-line;
+    }
+    div#recent-songs > p > i:nth-of-type(2):after {
+        padding-right: 0px;
+        padding-left: 0px;
+        content: "";
+    }
+
+    /* separate song title, from artist */
+    div#recent-songs > p > i:last-of-type:before {
+        padding-left: 0px;
+        content: " :\A";
+        white-space: pre-line;
+    }
+    div#recent-songs > p > i:last-of-type:after {
+        padding-right: 0px;
+        padding-left: 0px;
+        content: "";
+    }
+
+    /* link to buy song */
+    div#recent-songs > p > a {
+        text-transform: uppercase;
+        color: #ee7500;
+    }
+
+}
