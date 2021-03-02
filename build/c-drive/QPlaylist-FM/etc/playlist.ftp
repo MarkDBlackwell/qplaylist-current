@@ -7,6 +7,10 @@ cd /radio/
 put C:\QPlaylist-FM\var\now_playing.html.gz   NowPlaying.html.gz
 put C:\QPlaylist-FM\var\latest_five.html.gz   LatestFive.html.gz
 put C:\QPlaylist-FM\var\recent_songs.html.gz  RecentSongs.html.gz
+cd /playlist/
+put C:\QPlaylist-FM\var\now_playing.html.gz   NowPlaying.html.gz
+put C:\QPlaylist-FM\var\latest_five.html.gz   LatestFive.html.gz
+put C:\QPlaylist-FM\var\recent_songs.html.gz  RecentSongs.html.gz
 cd /wtmdapp/
 put C:\QPlaylist-FM\var\latest_five.json.gz   LatestFive.json.gz
 cd /remember/
