@@ -1,19 +1,30 @@
 open wtmd.org
 nowplaying@wtmd.org
 {password}
+
 cd /player/
 put C:\QPlaylist-FM\var\latest_five.html.gz   LatestFive.html.gz
+
+cd /player/dynamic/
+put C:\QPlaylist-FM\var\latest_five.html.gz   LatestFive.html.gz
+
 cd /radio/
-put C:\QPlaylist-FM\var\now_playing.html.gz   NowPlaying.html.gz
 put C:\QPlaylist-FM\var\latest_five.html.gz   LatestFive.html.gz
 put C:\QPlaylist-FM\var\recent_songs.html.gz  RecentSongs.html.gz
-cd /playlist/
-put C:\QPlaylist-FM\var\now_playing.html.gz   NowPlaying.html.gz
+
+cd /radio/dynamic/
 put C:\QPlaylist-FM\var\latest_five.html.gz   LatestFive.html.gz
 put C:\QPlaylist-FM\var\recent_songs.html.gz  RecentSongs.html.gz
+
+cd /playlist/dynamic/
+put C:\QPlaylist-FM\var\latest_five.html.gz   LatestFive.html.gz
+put C:\QPlaylist-FM\var\recent_songs.html.gz  RecentSongs.html.gz
+
 cd /wtmdapp/
 put C:\QPlaylist-FM\var\latest_five.json.gz   LatestFive.json.gz
+
 cd /remember/
 put C:\QPlaylist-FM\var\latest_five.json.gz   LatestFew.json.gz
+
 disconnect
 quit
