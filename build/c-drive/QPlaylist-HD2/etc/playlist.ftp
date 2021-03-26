@@ -2,21 +2,11 @@ open wtmd.org
 nowplaying@wtmd.org
 {password}
 
-cd /player/
-put C:\QPlaylist-HD2\var\latest_five.html.gz   LatestFiveHD2.html.gz
-
 cd /player/dynamic/
 put C:\QPlaylist-HD2\var\latest_five.html.gz   LatestFiveHD2.html.gz
 
-cd /radio/
-put C:\QPlaylist-HD2\var\latest_five.html.gz   LatestFiveHD2.html.gz
-put C:\QPlaylist-HD2\var\recent_songs.html.gz  RecentSongsHD2.html.gz
-
-cd /radio/dynamic/
-put C:\QPlaylist-HD2\var\latest_five.html.gz   LatestFiveHD2.html.gz
-put C:\QPlaylist-HD2\var\recent_songs.html.gz  RecentSongsHD2.html.gz
-
 cd /playlist/dynamic/
+put C:\QPlaylist-HD2\var\now_playing.html.gz   NowPlayingHD2.html.gz
 put C:\QPlaylist-HD2\var\latest_five.html.gz   LatestFiveHD2.html.gz
 put C:\QPlaylist-HD2\var\recent_songs.html.gz  RecentSongsHD2.html.gz
 
