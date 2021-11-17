@@ -5,15 +5,18 @@ rem October 9, 2013 - created
 rem October 10, 2013 - comment out firewall-blocked ftp
 rem November 8, 2013 - Set variable for server drive
 rem April 20, 2016 - Allow Git updating
+rem September 24, 2021 - Windows command detects NowPlaying change
 
 rem --------------
 rem Description:
 rem  This Windows batch file:
-rem 1. Obtains the input files for a certain program;
-rem 2. Runs that program;
-rem 3. Copies the program's output files to another directory (wherever
+rem 1. Compares the NowPlaying XML input file;
+rem 2. If unchanged, it exits immediately;
+rem 3. Obtains the input files for a certain program;
+rem 4. Runs that program;
+rem 5. Copies the program's output files to another directory (wherever
 rem    desired);
-rem 4. Runs an FTP program to upload those output files.
+rem 6. Runs an FTP program to upload those output files.
 
 rem This batch file, along with the associated program and its input
 rem  and output files, should not reside on a WideOrbit server
@@ -73,6 +76,12 @@ rem Process the HD2 song stream:
 rem Navigate in order to copy files:
 %script-drive%
 cd %volatiles-location%\
+
+rem Compare the NowPlaying XML input file:
+fc /b now_playing.xml %WideOrbit-file-location%\NowPlayingHD2.XML > :NULL
+
+rem Quit this script when the song is still the same:
+if %errorlevel% == 0 goto :restore
 
 rem Copy input files (keep WideOrbit's file last):
 start /wait cmd /C copy /Y  %mustache-location%\NowPlaying.mustache      now_playing.mustache

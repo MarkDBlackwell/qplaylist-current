@@ -54,6 +54,12 @@ rem Navigate in order to copy files:
 %script-drive%
 cd %volatiles-location%\
 
+rem Compare the NowPlaying XML input file:
+fc /b now_playing.xml %WideOrbit-file-location%\NowPlaying.XML > :NULL
+
+rem Quit this script when the song is still the same:
+if %errorlevel% == 0 goto :restore
+
 rem Copy input files (keep WideOrbit's file last):
 start /wait cmd /C copy /Y  %mustache-location%\NowPlaying.mustache      now_playing.mustache
 start /wait cmd /C copy /Y  %mustache-location%\LatestFive.mustache      latest_five.mustache
