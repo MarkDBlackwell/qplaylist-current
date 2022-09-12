@@ -4,7 +4,7 @@ Name:
   live-update
 
 Target:
-  C:\Windows\System32\cscript.exe Z:\QPlaylist\live-update.vbs Z:\NowPlaying.xml
+  C:\Windows\System32\cscript.exe N:\QPlaylist\live-update.vbs N:\NowPlaying.xml
 
 Start in:
   (Leave blank.)

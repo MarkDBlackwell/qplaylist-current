@@ -202,6 +202,11 @@ module Playlist
       end
     end
 
+    def directory_runner
+# Convert Windows backslashes to forward slashes:
+      ::File.absolute_path ENV['qplaylist-runner-location']
+    end
+
     def latest_five_songs_get(dates_org, start_times_org, artists_org, titles_org)
 # "_org" means original.
       songs_to_keep = 5
@@ -250,8 +255,8 @@ module Playlist
       [dates, times, artists, titles]
     end
 
-    def recent_songs_reduce(year_month_day, old_dates, old_times, old_artists, old_titles)
-      comparison_date = year_month_day - 60 * 60 * 24 * 14 # Two weeks ago.
+    def recent_songs_reduce(year_month_day, old_dates, old_times, old_artists, old_titles, days_ago)
+      comparison_date = year_month_day - 60 * 60 * 24 * days_ago
       big_array = []
       (0...old_dates.length).each do |i|
         year, month, day = old_dates.at(i).split(' ').map(&:to_i)
@@ -282,14 +287,14 @@ module Playlist
 
 # If the category is Prerecorded, and this is the main channel, then start the prerecorded-show runner:
       if snapshot.prerecorded && snapshot.channel_main
-        filename = 'Z:/QPlaylist-runner/lib/runner.rb'
+        filename = ::File.join directory_runner, 'lib', 'runner.rb'
         command = "start %COMSPEC% /C ruby #{filename}"
         ::Kernel.system command
       end
 
 # If the category is Song-Automatic, and this is the main channel, then stop all running prerecorded-show runners:
       if snapshot.song_automatic && snapshot.channel_main
-        filename = 'Z:/QPlaylist-runner/lib/killer.rb'
+        filename = ::File.join directory_runner, 'lib', 'killer.rb'
         command = "start %COMSPEC% /C ruby #{filename}"
         ::Kernel.system command
       end
@@ -317,7 +322,8 @@ module Playlist
       year_month_day             = Time.new n.year, n.month, n.day
       File.open 'current-hour.txt', 'a+' do |f_current_hour|
         unless f_current_hour.readlines.push('').first.chomp == year_month_day_hour_string
-          recent_songs_reduce year_month_day, dates, times, artists, titles
+          days_ago = snapshot.channel_main ? 7 : 2 # One week; or two days.
+          recent_songs_reduce year_month_day, dates, times, artists, titles, days_ago
           f_current_hour.rewind
           f_current_hour.truncate 0
           f_current_hour.print "#{year_month_day_hour_string}\n"

@@ -44,7 +44,7 @@ set script-drive=%~d0
 
 rem To access WideOrbit's XML file, which describes the currently
 rem  playing song, customize this network drive letter, if necessary:
-set WideOrbit-drive=z:
+set WideOrbit-drive=N:
 
 rem --------------
 rem WideOrbit file location, without trailing backslash:
@@ -57,8 +57,14 @@ rem --------------
 rem FTP command file location, with trailing backslash:
 set FTP-location=%config-files-location%
 
+rem Data files location:
+set data-location=%WideOrbit-drive%\QPlaylist
+
 rem Mustache files location:
-set mustache-location=%WideOrbit-drive%\Qplaylist
+set mustache-location=%data-location%
+
+rem Airshow files location:
+set airshows-location=%data-location%
 
 rem Volatile files location:
 set volatiles-location=%config-files-location%\..\var
@@ -70,6 +76,12 @@ set html-location=%volatiles-location%
 rem Program files location:
 set program-location=%volatiles-location%
 
+rem WideOrbit NowPlaying XML input file basename:
+set now-playing-basename=HD2.xml
+
+rem QPlaylist-runner location:
+set qplaylist-runner-location=%WideOrbit-drive%\QPlaylist-runner
+
 rem --------------
 rem Process the HD2 song stream:
 
@@ -78,17 +90,17 @@ rem Navigate in order to copy files:
 cd %volatiles-location%\
 
 rem Compare the NowPlaying XML input file:
-fc /b now_playing.xml %WideOrbit-file-location%\NowPlayingHD2.XML > :NULL
+fc /b now_playing.xml %WideOrbit-file-location%\%now-playing-basename% > :NULL
 
 rem Quit this script when the song is still the same:
 if %errorlevel% == 0 goto :restore
 
 rem Copy input files (keep WideOrbit's file last):
-start /wait cmd /C copy /Y  %mustache-location%\NowPlaying.mustache      now_playing.mustache
-start /wait cmd /C copy /Y  %mustache-location%\LatestFive.mustache      latest_five.mustache
-start /wait cmd /C copy /Y  %mustache-location%\LatestFive.json.mustache latest_five.json.mustache
-start /wait cmd /C copy /Y  %mustache-location%\RecentSongs.mustache     recent_songs.mustache
-start /wait cmd /C copy /Y  %WideOrbit-file-location%\NowPlayingHD2.XML  now_playing.xml
+start /wait cmd /C copy /B /Y  %mustache-location%\NowPlaying.mustache          now_playing.mustache
+start /wait cmd /C copy /B /Y  %mustache-location%\LatestFive.mustache          latest_five.mustache
+start /wait cmd /C copy /B /Y  %mustache-location%\LatestFive.json.mustache     latest_five.json.mustache
+start /wait cmd /C copy /B /Y  %mustache-location%\RecentSongs.mustache         recent_songs.mustache
+start /wait cmd /C copy /B /Y  %WideOrbit-file-location%\%now-playing-basename% now_playing.xml
 
 rem Navigate in order to run the Ruby program:
 %script-drive%
@@ -100,14 +112,15 @@ start /wait cmd /C ruby playlist.rb
 rem Quit this script when the song is still the same:
 if not %errorlevel% == 0 goto :restore
 
-rem Navigate in order to copy files:
+rem Navigate in order to upload files:
 %script-drive%
 cd %volatiles-location%\
 
 rem --------------
 rem FTP the output to a webserver computer:
 rem start /wait cmd /C ftp -s:%FTP-location%playlist.ftp
-start /wait cmd /C ruby c:\progra\QPlaylist-ftp\QPlaylist-ftp.rb %FTP-location%playlist.ftp
+rem start /wait cmd /C ruby c:\progra\QPlaylist-ftp\QPlaylist-ftp.rb %FTP-location%playlist.ftp
+start /wait cmd /C C:\Windows\System32\ftp.exe -v -s:%FTP-location%playlist.ftp
 
 rem --------------
 rem In the parent console, restore the original working location:
