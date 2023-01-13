@@ -54,6 +54,7 @@ div#latest-few-songs > div > p:first-of-type:after {
 /* link to buy song */
 div#latest-few-songs > div > p:first-of-type > a {
     float: right;
+    display: none;
     font-weight: bold;
     text-decoration: underline;
     color: White;

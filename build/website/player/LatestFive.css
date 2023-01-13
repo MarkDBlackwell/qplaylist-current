@@ -39,6 +39,7 @@ div#latest-few-songs > div > p:first-of-type {
 /* time, and link to buy song */
 div#latest-few-songs > div > p:first-of-type > a {
     float: right;
+    display: none;
     text-decoration: underline;
     color: #f7ba80;
 }
