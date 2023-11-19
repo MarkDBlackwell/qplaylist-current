@@ -1,5 +1,5 @@
 /* Styling for Recent Songs elements (for QPlaylist),
-   revised by Mark D. Blackwell 6/30/2017 */
+   revised by Mark D. Blackwell 11/18/2023 */
 
 html, body {
     margin: 0;
@@ -17,14 +17,6 @@ div#recent-songs {
 div#recent-songs > p {
     margin: 0 8px 0 8px;
     padding: 2px 14px 4px 14px;
-}
-/* Contain all floated elements,
-   see: https://developer.mozilla.org/en-US/docs/Web/CSS/clear
-*/
-div#recent-songs > p:after {
-    display: block;
-    clear: both;
-    content: "";
 }
 div#recent-songs > p:nth-of-type(even) {
     border-radius: 5px;
@@ -65,22 +57,6 @@ div#recent-songs > p > i:last-of-type:after {
     color: #ee7500;
     content: "Artist:";
 }
-/* link to buy song */
-div#recent-songs > p > a {
-    float: right;
-    padding-top: 7px;
-    display: none;
-    font-size: 11px;
-    font-weight: bold;
-    text-decoration: underline;
-    color: #f7ba80;
-}
-div#recent-songs > p > a:hover {
-    color: #ee7500;
-}
-div#recent-songs > p > a:after {
-    content: "Buy Song";
-}
 /* See:
 https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries
 */
@@ -116,12 +92,6 @@ https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queri
         padding-right: 0px;
         padding-left: 0px;
         content: "";
-    }
-
-    /* link to buy song */
-    div#recent-songs > p > a {
-        text-transform: uppercase;
-        color: #ee7500;
     }
 
 }
