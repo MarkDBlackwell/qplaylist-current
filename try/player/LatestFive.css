@@ -1,0 +1,68 @@
+/* Styling for Latest Five Songs elements (for QPlaylist),
+   revised by Mark D. Blackwell 11/24/2023 */
+/* THIS IS FOR THE PLAYER, NOT MAIN WEBSITE (goes in /player/ folder) */
+
+html, body {
+    width: 384px;
+    height: 269px;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 0;
+    font-size: 0;
+    color: White;
+}
+body > div {
+    box-sizing: border-box;
+    width: 384px;
+    height: 53.8px;
+    margin: 0;
+    padding: 0 14px 0 4px;
+}
+body > div:nth-of-type(even) {
+    background: #363738;
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+}
+body > div:last-of-type {
+    border-bottom-style: none;
+}
+body > div > p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.154;
+    overflow: hidden;
+    word-break: break-all;
+    white-space: nowrap;
+    hyphens: none;
+}
+body > div > p:before {
+    padding-right: 4.3px;
+}
+/* start time */
+body > div > p:first-of-type {
+    height: 12.7px;
+    padding-bottom: 1.95px;
+    padding-top: 4px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #ee7500;
+}
+/* song title */
+body > div > p:nth-of-type(2) {
+    height: 16.15px;
+    font-size: 14px;
+}
+body > div > p:nth-of-type(2):before {
+    content: "Title:";
+}
+/* artist */
+body > div > p:last-of-type {
+    height: 15px;
+    padding-bottom: 4px;
+    font-size: 13px;
+    color: #dddddd;
+}
+body > div > p:last-of-type:before {
+    content: "Artist:";
+}

@@ -1,0 +1,24 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    font-size: 0;
+    color: White;
+}
+body > div {
+    height: 269px;
+    margin: 0;
+    padding: 0;
+}
+body > div > iframe {
+    height: 269px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+body > div > iframe#content {
+    width: 384px;
+}
+body > div > iframe#likes {
+    width: 15px;
+}

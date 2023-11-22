@@ -1,0 +1,28 @@
+html, body {
+    width: 300px;
+    height: 367.5px;
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    font-size: 0;
+    color: White;
+    background: none;
+}
+body > div {
+    width: 300px;
+    height: 367.5px;
+    margin: 0;
+    padding: 0;
+}
+body > div > iframe {
+    height: 367.5px;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+body > div > iframe#content {
+    width: 285px;
+}
+body > div > iframe#likes {
+    width: 15px;
+}

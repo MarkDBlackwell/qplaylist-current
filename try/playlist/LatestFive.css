@@ -1,0 +1,56 @@
+/* Styling for Latest Five Songs elements (for QPlaylist),
+   revised by Mark D. Blackwell 11/24/2023 */
+/* THIS IS FOR MAIN WEBSITE, NOT PLAYER (goes in /playlist/ folder) */
+
+html, body {
+    width: 285px;
+    height: 367.5px;
+    margin: 0;
+    padding: 0;
+    font-family: 'PT Sans Narrow', Arial, Helvetica, sans-serif;
+    line-height: 0;
+    font-size: 0;
+    color: White;
+}
+body > div {
+    margin: 0;
+    padding: 5px 1px 4px 4px;
+    border-bottom: 1px solid #63686d;
+}
+body > div:first-of-type {
+    padding-top: 8px;
+}
+body > div:nth-of-type(odd) {
+    background: #111111;
+    border-bottom-right-radius: 5px;
+}
+body > div:last-of-type {
+    border-bottom-style: none;
+}
+body > div > p {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    font-size: 15px;
+    overflow: hidden;
+    word-break: break-all;
+    white-space: nowrap;
+    hyphens: none;
+}
+body > div > p:before {
+    padding-right: 4.3px;
+    font-size: 12px;
+}
+/* start time */
+body > div > p:first-of-type {
+    padding-bottom: 1.6px;
+    font-size: 11px;
+}
+/* song title */
+body > div > p:nth-of-type(2):before {
+    content: "Title:";
+}
+/* artist */
+body > div > p:last-of-type:before {
+    content: "Artist:";
+}
