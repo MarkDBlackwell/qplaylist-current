@@ -3,7 +3,6 @@
 /* THIS IS FOR THE PLAYER, NOT MAIN WEBSITE (goes in /player/ folder) */
 
 html, body {
-    width: 384px;
     height: 269px;
     margin: 0;
     padding: 0;
@@ -14,10 +13,9 @@ html, body {
 }
 body > div {
     box-sizing: border-box;
-    width: 384px;
     height: 53.8px;
     margin: 0;
-    padding: 0 14px 0 4px;
+    padding: 0 0 0 3px;
 }
 body > div:nth-of-type(even) {
     background: #363738;
@@ -28,7 +26,7 @@ body > div:last-of-type {
     border-bottom-style: none;
 }
 body > div > p {
-    margin: 0;
+    margin: 0 1.5px 0 0;
     padding: 0;
     line-height: 1.154;
     overflow: hidden;

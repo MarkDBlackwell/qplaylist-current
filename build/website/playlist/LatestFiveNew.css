@@ -3,7 +3,6 @@
 /* THIS IS FOR MAIN WEBSITE, NOT PLAYER (goes in /playlist/ folder) */
 
 html, body {
-    width: 285px;
     height: 367.5px;
     margin: 0;
     padding: 0;
@@ -13,11 +12,14 @@ html, body {
     color: White;
 }
 body > div {
+    box-sizing: border-box;
+    height: 73.1px;
     margin: 0;
-    padding: 5px 1px 4px 4px;
+    padding: 5px 0 4px 3px;
     border-bottom: 1px solid #63686d;
 }
 body > div:first-of-type {
+    height: 76.1px;
     padding-top: 8px;
 }
 body > div:nth-of-type(odd) {
@@ -25,10 +27,11 @@ body > div:nth-of-type(odd) {
     border-bottom-right-radius: 5px;
 }
 body > div:last-of-type {
+    height: 72.1px;
     border-bottom-style: none;
 }
 body > div > p {
-    margin: 0;
+    margin: 0 1.5px 0 0;
     padding: 0;
     line-height: 1.5;
     font-size: 15px;

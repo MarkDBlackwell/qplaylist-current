@@ -1,5 +1,4 @@
 html, body {
-    width: 15px;
     height: 269px;
     margin: 0;
     padding: 0;
@@ -9,6 +8,7 @@ html, body {
     color: White;
 }
 body > div {
+    box-sizing: border-box;
     position: relative;
     height: 53.8px;
     margin: 0;

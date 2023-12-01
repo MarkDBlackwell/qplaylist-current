@@ -1,4 +1,6 @@
 html, body {
+    width: 399px; /* 1 for Opera */
+    height: 269px;
     margin: 0;
     padding: 0;
     line-height: 0;
@@ -6,7 +8,6 @@ html, body {
     color: White;
 }
 body > div {
-    height: 269px;
     margin: 0;
     padding: 0;
 }
@@ -17,8 +18,8 @@ body > div > iframe {
     border: 0;
 }
 body > div > iframe#content {
-    width: 384px;
+    width: 383.2px; /* 0.2 for Opera */
 }
 body > div > iframe#likes {
-    width: 15px;
+    width: 15.8px; /* 0.8 for Opera */
 }

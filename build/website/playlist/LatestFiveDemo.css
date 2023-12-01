@@ -8,12 +8,14 @@ html, body {
     background: #242424;
 }
 body > div {
+    box-sizing: border-box;
+    width: 299.2px; /* 0.6 for Opera */
     margin: 0 0 0 7px;
     padding: 0;
     line-height: 1.5;
 }
 body > div > iframe {
-    width: 300px;
+    width: 300px; /* 1.4 for Opera */
     height: 367.5px;
     margin: 0;
     padding: 0;
