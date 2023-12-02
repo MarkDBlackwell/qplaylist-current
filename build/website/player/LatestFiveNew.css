@@ -15,7 +15,7 @@ body > div {
     box-sizing: border-box;
     height: 53.8px;
     margin: 0;
-    padding: 0 0 0 3px;
+    padding: 0;
 }
 body > div:nth-of-type(even) {
     background: #363738;

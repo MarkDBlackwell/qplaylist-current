@@ -15,7 +15,7 @@ body > div {
     box-sizing: border-box;
     height: 73.1px;
     margin: 0;
-    padding: 5px 0 4px 3px;
+    padding: 5px 0 4px 0;
     border-bottom: 1px solid #63686d;
 }
 body > div:first-of-type {
