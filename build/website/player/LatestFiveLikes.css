@@ -27,8 +27,8 @@ body > div > span {
 /*    visibility: hidden;*/ /* When ready, remove this to show the hearts. */
 }
 body > div > span::after {
-    margin-top: -8.5px;
-    font-size: 17px;
+    margin-top: -7.5px;
+    font-size: 15px;
 }
 body > div > span.aloof::after {
     content: "\2661";

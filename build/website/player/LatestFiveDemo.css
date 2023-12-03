@@ -12,7 +12,6 @@ body > div {
     width: 414.6px; /* 0.6 for Opera */
     margin: 0 0 0 15px;
     padding: 7.9px 8px 13.4px 8px;
-    line-height: 1.5;
     background: #161616;
 }
 body > div > iframe {
@@ -21,7 +20,6 @@ body > div > iframe {
     margin: 0;
     padding: 0;
     border: 0;
-    font-size: 10px;
 }
 body > h4 {
     margin: 164.1px 0 0 15px;
