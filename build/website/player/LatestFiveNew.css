@@ -18,7 +18,7 @@ body > div {
     padding: 0;
 }
 body > div:nth-of-type(even) {
-    background: #363738;
+    background: rgba(86, 88, 90, 0.5);
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
 }

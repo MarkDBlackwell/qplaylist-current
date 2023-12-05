@@ -5,7 +5,7 @@ html, body {
     line-height: 0;
     font-size: 0;
     color: White;
-    background: #242424;
+    background: rgb(36, 36, 36);
 }
 body > div {
     box-sizing: border-box;

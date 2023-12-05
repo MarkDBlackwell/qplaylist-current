@@ -19,7 +19,7 @@ body > div:first-of-type {
     height: 76.1px;
 }
 body > div:nth-of-type(odd) {
-    background: #111111;
+    background: rgba(0, 0, 0, 0.51);
     border-bottom-left-radius: 5px;
 }
 body > div:last-of-type {

@@ -23,7 +23,7 @@ body > div:first-of-type {
     padding-top: 8px;
 }
 body > div:nth-of-type(odd) {
-    background: #111111;
+    background: rgba(0, 0, 0, 0.51);
     border-bottom-right-radius: 5px;
 }
 body > div:last-of-type {
