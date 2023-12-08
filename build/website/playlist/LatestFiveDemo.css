@@ -1,14 +1,10 @@
+@import url("LatestFiveDemoCommon.css");
+
 html, body {
-    margin: 0;
-    padding: 0;
-    font-family: 'PT Sans Narrow', Arial, Helvetica, sans-serif;
-    line-height: 0;
-    font-size: 0;
-    color: White;
+    color: white;
     background: rgb(36, 36, 36);
 }
 body > div {
-    box-sizing: border-box;
     width: 299.2px; /* 0.6 for Opera */
     margin: 0 0 0 7px;
     padding: 0;
@@ -16,13 +12,9 @@ body > div {
 body > div > iframe {
     width: 300px; /* 1.4 for Opera */
     height: 367.5px;
-    margin: 0;
-    padding: 0;
-    border: 0;
 }
 body > h4 {
     margin: 0 0 0 8px;
     padding: 0;
-    line-height: 1.5;
     font-size: 18px;
 }

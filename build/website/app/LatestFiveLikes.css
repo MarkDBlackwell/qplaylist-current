@@ -2,13 +2,13 @@
 
 html, body {
     height: 269px;
-    color: white;
+    color: black;
 }
 body > div {
     height: 53.8px;
 }
 body > div:nth-of-type(even) {
-    background: rgba(86, 88, 90, 0.5);
+    background: rgba(255, 255, 255, 0.16);
     border-bottom-left-radius: 5px;
     border-top-left-radius: 5px;
 }

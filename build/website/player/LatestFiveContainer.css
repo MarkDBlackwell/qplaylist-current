@@ -1,26 +1,12 @@
+@import url("LatestFiveContainerCommon.css");
+
 html, body {
     width: 399px; /* 1 for Opera */
     height: 269px;
-    margin: 0;
-    padding: 0;
-    line-height: 0;
-    font-size: 0;
-    color: White;
-}
-body > div {
-    margin: 0;
-    padding: 0;
 }
 body > div > iframe {
     height: 269px;
-    margin: 0;
-    padding: 0;
-    border: 0;
 }
 body > div > iframe#content {
     width: 383.2px; /* 0.2 for Opera */
-}
-body > div > iframe#likes {
-    width: 15.8px; /* 0.8 for Opera */
-/*    width: 3px; /* Until dynamic hearts are ready, use this */
 }

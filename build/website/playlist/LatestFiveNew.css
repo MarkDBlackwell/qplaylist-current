@@ -1,20 +1,12 @@
-/* Styling for Latest Five Songs elements (for QPlaylist),
-   revised by Mark D. Blackwell 11/24/2023 */
-/* THIS IS FOR MAIN WEBSITE, NOT PLAYER (goes in /playlist/ folder) */
+@import url("LatestFiveNewCommon.css");
 
 html, body {
     height: 367.5px;
-    margin: 0;
-    padding: 0;
     font-family: 'PT Sans Narrow', Arial, Helvetica, sans-serif;
-    line-height: 0;
-    font-size: 0;
-    color: White;
+    color: white;
 }
 body > div {
-    box-sizing: border-box;
     height: 73.1px;
-    margin: 0;
     padding: 5px 0 4px 0;
     border-bottom: 1px solid #63686d;
 }
@@ -28,32 +20,15 @@ body > div:nth-of-type(odd) {
 }
 body > div:last-of-type {
     height: 72.1px;
-    border-bottom-style: none;
 }
 body > div > p {
-    margin: 0 1.5px 0 0;
-    padding: 0;
     line-height: 1.5;
     font-size: 15px;
-    overflow: hidden;
-    word-break: break-all;
-    white-space: nowrap;
-    hyphens: none;
 }
 body > div > p:before {
-    padding-right: 4.3px;
     font-size: 12px;
 }
 /* start time */
 body > div > p:first-of-type {
     padding-bottom: 1.6px;
-    font-size: 11px;
-}
-/* song title */
-body > div > p:nth-of-type(2):before {
-    content: "Title:";
-}
-/* artist */
-body > div > p:last-of-type:before {
-    content: "Artist:";
 }

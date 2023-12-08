@@ -1,0 +1,36 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    font-size: 0;
+}
+body > div {
+    box-sizing: border-box;
+    margin: 0;
+}
+body > div:last-of-type {
+    border-bottom-style: none;
+}
+body > div > p {
+    margin: 0 1.5px 0 0;
+    padding: 0;
+    overflow: hidden;
+    word-break: break-all;
+    white-space: nowrap;
+    hyphens: none;
+}
+body > div > p:before {
+    padding-right: 4.3px;
+}
+/* start time */
+body > div > p:first-of-type {
+    font-size: 11px;
+}
+/* song title */
+body > div > p:nth-of-type(2):before {
+    content: "Title:";
+}
+/* artist */
+body > div > p:last-of-type:before {
+    content: "Artist:";
+}

@@ -1,18 +1,11 @@
+@import url("LatestFiveLikesCommon.css");
+
 html, body {
     height: 367.5px;
-    margin: 0;
-    padding: 0;
-    font-family: 'PT Sans Narrow', Arial, Helvetica, sans-serif;
-    line-height: 0;
-    font-size: 0;
-    color: White;
+    color: white;
 }
 body > div {
-    box-sizing: border-box;
-    position: relative;
     height: 73.1px;
-    margin: 0;
-    padding: 0 0 0 1px;
     border-bottom: 1px solid #63686d;
 }
 body > div:first-of-type {
@@ -25,22 +18,4 @@ body > div:nth-of-type(odd) {
 body > div:last-of-type {
     height: 72.1px;
     border-bottom-style: none;
-}
-body > div > span {
-    position: absolute;
-    top: 50%;
-    margin: 0;
-    padding: 0;
-/*    visibility: hidden;*/ /* When ready, remove this to show the hearts. */
-}
-body > div > span::after {
-    margin-top: -7.5px;
-    font-size: 15px;
-}
-body > div > span.aloof::after {
-    content: "\2661";
-}
-body > div > span.like::after {
-    color: Red;
-    content: "\2665";
 }
