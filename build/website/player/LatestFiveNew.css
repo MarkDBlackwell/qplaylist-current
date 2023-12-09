@@ -2,7 +2,7 @@
 
 html, body {
     height: 269px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Arial, 'Nimbus Sans', Helvetica, sans-serif;
     color: white;
 }
 body > div {

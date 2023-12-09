@@ -2,7 +2,7 @@
 
 html, body {
     height: 367.5px;
-    font-family: 'PT Sans Narrow', Arial, Helvetica, sans-serif;
+    font-family: 'PT Sans Narrow', Arial, 'Nimbus Sans', Helvetica, sans-serif;
     color: white;
 }
 body > div {
