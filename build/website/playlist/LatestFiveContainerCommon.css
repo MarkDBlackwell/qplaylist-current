@@ -3,7 +3,6 @@ html, body {
     padding: 0;
     line-height: 0;
     font-size: 0;
-    color: white;
 }
 body > div {
     margin: 0;
@@ -12,7 +11,8 @@ body > div {
 body > div > iframe {
     margin: 0;
     padding: 0;
-    border: 0;
+    border-style: none;
+    border-width: 0;
 }
 body > div > iframe#likes {
     width: 15.8px; /* 0.8 for Opera */

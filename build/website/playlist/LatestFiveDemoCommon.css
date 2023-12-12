@@ -11,7 +11,8 @@ body > div {
 body > div > iframe {
     margin: 0;
     padding: 0;
-    border: 0;
+    border-style: none;
+    border-width: 0;
 }
 body > h4 {
     line-height: 1.5;

@@ -8,9 +8,6 @@ body > div {
     box-sizing: border-box;
     margin: 0;
 }
-body > div:last-of-type {
-    border-bottom-style: none;
-}
 body > div > p {
     margin: 0 1.5px 0 0;
     padding: 0;

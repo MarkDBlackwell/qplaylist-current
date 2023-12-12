@@ -23,7 +23,7 @@ body > div > p:first-of-type {
     padding-bottom: 1.95px;
     padding-top: 4px;
     font-weight: bold;
-    color: #ee7500;
+    color: rgb(238, 117, 0);
 }
 /* song title */
 body > div > p:nth-of-type(2) {
@@ -35,5 +35,5 @@ body > div > p:last-of-type {
     height: 15px;
     padding-bottom: 4px;
     font-size: 13px;
-    color: #dddddd;
+    color: rgb(221, 221, 221);
 }
