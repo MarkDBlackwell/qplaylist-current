@@ -14,7 +14,7 @@ body > div > iframe {
     border-style: none;
     border-width: 0;
 }
-body > div > iframe#likes {
+body > div > iframe#like {
     width: 15.8px; /* 0.8 for Opera */
 /*    width: 3px; /* Until dynamic hearts are ready, use this */
 }

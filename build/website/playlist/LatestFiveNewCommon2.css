@@ -1,0 +1,29 @@
+html, body {
+    height: 269px;
+    font-family: Arial, 'Nimbus Sans', Helvetica, sans-serif;
+}
+body > div {
+    height: 53.8px;
+    padding: 0;
+}
+body > div > p {
+    line-height: 1.154;
+}
+/* start time */
+body > div > p:first-of-type {
+    height: 12.7px;
+    padding-bottom: 1.95px;
+    padding-top: 4px;
+    font-weight: bold;
+}
+/* song title */
+body > div > p:nth-of-type(2) {
+    height: 16.15px;
+    font-size: 14px;
+}
+/* artist */
+body > div > p:last-of-type {
+    height: 15px;
+    padding-bottom: 4px;
+    font-size: 13px;
+}

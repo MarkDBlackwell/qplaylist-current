@@ -1,22 +1,10 @@
-@import url("LatestFiveDemoCommon.css");
+@import url("../playlist/LatestFiveDemoCommon.css");
+@import url("../playlist/LatestFiveDemoCommon2.css");
 
 html, body {
     color: white;
     background: rgb(36, 36, 36);
 }
 body > div {
-    width: 414.6px; /* 0.6 for Opera */
-    margin: 0 0 0 15px;
-    padding: 7.9px 8px 13.4px 8px;
     background: rgb(22, 22, 22);
-}
-body > div > iframe {
-    width: 399.4px; /* 1.4 for Opera */
-    height: 269px;
-}
-body > h4 {
-    margin: 164.1px 0 0 15px;
-    padding: 0 0 1.6px 0;
-    font-size: 15px;
-    font-weight: bold;
 }

@@ -1,0 +1,6 @@
+html, body {
+    height: 269px;
+}
+body > div {
+    height: 53.8px;
+}

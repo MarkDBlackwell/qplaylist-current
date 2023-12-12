@@ -1,39 +1,19 @@
-@import url("LatestFiveNewCommon.css");
+@import url("../playlist/LatestFiveNewCommon.css");
+@import url("../playlist/LatestFiveNewCommon2.css");
 
 html, body {
-    height: 269px;
-    font-family: Arial, 'Nimbus Sans', Helvetica, sans-serif;
     color: white;
-}
-body > div {
-    height: 53.8px;
-    padding: 0;
 }
 body > div:nth-of-type(even) {
     background: rgba(86, 88, 90, 0.5);
     border-bottom-right-radius: 5px;
     border-top-right-radius: 5px;
 }
-body > div > p {
-    line-height: 1.154;
-}
 /* start time */
 body > div > p:first-of-type {
-    height: 12.7px;
-    padding-bottom: 1.95px;
-    padding-top: 4px;
-    font-weight: bold;
     color: rgb(238, 117, 0);
-}
-/* song title */
-body > div > p:nth-of-type(2) {
-    height: 16.15px;
-    font-size: 14px;
 }
 /* artist */
 body > div > p:last-of-type {
-    height: 15px;
-    padding-bottom: 4px;
-    font-size: 13px;
     color: rgb(221, 221, 221);
 }

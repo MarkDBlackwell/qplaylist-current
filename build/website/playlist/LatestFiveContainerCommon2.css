@@ -1,0 +1,10 @@
+html, body {
+    width: 399px; /* 1 for Opera */
+    height: 269px;
+}
+body > div > iframe {
+    height: 269px;
+}
+body > div > iframe#content {
+    width: 383.2px; /* 0.2 for Opera */
+}

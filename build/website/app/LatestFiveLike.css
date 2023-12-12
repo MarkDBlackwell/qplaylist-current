@@ -1,11 +1,8 @@
-@import url("LatestFiveLikesCommon.css");
+@import url("../playlist/LatestFiveLikeCommon.css");
+@import url("../playlist/LatestFiveLikeCommon2.css");
 
 html, body {
-    height: 269px;
     color: black;
-}
-body > div {
-    height: 53.8px;
 }
 body > div:first-of-type {
     border-top-left-radius: 11px 10px;
