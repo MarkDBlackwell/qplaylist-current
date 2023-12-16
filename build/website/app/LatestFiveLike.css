@@ -19,4 +19,6 @@ body > div:nth-of-type(odd) {
 body > div > span.aloof::after {
     text-shadow: 0.3px 0.3px black, 0.4px 0.4px black;
 }
-/* For Safari, text-shadow makes heart too big */
+body > div > span.like::after {
+    text-shadow: 0.3px 0.3px red, 0.4px 0.4px red;
+}
