@@ -13,6 +13,7 @@ body > div > iframe {
     padding: 0;
     border-style: none;
     border-width: 0;
+/*    overflow: hidden; /* Use this in production */
 }
 body > h4 {
     line-height: 1.5;
