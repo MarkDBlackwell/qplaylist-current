@@ -20,12 +20,13 @@ body > div > span {
 }
 body > div > span::after {
     margin-top: -7.5px;
-    font-size: 11px; /* For red heart, at most 15 for WebKit, < 15 for Safari */
 }
 body > div > span.aloof::after {
+    font-size: 13px; /* At most 15 for WebKit, 13 for Safari */
     content: "\2661";
 }
 body > div > span.like::after {
     color: red;
+    font-size: 11px; /* At most 15 for WebKit, 11 for Safari */
     content: "\2764";
 }
