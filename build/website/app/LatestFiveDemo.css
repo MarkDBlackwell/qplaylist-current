@@ -3,5 +3,12 @@
 
 html, body {
     color: black;
-    background: url("background.jpeg") 180% 20% rgb(36, 36, 36);
+    background-color: rgb(36, 36, 36);
+    background-image: url("background.jpeg");
+    background-origin: border-box;
+    background-clip: border-box;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: auto auto;
+    background-position: left top;
 }
