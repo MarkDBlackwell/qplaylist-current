@@ -1,11 +1,14 @@
 @import url("../playlist/LatestFiveLikeCommon.css");
 @import url("../playlist/LatestFiveLikeCommon2.css");
 
-html, body {
+html {
+    font-size: calc(100lvh / 269);
+}
+body {
     color: white;
 }
 body > div:nth-of-type(even) {
     background: rgba(86, 88, 90, 0.5);
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5rem;
+    border-top-left-radius: 5rem;
 }

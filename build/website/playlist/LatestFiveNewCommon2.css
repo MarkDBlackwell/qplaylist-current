@@ -1,29 +1,27 @@
-html, body {
-    height: 269px;
+body {
+    height: 269rem;
     font-family: Arial, 'Nimbus Sans', Helvetica, sans-serif;
 }
 body > div {
-    height: 53.8px;
-    padding: 0;
+    height: 53.8rem;
+    padding: 4rem 1.5rem 4rem 0;
 }
 body > div > p {
     line-height: 1.154;
 }
 /* start time */
 body > div > p:first-of-type {
-    height: 12.7px;
-    padding-bottom: 1.95px;
-    padding-top: 4px;
+    height: 12.7rem;
+    padding-bottom: 1.95rem;
     font-weight: bold;
 }
 /* song title */
 body > div > p:nth-of-type(2) {
-    height: 16.15px;
-    font-size: 14px;
+    height: 16.15rem;
+    font-size: 14rem;
 }
 /* artist */
 body > div > p:last-of-type {
-    height: 15px;
-    padding-bottom: 4px;
-    font-size: 13px;
+    height: 15rem;
+    font-size: 13rem;
 }

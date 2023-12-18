@@ -1,4 +1,4 @@
-html, body {
+body {
     margin: 0;
     padding: 0;
     line-height: 0;
@@ -16,6 +16,10 @@ body > div > iframe {
 /*    overflow: hidden; /* Use this in production */
 }
 body > div > iframe#like {
-    width: 15.8px; /* 0.8 for Opera */
-/*    width: 3px; /* Until dynamic hearts are ready, use this */
+    width: 15.8rem; /* 0.8 for Opera */
+/*    width: 3rem; /* Until dynamic hearts are ready, use this */
+}
+* {
+    margin-block-end: 0; /* For Opera */
+    margin-block-start: 0; /* For Opera */
 }

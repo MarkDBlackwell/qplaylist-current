@@ -1,14 +1,37 @@
 @import url("../playlist/LatestFiveDemoCommon.css");
 @import url("../playlist/LatestFiveDemoCommon2.css");
 
-html, body {
-    color: black;
-    background-color: rgb(36, 36, 36);
+html {
+    font-size: min(calc(100lvh / 269), calc(100lvw / 402.4));
+}
+@media screen and (min-width: 768px) {
+    html {
+        font-size: 1px;
+    }
+}
+@media screen and (max-width: 768px) {
+    body {
+        overflow: hidden; /* For Opera */
+    }
+}
+body {
     background-image: url("background.jpeg");
     background-origin: border-box;
     background-clip: border-box;
     background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-size: auto auto;
-    background-position: left top;
+    background-repeat: round;
+    background-size: cover;
+    background-position: center;
+    color: black;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    text-size-adjust: none;
+}
+body > div {
+    margin: 0;
+    padding: 0 0 0 3rem;
+}
+body > h4 {
+    margin: 0;
+    padding: 0 0 1.6rem 3rem;
 }

@@ -1,14 +1,20 @@
 @import url("../playlist/LatestFiveNewCommon.css");
 @import url("../playlist/LatestFiveNewCommon2.css");
 
-html, body {
+html {
+    font-size: calc(100lvh / 269);
+}
+body {
     color: black;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    text-size-adjust: none;
 }
 body > div:first-of-type {
-    border-top-right-radius: 10px 11px;
+    border-top-right-radius: 10rem;
 }
 body > div:last-of-type {
-    border-bottom-right-radius: 11px 10px;
+    border-bottom-right-radius: 10rem;
 }
 body > div:nth-of-type(even) {
     background: rgba(195, 195, 195, 0.82);

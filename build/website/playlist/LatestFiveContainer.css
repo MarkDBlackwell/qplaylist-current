@@ -1,12 +1,15 @@
 @import url("LatestFiveContainerCommon.css");
 
-html, body {
-    width: 299.6px; /* 1 for Opera */
-    height: 367.5px;
+html {
+    font-size: calc(100lvh / 367.5);
+}
+body {
+    width: 299.6rem; /* 1 for Opera */
+    height: 367.5rem;
 }
 body > div > iframe {
-    height: 367.5px;
+    height: 367.5rem;
 }
 body > div > iframe#content {
-    width: 283.8px; /* 0.2 for Opera */
+    width: 283.8rem; /* 0.2 for Opera */
 }

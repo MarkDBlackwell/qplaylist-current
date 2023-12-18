@@ -1,0 +1,16 @@
+tar cvf all.tar {list-of-files}
+cat session.ftp | /usr/bin/ftp -n wtmdradio.org
+ssh admin@wtmdradio.org
+sudo --login
+login
+# Username is: mark
+mv build build-old{some-sequence-number}
+tar --extract -f all.tar
+ls -dl `find build -type l`
+ls -dl `find build -type f`
+sudo chown nowplaying@wtmd.org: `find build -type f`
+sudo mv `find build/website/playlist/dynamic -type f -name '*.html'` /var/www/html/playlist/dynamic
+sudo mv `find build/website/playlist -type f` /var/www/html/playlist
+ls -dl `find build -type f`
+ls -dl `find build -type l`
+# (Etc.)

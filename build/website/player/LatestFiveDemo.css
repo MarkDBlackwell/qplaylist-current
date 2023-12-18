@@ -1,10 +1,19 @@
 @import url("../playlist/LatestFiveDemoCommon.css");
 @import url("../playlist/LatestFiveDemoCommon2.css");
 
-html, body {
+html {
+    font-size: 1px;
+}
+body {
     color: white;
-    background: rgb(36, 36, 36);
 }
 body > div {
+    margin: 0 0 0 15rem;
+    padding: 7.9rem 8rem 13.4rem 8rem;
     background: rgb(22, 22, 22);
+}
+body > h4 {
+    height: 188.2rem;
+    margin: 0 0 0 15rem;
+    padding: 164.1rem 0 1.6rem 0;
 }

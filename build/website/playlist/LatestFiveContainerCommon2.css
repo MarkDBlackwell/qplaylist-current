@@ -1,10 +1,10 @@
-html, body {
-    width: 399px; /* 1 for Opera */
-    height: 269px;
+body {
+    width: 399rem; /* 1 for Opera */
+    height: 269rem;
 }
 body > div > iframe {
-    height: 269px;
+    height: 269rem;
 }
 body > div > iframe#content {
-    width: 383.2px; /* 0.2 for Opera */
+    width: 383.2rem; /* 0.2 for Opera */
 }
