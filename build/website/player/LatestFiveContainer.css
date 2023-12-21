@@ -1,6 +1,6 @@
 @import url("../playlist/LatestFiveContainerCommon.css");
 @import url("../playlist/LatestFiveContainerCommon2.css");
 
-html {
+:root {
     font-size: calc(100lvh / 269.2); /* 0.2 for Opera */
 }

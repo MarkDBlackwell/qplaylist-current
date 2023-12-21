@@ -1,11 +1,11 @@
 @import url("../playlist/LatestFiveDemoCommon.css");
 @import url("../playlist/LatestFiveDemoCommon2.css");
 
-html {
+:root {
     font-size: min(calc(100lvh / 269), calc(100lvw / 402.4));
 }
 @media screen and (min-width: 768px) {
-    html {
+    :root {
         font-size: 1px;
     }
 }

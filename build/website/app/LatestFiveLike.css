@@ -1,7 +1,7 @@
 @import url("../playlist/LatestFiveLikeCommon.css");
 @import url("../playlist/LatestFiveLikeCommon2.css");
 
-html {
+:root {
     font-size: calc(100lvh / 269);
 }
 body {

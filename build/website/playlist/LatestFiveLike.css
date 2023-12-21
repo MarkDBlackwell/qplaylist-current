@@ -1,6 +1,6 @@
 @import url("LatestFiveLikeCommon.css");
 
-html {
+:root {
     font-size: calc(100lvh / 367.5);
 }
 body {
