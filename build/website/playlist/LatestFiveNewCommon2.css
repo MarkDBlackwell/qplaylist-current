@@ -1,9 +1,13 @@
+:root {
+  --body-height: 269rem;
+  --body-div-height: 53.8rem;
+}
 body {
-    height: 269rem;
+    height: var(--body-height);
     font-family: Arial, 'Nimbus Sans', Helvetica, sans-serif;
 }
 body > div {
-    height: 53.8rem;
+    height: var(--body-div-height);
     padding: 4rem 1.5rem 4rem 0;
 }
 body > div > p {

@@ -1,27 +1,9 @@
 @import url("LatestFiveLikeCommon.css");
+@import url("LatestFiveLikeNewCommonPlaylist.css");
 
-:root {
-    font-size: calc(100lvh / 367.5);
-}
-body {
-    height: 367.5rem;
-    color: white;
-}
-body > div {
-    height: calc(67.1rem + 5rem + 1rem);
-    border-bottom-style: solid;
-    border-width: 1rem;
-    border-color: rgb(99, 104, 109);
-}
-body > div:first-of-type {
-    height: calc(67.1rem + 5rem + 3rem + 1rem);
-}
 body > div:last-of-type {
-    height: calc(67.1rem + 5rem);
-    border-bottom-style: unset;
     border-bottom-left-radius: unset;
 }
 body > div:nth-of-type(odd) {
-    background: rgba(0, 0, 0, 0.51);
-    border-bottom-left-radius: 5rem;
+    border-bottom-left-radius: var(--border-radius);
 }

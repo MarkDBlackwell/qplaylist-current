@@ -2,10 +2,12 @@
 @import url("../playlist/LatestFiveContainerCommon2.css");
 
 :root {
-    font-size: calc(100lvh / 269.2); /* 0.2 for Opera */
+  --body-height: 269rem; --BodyHeight: 269;
+  --body-height-extra: 0.2rem; --BodyHeightExtra: 0.2; /* 0.2 for Opera */
+    font-size: calc(100lvh / (var(--BodyHeight) + var(--BodyHeightExtra)));
 }
 @media screen and (max-width: 768px) {
     body {
-        overflow: hidden; /* For Opera */
+/*        overflow: hidden; /* For Opera */
     }
 }

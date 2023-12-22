@@ -1,22 +1,41 @@
 @import url("LatestFiveDemoCommon.css");
 
 :root {
-    font-size: 1px;
+  --body-height: calc(var(--h4-height) + var(--iframe-height));
+  --BodyHeight: calc(var(--H4Height) + var(--IframeHeight));
+  --h4-height: 27rem; --H4Height: 27;
+  --iframe-height: 367.5rem; --IframeHeight: 367.5;
+  --iframe-width: 300rem; /* 1.4 for Opera */
+  --padding-left: 8rem;
+    font-size: min(100lvw / var(--BodyHeight), 100lvh / var(--BodyHeight));
+}
+@media screen and (min-width: 768px) {
+    :root {
+        font-size: 1px;
+    }
+}
+@media screen and (max-width: 768px) {
+    body {
+/*        overflow: hidden; /* For Opera */
+    }
 }
 body {
     color: white;
 }
 body > div {
-    width: 299.2rem; /* 0.6 for Opera */
-    margin: 0 0 0 7rem;
-    padding: 0;
+    width: calc(var(--iframe-width) + var(--padding-left));
+    margin: 0;
+    padding: 0 0 0 var(--padding-left);
 }
 body > div > iframe {
-    width: 300rem; /* 1.4 for Opera */
-    height: 367.5rem;
+    box-sizing: border-box;
+    width: var(--iframe-width);
+    height: var(--iframe-height);
 }
 body > h4 {
-    margin: 0 0 0 8rem;
-    padding: 0;
+    box-sizing: border-box;
+    height: var(--h4-height);
+    margin: 0;
+    padding: 0 0 0 var(--padding-left);
     font-size: 18rem;
 }

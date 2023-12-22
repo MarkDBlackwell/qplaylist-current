@@ -1,10 +1,17 @@
+:root {
+  --body-height: 269rem; --BodyHeight: 269;
+  --body-width: calc(var(--body-width-extra) + var(--iframe-content-width) + var(--iframe-like-width-duplicate)); /* 399rem, 1 for Opera */
+  --body-width-extra: 0rem;
+  --iframe-content-width: 383.2rem; /* 0.2 for Opera */
+  --iframe-like-width-duplicate: 15.8rem; /* 0.8 for Opera */
+}
 body {
-    width: 399rem; /* 1 for Opera */
-    height: 269rem;
+    width: var(--body-width);
+    height: var(--body-height);
 }
 body > div > iframe {
-    height: 269rem;
+    height: var(--body-height);
 }
 body > div > iframe#content {
-    width: 383.2rem; /* 0.2 for Opera */
+    width: var(--iframe-content-width);
 }

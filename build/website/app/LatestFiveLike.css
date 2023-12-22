@@ -2,7 +2,7 @@
 @import url("../playlist/LatestFiveLikeCommon2.css");
 
 :root {
-    font-size: calc(100lvh / 269);
+    font-size: calc(100lvh / var(--BodyHeight));
 }
 body {
     color: black;

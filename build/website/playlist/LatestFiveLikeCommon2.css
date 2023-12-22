@@ -1,6 +1,10 @@
+:root {
+  --body-height: 269rem; --BodyHeight: 269;
+  --body-div-height: 53.8rem;
+}
 body {
-    height: 269rem;
+    height: var(--body-height);
 }
 body > div {
-    height: 53.8rem;
+    height: var(--body-div-height);
 }

@@ -1,12 +1,18 @@
+:root {
+  --body-div-width-extra: 15.2rem; /* 0.6 for Opera */
+  --body-height: 478.5rem; --BodyHeight: 478.5;
+  --iframe-height: 269.5rem; --IframeHeight: 269.5; /* 0.5 for Firefox */
+  --iframe-width: 399.4rem; /* 1.4 for Opera */
+}
 body {
-    height: 478.5rem;
+    height: var(--body-height);
 }
 body > div {
-    width: 414.6rem; /* 0.6 for Opera */
+    width: calc(var(--iframe-width) + var(--body-div-width-extra));
 }
 body > div > iframe {
-    width: 399.4rem; /* 1.4 for Opera */
-    height: 269.5rem; /* 0.5 for Firefox */
+    width: var(--iframe-width);
+    height: var(--iframe-height);
 }
 body > h4 {
     box-sizing: border-box;

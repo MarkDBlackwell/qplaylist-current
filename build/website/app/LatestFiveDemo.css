@@ -2,7 +2,11 @@
 @import url("../playlist/LatestFiveDemoCommon2.css");
 
 :root {
-    font-size: min(calc(100lvh / 269), calc(100lvw / 402.4));
+  --h4-height: 27rem; --H4Height: 27;
+  --iframe-height: 367.5rem; --IframeHeight: 367.5;
+  --font-size-temp-height: 269rem; --FontSizeTempHeight: 269;
+  --font-size-temp-width: 402.4rem; --FontSizeTempWidth: 402.4;
+    font-size: min(100lvw / var(--FontSizeTempWidth), 100lvh / var(--FontSizeTempHeight));
 }
 @media screen and (min-width: 768px) {
     :root {
@@ -11,7 +15,7 @@
 }
 @media screen and (max-width: 768px) {
     body {
-        overflow: hidden; /* For Opera */
+/*        overflow: hidden; /* For Opera */
     }
 }
 body {

@@ -2,18 +2,30 @@
 @import url("../playlist/LatestFiveDemoCommon2.css");
 
 :root {
-    font-size: 1px;
+  --body-height: 402.4rem; --BodyHeight: 402.4;
+  --h4-height: 22.1rem; --H4Height: 22.1;
+    font-size: min(100lvw / (var(--BodyHeight) + var(--H4Height)), 100lvh / (var(--BodyHeight) + var(--H4Height)));
+}
+@media screen and (min-width: 768px) {
+    :root {
+        font-size: 1px;
+    }
+}
+@media screen and (max-width: 768px) {
+    body {
+/*        overflow: hidden; /* For Opera */
+    }
 }
 body {
     color: white;
 }
 body > div {
-    margin: 0 0 0 15rem;
-    padding: 7.9rem 8rem 13.4rem 8rem;
+    margin: 0;
+    padding: 7.9rem 0 13.4rem 3rem;
     background: rgb(22, 22, 22);
 }
 body > h4 {
-    height: 188.2rem;
-    margin: 0 0 0 15rem;
-    padding: 164.1rem 0 1.6rem 0;
+    height: var(--h4-height);
+    margin: 0;
+    padding: 0 0 1.6rem 3rem;
 }

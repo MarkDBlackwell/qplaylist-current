@@ -1,0 +1,32 @@
+:root {
+  --body-height: calc(var(--div-first-height-extra) - var(--border-width) + 5 * var(--div-height)); /* 367.5 */
+  --BodyHeight:  calc(var(--DivFirstHeightExtra   ) - var(--BorderWidth ) + 5 * var(--DivHeight ));
+  --border-color: rgb(99, 104, 109);
+  --border-radius: 5rem;
+  --border-width: 1rem; --BorderWidth: 1;
+  --div-first-height-extra: 3rem; --DivFirstHeightExtra: 3;
+  --div-height: 73.1rem; --DivHeight: 73.1;
+  --swath-background-color: rgba(0, 0, 0, 0.51);
+    font-size: calc(100lvh / var(--BodyHeight));
+/*    font-size: 1px;*/
+}
+body {
+    height: var(--body-height);
+    color: white;
+}
+body > div {
+    height: var(--div-height);
+    border-bottom-style: solid;
+    border-width: var(--border-width);
+    border-color: var(--border-color);
+}
+body > div:first-of-type {
+    height: calc(var(--div-first-height-extra) + var(--div-height));
+}
+body > div:last-of-type {
+    height: calc(var(--div-height) - var(--border-width));
+    border-bottom-style: unset;
+}
+body > div:nth-of-type(odd) {
+    background: var(--swath-background-color);
+}

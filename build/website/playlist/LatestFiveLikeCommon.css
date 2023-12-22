@@ -19,7 +19,7 @@ body > div > span {
 /*    visibility: hidden;*/ /* When ready, remove this to show the hearts. */
 }
 body > div > span::after {
-    margin-top: -7.5rem;
+    margin-top: -7.5rem; /* Move it up, half its height */
 }
 body > div > span.aloof::after {
     font-size: 13rem; /* At most 15 for WebKit, 13 for Safari */
