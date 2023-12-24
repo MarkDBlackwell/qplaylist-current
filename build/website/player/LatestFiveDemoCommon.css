@@ -2,9 +2,7 @@
 
 :root {
   --body-div-width-extra: 15.2rem; /* 0.6 for Opera */
-  --body-height: 478.5rem; --BodyHeight: 478.5;
-  --iframe-height: 269.5rem; --IframeHeight: 269.5; /* 0.5 for Firefox */
-  --iframe-width: 399.4rem; /* 1.4 for Opera */
+  --iframe-width: 399.4rem; --IframeWidth: 399.4; /* 1.4 for Opera */
 }
 body {
     height: var(--body-height);

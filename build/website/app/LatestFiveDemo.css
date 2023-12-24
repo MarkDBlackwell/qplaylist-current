@@ -1,11 +1,15 @@
 @import url("../player/LatestFiveDemoCommon.css");
 
 :root {
+  --body-height: calc(var(--h4-height) + var(--iframe-height));
+  --BodyHeight:  calc(var(--H4Height ) + var(--IframeHeight ));
+  --BodyWidth: var(--DivWidth);
+  --div-padding-left: 3rem; --DivPaddingLeft: 3;
+  --div-width: calc(var(--div-padding-left) + var(--iframe-width));
+  --DivWidth:  calc(var(--DivPaddingLeft  ) + var(--IframeWidth ));
   --h4-height: 27rem; --H4Height: 27;
   --iframe-height: 367.5rem; --IframeHeight: 367.5;
-  --font-size-temp-height: 269rem; --FontSizeTempHeight: 269;
-  --font-size-temp-width: 402.4rem; --FontSizeTempWidth: 402.4;
-    font-size: min(100lvw / var(--FontSizeTempWidth), 100lvh / var(--FontSizeTempHeight));
+    font-size: min(100lvw / var(--BodyWidth), 100lvh / var(--BodyHeight));
 }
 @media screen and (min-width: 768px) {
     :root {
@@ -32,7 +36,7 @@ body {
 }
 body > div {
     margin: 0;
-    padding: 0 0 0 3rem;
+    padding: 0 0 0 var(--div-padding-left);
 }
 body > h4 {
     margin: 0;
