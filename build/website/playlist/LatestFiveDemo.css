@@ -2,12 +2,17 @@
 
 :root {
   --body-height: calc(var(--h4-height) + var(--iframe-height));
-  --BodyHeight: calc(var(--H4Height) + var(--IframeHeight));
-  --h4-height: 27rem; --H4Height: 27;
+  --BodyHeight:  calc(var(--H4Height ) + var(--IframeHeight ));
+  --BodyWidth: var(--DivWidth);
+  --div-padding-left: 14rem; --DivPaddingLeft: 14;
+  --div-width: calc(var(--div-padding-left) + var(--iframe-width));
+  --DivWidth:  calc(var(--DivPaddingLeft  ) + var(--IframeWidth ));
+  --h4-height: 50.9rem; --H4Height: 50.9;
+  --h4-padding-bottom: 23.9rem;
+  --h4-padding-left: 0;
   --iframe-height: 367.5rem; --IframeHeight: 367.5;
-  --iframe-width: 300rem; /* 1.4 for Opera */
-  --padding-left: 8rem;
-    font-size: min(100lvw / var(--BodyHeight), 100lvh / var(--BodyHeight));
+  --iframe-width: 300rem; --IframeWidth: 300; /* 1.4 for Opera */
+    font-size: min(100lvw / var(--BodyWidth), 100lvh / var(--BodyHeight));
 }
 @media screen and (min-width: 768px) {
     :root {
@@ -16,16 +21,17 @@
 }
 @media screen and (max-width: 768px) {
     body {
-/*        overflow: hidden; /* For Opera */
+/**        overflow: hidden; /* Use this in production **/
     }
 }
 body {
+    font-family: 'Open Sans Condensed', Arial, 'Nimbus Sans', Helvetica, sans-serif;
     color: white;
 }
 body > div {
-    width: calc(var(--iframe-width) + var(--padding-left));
+    width: var(--div-width);
     margin: 0;
-    padding: 0 0 0 var(--padding-left);
+    padding: 0 0 0 var(--div-padding-left);
 }
 body > div > iframe {
     box-sizing: border-box;
@@ -36,6 +42,6 @@ body > h4 {
     box-sizing: border-box;
     height: var(--h4-height);
     margin: 0;
-    padding: 0 0 0 var(--padding-left);
+    padding: 0 0 var(--h4-padding-bottom) var(--h4-padding-left);
     font-size: 18rem;
 }

@@ -1,5 +1,5 @@
 :root {
-  --iframe-like-width-duplicate-two: 15.8rem; /* 0.8 for Opera */
+  --iframe-like-width: 15.8rem;
 /**  --iframe-like-width: 3rem; /* Until dynamic hearts are ready, use this **/
 }
 body {
@@ -17,10 +17,10 @@ body > div > iframe {
     padding: 0;
     border-style: none;
     border-width: 0;
-/*    overflow: hidden; /* Use this in production */
+/**    overflow: hidden; /* Use this in production **/
 }
 body > div > iframe#like {
-    width: var(--iframe-like-width-duplicate-two);
+    width: var(--iframe-like-width);
 }
 * {
     margin-block-end: 0; /* For Opera */

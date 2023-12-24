@@ -15,7 +15,7 @@
 }
 @media screen and (max-width: 768px) {
     body {
-/*        overflow: hidden; /* For Opera */
+/**        overflow: hidden; /* Use this in production **/
     }
 }
 body {

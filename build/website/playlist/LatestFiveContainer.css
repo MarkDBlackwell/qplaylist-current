@@ -2,18 +2,14 @@
 
 :root {
   --body-height: 367.5rem; --BodyHeight: 367.5;
-  --body-width: calc(var(--body-width-extra) + var(--iframe-content-width) + var(--iframe-like-width));
-  --body-width-extra: 0.1rem; /* 1 for Opera */
-  --iframe-content-width: 283.7rem;
     font-size: calc(100lvh / var(--BodyHeight));
 }
 body {
-    width: var(--body-width);
     height: var(--body-height);
 }
 body > div > iframe {
     height: var(--body-height);
 }
 body > div > iframe#content {
-    width: var(--iframe-content-width); /* 0.2 for Opera */
+    width: calc(100lvw - var(--iframe-like-width));
 }
