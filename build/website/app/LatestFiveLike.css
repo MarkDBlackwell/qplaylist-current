@@ -1,5 +1,4 @@
-@import url("../playlist/LatestFiveLikeCommon.css");
-@import url("../playlist/LatestFiveLikeCommon2.css");
+@import url("../player/LatestFiveLikeCommon.css");
 
 :root {
     font-size: calc(100lvh / var(--BodyHeight));

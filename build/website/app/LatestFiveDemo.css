@@ -1,5 +1,4 @@
-@import url("../playlist/LatestFiveDemoCommon.css");
-@import url("../playlist/LatestFiveDemoCommon2.css");
+@import url("../player/LatestFiveDemoCommon.css");
 
 :root {
   --h4-height: 27rem; --H4Height: 27;

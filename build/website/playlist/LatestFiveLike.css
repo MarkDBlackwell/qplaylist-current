@@ -1,5 +1,5 @@
 @import url("LatestFiveLikeCommon.css");
-@import url("LatestFiveLikeNewCommonPlaylist.css");
+@import url("LatestFiveLikeNewCommon.css");
 
 body > div:last-of-type {
     border-bottom-left-radius: unset;

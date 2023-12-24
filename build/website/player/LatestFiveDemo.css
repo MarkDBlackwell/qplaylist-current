@@ -1,5 +1,4 @@
-@import url("../playlist/LatestFiveDemoCommon.css");
-@import url("../playlist/LatestFiveDemoCommon2.css");
+@import url("LatestFiveDemoCommon.css");
 
 :root {
   --body-height: 402.4rem; --BodyHeight: 402.4;
