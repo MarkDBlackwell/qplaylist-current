@@ -1,5 +1,5 @@
 :root {
-  --iframe-like-width: 15.8rem;
+  --iframe-like-width: 15.8rem; /* 0.8 for Opera */
 /**  --iframe-like-width: 3rem; /* Until dynamic hearts are ready, use this **/
 }
 body {

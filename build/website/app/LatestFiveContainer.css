@@ -1,9 +1,7 @@
 @import url("../player/LatestFiveContainerCommon.css");
 
 :root {
-  --body-height: 269rem; --BodyHeight: 269;
-  --body-height-extra: 0.2rem; --BodyHeightExtra: 0.2; /* 0.2 for Opera */
-    font-size: calc(100lvh / (var(--BodyHeight) + var(--BodyHeightExtra)));
+    font-size: calc(100lvh / var(--BodyHeight));
 }
 @media screen and (max-width: 768px) {
     body {

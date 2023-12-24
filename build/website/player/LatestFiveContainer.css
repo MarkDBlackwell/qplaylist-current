@@ -1,6 +1,5 @@
 @import url("LatestFiveContainerCommon.css");
 
 :root {
-  --body-height-temp: 269.2rem; --BodyHeightTemp: 269.2; /* 0.2 for Opera */
-    font-size: calc(100lvh / var(--BodyHeightTemp)); /* 0.2 for Opera */
+    font-size: calc(100lvh / var(--BodyHeight));
 }
