@@ -3,11 +3,14 @@
 :root {
   --body-height: calc(var(--h4-height) + var(--iframe-height));
   --BodyHeight:  calc(var(--H4Height ) + var(--IframeHeight ));
-  --BodyWidth: var(--DivWidth);
-  --div-padding-left: 3rem; --DivPaddingLeft: 3;
-  --div-width: calc(var(--div-padding-left) + var(--iframe-width));
-  --DivWidth:  calc(var(--DivPaddingLeft  ) + var(--IframeWidth ));
-  --h4-height: 22.1rem; --H4Height: 22.1;
+  --BodyWidth: calc(var(--DivMarginLeft) + var(--DivWidth));
+  --div-padding-left:  8rem; --DivPaddingLeft:  8;
+  --div-margin-left:  15rem; --DivMarginLeft:  15;
+  --h4-margin-left:  15rem; --H4MarginLeft:  15;
+  --div-padding-right: 8rem; --DivPaddingRight: 8;
+  --div-width: calc(var(--div-padding-left) + var(--div-padding-right) + var(--iframe-width));
+  --DivWidth:  calc(var(--DivPaddingLeft  ) + var(--DivPaddingRight  ) + var(--IframeWidth ));
+  --h4-height: 24.1rem; --H4Height: 24.1;
   --iframe-height: 269.5rem; --IframeHeight: 269.5; /* 0.5 for Firefox */
     font-size: min(100lvw / var(--BodyWidth), 100lvh / var(--BodyHeight));
 }
@@ -25,12 +28,12 @@ body {
     color: white;
 }
 body > div {
-    margin: 0;
-    padding: 7.9rem 0 13.4rem var(--div-padding-left);
+    margin: 0 0 0 var(--div-margin-left);
+    padding: 7.9rem var(--div-padding-right) 12.4rem var(--div-padding-left);
     background: rgb(22, 22, 22);
 }
 body > h4 {
     height: var(--h4-height);
-    margin: 0;
-    padding: 0 0 1.6rem 3rem;
+    margin: 0 0 0 var(--h4-margin-left);
+    padding: 0 0 1.6rem 0;
 }
