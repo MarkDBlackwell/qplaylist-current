@@ -1,4 +1,4 @@
-@import url("../player/LatestFiveContainerCommon.css");
+@import url("../app-player/LatestFiveContainerCommon.css");
 
 :root {
     font-size: calc(100lvh / var(--BodyHeight));

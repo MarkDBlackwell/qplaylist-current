@@ -1,4 +1,4 @@
-@import url("../playlist/LatestFiveContainerCommon.css");
+@import url("../app-player-playlist/LatestFiveContainerCommon.css");
 
 :root {
   --body-height: 269rem; --BodyHeight: 269; /* 0.2 for Opera */

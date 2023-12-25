@@ -1,4 +1,4 @@
-@import url("../playlist/LatestFiveDemoCommon.css");
+@import url("../app-player-playlist/LatestFiveDemoCommon.css");
 
 :root {
   --body-div-width-extra: 15.2rem; /* 0.6 for Opera */

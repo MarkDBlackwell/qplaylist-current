@@ -1,4 +1,4 @@
-@import url("../player/LatestFiveDemoCommon.css");
+@import url("../app-player/LatestFiveDemoCommon.css");
 
 :root {
   --body-height: calc(var(--h4-height) + var(--iframe-height));

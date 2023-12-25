@@ -1,4 +1,4 @@
-@import url("../player/LatestFiveLikeCommon.css");
+@import url("../app-player/LatestFiveLikeCommon.css");
 
 :root {
     font-size: calc(100lvh / var(--BodyHeight));

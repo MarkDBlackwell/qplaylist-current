@@ -1,4 +1,4 @@
-@import url("LatestFiveLikeCommon.css");
+@import url("../app-player-playlist/LatestFiveLikeCommon.css");
 @import url("LatestFiveLikeNewCommon.css");
 
 body > div:last-of-type {
