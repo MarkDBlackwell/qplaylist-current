@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+    font-size: 0;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    text-size-adjust: none;
+}
+* {
+    margin-block-end: 0; /* For Opera */
+    margin-block-start: 0; /* For Opera */
+}

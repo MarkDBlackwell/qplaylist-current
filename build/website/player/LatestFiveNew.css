@@ -1,22 +1,45 @@
-@import url("../app-player/LatestFiveNewCommon.css");
+@import url("../app-player-playlist/LatestFiveContainerDemoLikeNewCommon.css");
+@import url("../app-player-playlist/LatestFiveNewCommon.css");
 
 :root {
+  --body-div-height: 53.8rem;
+  --body-height: 269rem; --BodyHeight: 269; /* 0.2 for Opera */
   --body-height: 269rem; --BodyHeight: 269;
     font-size: calc(100lvh / var(--BodyHeight));
 }
 body {
+    height: var(--body-height);
+    font-family: Arial, 'Nimbus Sans', Helvetica, sans-serif;
     color: white;
+}
+body > div {
+    box-sizing: border-box;
+    height: var(--body-div-height);
+    padding: 4rem 1.5rem 4rem 0;
 }
 body > div:nth-of-type(even) {
     background: rgba(86, 88, 90, 0.5);
     border-bottom-right-radius: 5rem;
     border-top-right-radius: 5rem;
 }
+body > div > p {
+    line-height: 1.154;
+}
 /* start time */
 body > div > p:first-of-type {
+    height: 12.7rem;
+    padding-bottom: 1.95rem;
+    font-weight: bold;
     color: rgb(238, 117, 0);
+}
+/* song title */
+body > div > p:nth-of-type(2) {
+    height: 16.15rem;
+    font-size: 14rem;
 }
 /* artist */
 body > div > p:last-of-type {
+    height: 15rem;
+    font-size: 13rem;
     color: rgb(221, 221, 221);
 }

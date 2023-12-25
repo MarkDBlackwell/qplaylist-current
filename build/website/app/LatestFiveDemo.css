@@ -1,6 +1,10 @@
-@import url("../app-player/LatestFiveDemoCommon.css");
+@import url("../app-player-playlist/LatestFiveContainerDemoLikeNewCommon.css");
+@import url("../app-player-playlist/LatestFiveDemoCommon.css");
 
 :root {
+  --body-div-width-extra: 15.2rem; /* 0.6 for Opera */
+  --iframe-width: 399.4rem; --IframeWidth: 399.4; /* 1.4 for Opera */
+
   --body-height: calc(var(--h4-height) + var(--iframe-height));
   --BodyHeight:  calc(var(--H4Height ) + var(--IframeHeight ));
   --BodyWidth: var(--DivWidth);
@@ -9,19 +13,14 @@
   --DivWidth:  calc(var(--DivPaddingLeft  ) + var(--IframeWidth ));
   --h4-height: 27rem; --H4Height: 27;
   --iframe-height: 367.5rem; --IframeHeight: 367.5;
-    font-size: min(100lvw / var(--BodyWidth), 100lvh / var(--BodyHeight));
 }
 @media screen and (min-width: 768px) {
     :root {
         font-size: 1px;
     }
 }
-@media screen and (max-width: 768px) {
-    body {
-/**        overflow: hidden; /* Use this in production **/
-    }
-}
 body {
+    height: var(--body-height);
     background-image: url("background.jpeg");
     background-origin: border-box;
     background-clip: border-box;
@@ -30,15 +29,26 @@ body {
     background-size: cover;
     background-position: center;
     color: black;
-    -webkit-text-size-adjust: none;
-    -moz-text-size-adjust: none;
-    text-size-adjust: none;
+}
+@media screen and (max-width: 768px) {
+    body {
+/**        overflow: hidden; /* Use this in production **/
+    }
 }
 body > div {
+    box-sizing: border-box;
+    width: calc(var(--iframe-width) + var(--body-div-width-extra));
     margin: 0;
     padding: 0 0 0 var(--div-padding-left);
 }
+body > div > iframe {
+    width: var(--iframe-width);
+    height: var(--iframe-height);
+}
 body > h4 {
+    box-sizing: border-box;
     margin: 0;
     padding: 0 0 1.6rem 3rem;
+    font-size: 15rem;
+    font-weight: bold;
 }

@@ -1,14 +1,20 @@
-@import url("../app-player/LatestFiveNewCommon.css");
+@import url("../app-player-playlist/LatestFiveContainerDemoLikeNewCommon.css");
+@import url("../app-player-playlist/LatestFiveNewCommon.css");
 
 :root {
-  --body-height: 269rem; --BodyHeight: 269;
+  --body-div-height: 53.8rem;
+  --body-height: 269rem; --BodyHeight: 269; /* 0.2 for Opera */
     font-size: calc(100lvh / var(--BodyHeight));
 }
 body {
+    height: var(--body-height);
     color: black;
-    -webkit-text-size-adjust: none;
-    -moz-text-size-adjust: none;
-    text-size-adjust: none;
+    font-family: Arial, 'Nimbus Sans', Helvetica, sans-serif;
+}
+body > div {
+    box-sizing: border-box;
+    height: var(--body-div-height);
+    padding: 4rem 1.5rem 4rem 0;
 }
 body > div:first-of-type {
     border-top-right-radius: 10rem;
@@ -22,15 +28,28 @@ body > div:nth-of-type(even) {
 body > div:nth-of-type(odd) {
     background: rgba(255, 255, 255, 0.82);
 }
+body > div > p {
+    line-height: 1.154;
+}
 body > div > p:before {
     font-style: normal;
 }
 /* start time */
 body > div > p:first-of-type {
+    height: 12.7rem;
+    padding-bottom: 1.95rem;
+    font-weight: bold;
     color: rgb(0, 0, 230);
+}
+/* song title */
+body > div > p:nth-of-type(2) {
+    height: 16.15rem;
+    font-size: 14rem;
 }
 /* artist */
 body > div > p:last-of-type {
+    height: 15rem;
+    font-size: 13rem;
     color: rgb(34, 34, 34);
 }
 body > div > p:last-of-type:before {

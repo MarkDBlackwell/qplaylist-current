@@ -1,8 +1,18 @@
+@import url("../app-player-playlist/LatestFiveContainerDemoLikeNewCommon.css");
 @import url("../app-player-playlist/LatestFiveDemoCommon.css");
 
 :root {
   --body-height: calc(var(--h4-height) + var(--iframe-height));
   --BodyHeight:  calc(var(--H4Height ) + var(--IframeHeight ));
+}
+body {
+    color: white;
+}
+body > h4 {
+    height: var(--h4-height);
+}
+
+:root {
   --BodyWidth: var(--DivWidth);
   --div-padding-left: 14rem; --DivPaddingLeft: 14;
   --div-width: calc(var(--div-padding-left) + var(--iframe-width));
@@ -12,23 +22,12 @@
   --h4-padding-left: 0;
   --iframe-height: 367.5rem; --IframeHeight: 367.5;
   --iframe-width: 300rem; --IframeWidth: 300; /* 1.4 for Opera */
-    font-size: min(100lvw / var(--BodyWidth), 100lvh / var(--BodyHeight));
-}
-@media screen and (min-width: 768px) {
-    :root {
-        font-size: 1px;
-    }
-}
-@media screen and (max-width: 768px) {
-    body {
-/**        overflow: hidden; /* Use this in production **/
-    }
 }
 body {
     font-family: 'Open Sans Condensed', Arial, 'Nimbus Sans', Helvetica, sans-serif;
-    color: white;
 }
 body > div {
+    box-sizing: border-box;
     width: var(--div-width);
     margin: 0;
     padding: 0 0 0 var(--div-padding-left);
@@ -40,7 +39,6 @@ body > div > iframe {
 }
 body > h4 {
     box-sizing: border-box;
-    height: var(--h4-height);
     margin: 0;
     padding: 0 0 var(--h4-padding-bottom) var(--h4-padding-left);
     font-size: 18rem;

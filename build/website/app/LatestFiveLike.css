@@ -1,22 +1,36 @@
-@import url("../app-player/LatestFiveLikeCommon.css");
+@import url("../app-player-playlist/LatestFiveContainerDemoLikeNewCommon.css");
+@import url("../app-player-playlist/LatestFiveLikeCommon.css");
 
 :root {
-    font-size: calc(100lvh / var(--BodyHeight));
+  --body-height: 269rem; --BodyHeight: 269; /* 0.2 for Opera */
+  --body-div-height: 53.8rem;
+
+  --border-radius: 10rem;
+  --swath-background-color: rgba(195, 195, 195, 0.82);
+
+  --body-div-first-height: 53.8rem; --BodyDivFirstHeight: 53.8;
+  --body-div-height: 53.8rem; --BodyDivHeight: 53.8;
+  --body-div-last-height: 53.8rem; --BodyDivLastHeight: 53.8;
+  --body-height: calc(var(--body-div-first-height) + var(--body-div-last-height) + 3 * var(--body-div-height)); /* 367.5 */
+  --BodyHeight:  calc(var(--BodyDivFirstHeight   ) + var(--BodyDivLastHeight   ) + 3 * var(--BodyDivHeight  ));
 }
 body {
+    box-sizing: border-box;
+    height: var(--body-height);
     color: black;
-    -webkit-text-size-adjust: none;
-    -moz-text-size-adjust: none;
-    text-size-adjust: none;
+}
+body > div {
+    box-sizing: border-box;
+    height: var(--body-div-height);
 }
 body > div:first-of-type {
-    border-top-left-radius: 10rem;
+    border-top-left-radius: var(--border-radius);
 }
 body > div:last-of-type {
-    border-bottom-left-radius: 10rem;
+    border-bottom-left-radius: var(--border-radius);
 }
 body > div:nth-of-type(even) {
-    background: rgba(195, 195, 195, 0.82);
+    background: var(--swath-background-color);
 }
 body > div:nth-of-type(odd) {
     background: rgba(255, 255, 255, 0.82);

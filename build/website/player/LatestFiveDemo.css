@@ -1,8 +1,13 @@
-@import url("../app-player/LatestFiveDemoCommon.css");
+@import url("../app-player-playlist/LatestFiveContainerDemoLikeNewCommon.css");
+@import url("../app-player-playlist/LatestFiveDemoCommon.css");
 
 :root {
+  --body-div-width-extra: 15.2rem; /* 0.6 for Opera */
+  --iframe-width: 399.4rem; --IframeWidth: 399.4; /* 1.4 for Opera */
+
   --body-height: calc(var(--h4-height) + var(--iframe-height));
   --BodyHeight:  calc(var(--H4Height ) + var(--IframeHeight ));
+
   --BodyWidth: calc(var(--DivMarginLeft) + var(--DivWidth));
   --div-padding-left:  8rem; --DivPaddingLeft:  8;
   --div-margin-left:  15rem; --DivMarginLeft:  15;
@@ -12,28 +17,27 @@
   --DivWidth:  calc(var(--DivPaddingLeft  ) + var(--DivPaddingRight  ) + var(--IframeWidth ));
   --h4-height: 24.1rem; --H4Height: 24.1;
   --iframe-height: 269.5rem; --IframeHeight: 269.5; /* 0.5 for Firefox */
-    font-size: min(100lvw / var(--BodyWidth), 100lvh / var(--BodyHeight));
-}
-@media screen and (min-width: 768px) {
-    :root {
-        font-size: 1px;
-    }
-}
-@media screen and (max-width: 768px) {
-    body {
-/**        overflow: hidden; /* Use this in production **/
-    }
 }
 body {
+    height: var(--body-height);
     color: white;
 }
 body > div {
+    box-sizing: border-box;
+    width: calc(var(--iframe-width) + var(--body-div-width-extra));
     margin: 0 0 0 var(--div-margin-left);
     padding: 7.9rem var(--div-padding-right) 12.4rem var(--div-padding-left);
     background: rgb(22, 22, 22);
 }
+body > div > iframe {
+    width: var(--iframe-width);
+    height: var(--iframe-height);
+}
 body > h4 {
+    box-sizing: border-box;
     height: var(--h4-height);
     margin: 0 0 0 var(--h4-margin-left);
     padding: 0 0 1.6rem 0;
+    font-size: 15rem;
+    font-weight: bold;
 }
