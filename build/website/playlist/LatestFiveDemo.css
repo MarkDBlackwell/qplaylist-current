@@ -1,45 +1,24 @@
-@import url("../app-player-playlist/LatestFiveContainerDemoLikeNewCommon.css");
-@import url("../app-player-playlist/LatestFiveDemoCommon.css");
+@import url("../playlist-player-app/LatestFiveAskDemoLikeNewCommon.css");
+@import url("../playlist-player-app/LatestFiveDemoCommon.css");
 
 :root {
-  --body-height: calc(var(--h4-height) + var(--iframe-height));
-  --BodyHeight:  calc(var(--H4Height ) + var(--IframeHeight ));
-}
-body {
-    color: white;
-}
-body > h4 {
-    height: var(--h4-height);
-}
-
-:root {
-  --BodyWidth: var(--DivWidth);
-  --div-padding-left: 14rem; --DivPaddingLeft: 14;
-  --div-width: calc(var(--div-padding-left) + var(--iframe-width));
-  --DivWidth:  calc(var(--DivPaddingLeft  ) + var(--IframeWidth ));
-  --h4-height: 50.9rem; --H4Height: 50.9;
-  --h4-padding-bottom: 23.9rem;
-  --h4-padding-left: 0;
-  --iframe-height: 367.5rem; --IframeHeight: 367.5;
-  --iframe-width: 300rem; --IframeWidth: 300; /* 1.4 for Opera */
+  --ask-width: 292rem; --AskWidth: 292;
+  --body-padding-left: 14rem; --BodyPaddingLeft: 14;
+  --body-padding-right: 0rem; --BodyPaddingRight: 0;
+  --body-div-padding-bottom: 0rem; --BodyDivPaddingBottom: 0;
+  --body-div-padding-left: 0rem; --BodyDivPaddingLeft: 0;
+  --body-div-padding-right: 0rem; --BodyDivPaddingRight: 0;
+  --body-div-padding-top: 0rem; --BodyDivPaddingTop: 0;
+  --h4-content-height: 27rem; --H4ContentHeight: 27;
+  --h4-padding-bottom: 23.9rem; --H4PaddingBottom: 23.9;
+  --swath-first-height: 76.1rem; --SwathFirstHeight: 76.1;
+  --swath-height: 73.1rem; --SwathHeight: 73.1;
+  --swath-last-height: 72.1rem; --SwathLastHeight: 72.1;
 }
 body {
     font-family: 'Open Sans Condensed', Arial, 'Nimbus Sans', Helvetica, sans-serif;
-}
-body > div {
-    box-sizing: border-box;
-    width: var(--div-width);
-    margin: 0;
-    padding: 0 0 0 var(--div-padding-left);
-}
-body > div > iframe {
-    box-sizing: border-box;
-    width: var(--iframe-width);
-    height: var(--iframe-height);
+    color: white;
 }
 body > h4 {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0 0 var(--h4-padding-bottom) var(--h4-padding-left);
     font-size: 18rem;
 }

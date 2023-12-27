@@ -1,0 +1,8 @@
+@import url("../playlist-player-app/LatestFiveAskCommon.css");
+@import url("../playlist-player-app/LatestFiveAskDemoLikeNewCommon.css");
+
+:root {
+  --swath-first-height: 53.8rem; --SwathFirstHeight: 53.8;
+  --swath-height: 53.8rem; --SwathHeight: 53.8;
+  --swath-last-height: 53.8rem; --SwathLastHeight: 53.8;
+}

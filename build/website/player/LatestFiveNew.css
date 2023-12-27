@@ -1,26 +1,23 @@
-@import url("../app-player-playlist/LatestFiveContainerDemoLikeNewCommon.css");
-@import url("../app-player-playlist/LatestFiveNewCommon.css");
+@import url("../playlist-player-app/LatestFiveAskDemoLikeNewCommon.css");
+@import url("../playlist-player-app/LatestFiveNewCommon.css");
 
 :root {
-  --body-div-height: 53.8rem;
-  --body-height: 269rem; --BodyHeight: 269; /* 0.2 for Opera */
-  --body-height: 269rem; --BodyHeight: 269;
-    font-size: calc(100lvh / var(--BodyHeight));
+  --border-radius: 5rem;
+  --swath-first-height: 53.8rem; --SwathFirstHeight: 53.8;
+  --swath-height: 53.8rem; --SwathHeight: 53.8;
+  --swath-last-height: 53.8rem; --SwathLastHeight: 53.8;
 }
 body {
-    height: var(--body-height);
     font-family: Arial, 'Nimbus Sans', Helvetica, sans-serif;
     color: white;
 }
 body > div {
-    box-sizing: border-box;
-    height: var(--body-div-height);
     padding: 4rem 1.5rem 4rem 0;
 }
 body > div:nth-of-type(even) {
     background: rgba(86, 88, 90, 0.5);
-    border-bottom-right-radius: 5rem;
-    border-top-right-radius: 5rem;
+    border-bottom-right-radius: var(--border-radius);
+    border-top-right-radius: var(--border-radius);
 }
 body > div > p {
     line-height: 1.154;
@@ -29,6 +26,7 @@ body > div > p {
 body > div > p:first-of-type {
     height: 12.7rem;
     padding-bottom: 1.95rem;
+    font-size: 11rem;
     font-weight: bold;
     color: rgb(238, 117, 0);
 }

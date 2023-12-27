@@ -1,5 +1,13 @@
+:root {
+  --body-height: var(--ask-height);
+  --BodyHeight:  var(--AskHeight );
+    font-size: calc(100lvh / var(--BodyHeight));
+}
+body {
+    padding: 0;
+}
 body > div {
-    margin: 0;
+    height: var(--swath-height);
 }
 body > div > p {
     margin: 0;
@@ -11,10 +19,6 @@ body > div > p {
 }
 body > div > p:before {
     padding-right: 4.3rem;
-}
-/* start time */
-body > div > p:first-of-type {
-    font-size: 11rem;
 }
 /* song title */
 body > div > p:nth-of-type(2):before {

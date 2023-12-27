@@ -1,0 +1,29 @@
+:root {
+  --body-height: var(--ask-height);
+  --BodyHeight:  var(--AskHeight );
+  --iframe-like-width: 15.8rem; /* 0.8 for Opera */
+/**  --iframe-like-width: 3rem; /* Until dynamic hearts are ready, use this **/
+    font-size: calc(100lvh / var(--BodyHeight));
+}
+body {
+    padding: 0;
+}
+body > div {
+    height: var(--body-height);
+    padding: 0;
+}
+body > div > iframe {
+    box-sizing: border-box;
+    height: var(--body-height);
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    border-width: 0;
+    overflow: hidden; /* Use this in production */
+}
+body > div > iframe#content {
+    width: calc(100lvw - var(--iframe-like-width));
+}
+body > div > iframe#like {
+    width: var(--iframe-like-width);
+}

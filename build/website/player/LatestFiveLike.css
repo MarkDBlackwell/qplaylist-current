@@ -1,30 +1,17 @@
-@import url("../app-player-playlist/LatestFiveContainerDemoLikeNewCommon.css");
-@import url("../app-player-playlist/LatestFiveLikeCommon.css");
+@import url("../playlist-player-app/LatestFiveAskDemoLikeNewCommon.css");
+@import url("../playlist-player-app/LatestFiveLikeCommon.css");
 
 :root {
-  --body-height: 269rem; --BodyHeight: 269; /* 0.2 for Opera */
-  --body-div-height: 53.8rem;
-
   --border-radius: 5rem;
-  --swath-background-color: rgba(86, 88, 90, 0.5);
-
-  --body-div-first-height: 53.8rem; --BodyDivFirstHeight: 53.8;
-  --body-div-height: 53.8rem; --BodyDivHeight: 53.8;
-  --body-div-last-height: 53.8rem; --BodyDivLastHeight: 53.8;
-  --body-height: calc(var(--body-div-first-height) + var(--body-div-last-height) + 3 * var(--body-div-height)); /* 367.5 */
-  --BodyHeight:  calc(var(--BodyDivFirstHeight   ) + var(--BodyDivLastHeight   ) + 3 * var(--BodyDivHeight  ));
+  --swath-first-height: 53.8rem; --SwathFirstHeight: 53.8;
+  --swath-height: 53.8rem; --SwathHeight: 53.8;
+  --swath-last-height: 53.8rem; --SwathLastHeight: 53.8;
 }
 body {
-    box-sizing: border-box;
-    height: var(--body-height);
     color: white;
 }
-body > div {
-    box-sizing: border-box;
-    height: var(--body-div-height);
-}
 body > div:nth-of-type(even) {
-    background: var(--swath-background-color);
+    background: rgba(86, 88, 90, 0.5);
     border-bottom-left-radius: var(--border-radius);
     border-top-left-radius: var(--border-radius);
 }

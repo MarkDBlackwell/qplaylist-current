@@ -1,0 +1,27 @@
+:root {
+  --ask-height: calc(var(--swath-first-height) + var(--swath-last-height) + 3 * var(--swath-height));
+  --AskHeight:  calc(var(--SwathFirstHeight  ) + var(--SwathLastHeight  ) + 3 * var(--SwathHeight ));
+}
+@media screen and (max-width: 768px) {
+    body {
+        overflow: hidden; /* Use this in production */
+    }
+}
+body {
+    box-sizing: border-box;
+    height: var(--body-height);
+    margin: 0;
+    line-height: 0;
+    font-size: 0;
+    -webkit-text-size-adjust: none;
+    -moz-text-size-adjust: none;
+    text-size-adjust: none;
+}
+body > div {
+    box-sizing: border-box;
+    margin: 0;
+}
+* {
+    margin-block-end: 0; /* For Opera */
+    margin-block-start: 0; /* For Opera */
+}

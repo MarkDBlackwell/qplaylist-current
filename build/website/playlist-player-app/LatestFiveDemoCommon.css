@@ -1,0 +1,46 @@
+@media screen and (min-width: 768px) {
+    :root {
+        font-size: 1px;
+    }
+}
+:root {
+  --body-div-height: calc(var(--ask-height) + var(--body-div-padding-bottom) + var(--body-div-padding-top));
+  --BodyDivHeight:   calc(var(--AskHeight ) + var(--BodyDivPaddingBottom   ) + var(--BodyDivPaddingTop   ));
+  --body-div-width: calc(var(--body-div-padding-left) + var(--body-div-padding-right) + var(--ask-width));
+  --BodyDivWidth:   calc(var(--BodyDivPaddingLeft   ) + var(--BodyDivPaddingRight   ) + var(--AskWidth ));
+  --body-height: calc(var(--body-div-height) + var(--body-padding-bottom) + var(--h4-height));
+  --BodyHeight:  calc(var(--BodyDivHeight  ) + var(--BodyPaddingBottom  ) + var(--H4Height ));
+  --body-padding-bottom: 3rem; --BodyPaddingBottom: 3;
+  --body-width: calc(var(--body-div-width) + var(--body-padding-left) + var(--body-padding-right));
+  --BodyWidth:  calc(var(--BodyDivWidth  ) + var(--BodyPaddingLeft  ) + var(--BodyPaddingRight  ));
+  --h4-height: calc(var(--h4-content-height) + var(--h4-padding-bottom));
+  --H4Height:  calc(var(--H4ContentHeight) + var(--H4PaddingBottom));
+    font-size: min(100lvw / var(--BodyWidth), 100lvh / var(--BodyHeight));
+}
+body {
+    width: var(--body-width);
+    padding: 0 var(--body-padding-right) var(--body-padding-bottom) var(--body-padding-left);
+    background-color: rgb(36, 36, 36);
+}
+body > div {
+    width: var(--body-div-width);
+    height: var(--body-div-height);
+    padding: var(--body-div-padding-top) var(--body-div-padding-right) var(--body-div-padding-bottom) var(--body-div-padding-left);
+}
+body > div > iframe {
+    box-sizing: border-box;
+    width: var(--ask-width);
+    height: var(--ask-height);
+    margin: 0;
+    padding: 0;
+    border-style: none;
+    border-width: 0;
+    overflow: hidden; /* Use this in production */
+}
+body > h4 {
+    box-sizing: border-box;
+    height: var(--h4-height);
+    margin: 0;
+    padding: 0 0 var(--h4-padding-bottom) 0;
+    line-height: 1.5;
+}

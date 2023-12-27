@@ -1,26 +1,21 @@
-@import url("../app-player-playlist/LatestFiveContainerDemoLikeNewCommon.css");
-@import url("../app-player-playlist/LatestFiveDemoCommon.css");
+@import url("../playlist-player-app/LatestFiveAskDemoLikeNewCommon.css");
+@import url("../playlist-player-app/LatestFiveDemoCommon.css");
 
 :root {
-  --body-div-width-extra: 15.2rem; /* 0.6 for Opera */
-  --iframe-width: 399.4rem; --IframeWidth: 399.4; /* 1.4 for Opera */
-
-  --body-height: calc(var(--h4-height) + var(--iframe-height));
-  --BodyHeight:  calc(var(--H4Height ) + var(--IframeHeight ));
-  --BodyWidth: var(--DivWidth);
-  --div-padding-left: 3rem; --DivPaddingLeft: 3;
-  --div-width: calc(var(--div-padding-left) + var(--iframe-width));
-  --DivWidth:  calc(var(--DivPaddingLeft  ) + var(--IframeWidth ));
-  --h4-height: 27rem; --H4Height: 27;
-  --iframe-height: 367.5rem; --IframeHeight: 367.5;
-}
-@media screen and (min-width: 768px) {
-    :root {
-        font-size: 1px;
-    }
+  --ask-width: 250rem; --AskWidth: 250;
+  --body-padding-left: 3rem; --BodyPaddingLeft: 3;
+  --body-padding-right: 3rem; --BodyPaddingRight: 3;
+  --body-div-padding-bottom: 0rem; --BodyDivPaddingBottom: 0;
+  --body-div-padding-left: 0rem; --BodyDivPaddingLeft: 0;
+  --body-div-padding-right: 0rem; --BodyDivPaddingRight: 0;
+  --body-div-padding-top: 0rem; --BodyDivPaddingTop: 0;
+  --h4-content-height: 22.5rem; --H4ContentHeight: 22.5;
+  --h4-padding-bottom: 1.6rem; --H4PaddingBottom: 1.6;
+  --swath-first-height: 53.8rem; --SwathFirstHeight: 53.8;
+  --swath-height: 53.8rem; --SwathHeight: 53.8;
+  --swath-last-height: 53.8rem; --SwathLastHeight: 53.8;
 }
 body {
-    height: var(--body-height);
     background-image: url("background.jpeg");
     background-origin: border-box;
     background-clip: border-box;
@@ -28,27 +23,10 @@ body {
     background-repeat: round;
     background-size: cover;
     background-position: center;
+    font-family: Arial, 'Nimbus Sans', Helvetica, sans-serif;
     color: black;
 }
-@media screen and (max-width: 768px) {
-    body {
-/**        overflow: hidden; /* Use this in production **/
-    }
-}
-body > div {
-    box-sizing: border-box;
-    width: calc(var(--iframe-width) + var(--body-div-width-extra));
-    margin: 0;
-    padding: 0 0 0 var(--div-padding-left);
-}
-body > div > iframe {
-    width: var(--iframe-width);
-    height: var(--iframe-height);
-}
 body > h4 {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0 0 1.6rem 3rem;
     font-size: 15rem;
     font-weight: bold;
 }
