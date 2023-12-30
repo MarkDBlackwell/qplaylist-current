@@ -4,6 +4,7 @@
     }
 }
 :root {
+  --ask-height: calc(var(--swath-first-height) + var(--swath-last-height) + 3 * var(--swath-height));
   --body-div-height: calc(var(--ask-height) + var(--body-div-padding-bottom) + var(--body-div-padding-top));
   --BodyDivHeight:   calc(var(--AskHeight ) + var(--BodyDivPaddingBottom   ) + var(--BodyDivPaddingTop   ));
   --body-div-width: calc(var(--body-div-padding-left) + var(--body-div-padding-right) + var(--ask-width));
@@ -19,6 +20,7 @@
 }
 body {
     width: var(--body-width);
+    height: var(--body-height);
     padding: 0 var(--body-padding-right) var(--body-padding-bottom) var(--body-padding-left);
     background-color: rgb(36, 36, 36);
 }

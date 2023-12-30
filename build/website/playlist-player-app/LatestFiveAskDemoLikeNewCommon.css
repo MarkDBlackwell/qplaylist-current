@@ -1,6 +1,5 @@
 :root {
-  --ask-height: calc(var(--swath-first-height) + var(--swath-last-height) + 3 * var(--swath-height));
-  --AskHeight:  calc(var(--SwathFirstHeight  ) + var(--SwathLastHeight  ) + 3 * var(--SwathHeight ));
+  --AskHeight: calc(var(--SwathFirstHeight) + var(--SwathLastHeight) + 3 * var(--SwathHeight));
 }
 @media screen and (max-width: 768px) {
     body {
@@ -9,7 +8,6 @@
 }
 body {
     box-sizing: border-box;
-    height: var(--body-height);
     margin: 0;
     line-height: 0;
     font-size: 0;

@@ -1,9 +1,8 @@
 :root {
-  --body-height: var(--ask-height);
-  --BodyHeight:  var(--AskHeight );
-    font-size: calc(100lvh / var(--BodyHeight));
+    font-size: calc(100lvh / var(--AskHeight));
 }
 body {
+    height: 100lvh;
     padding: 0;
 }
 body > div {

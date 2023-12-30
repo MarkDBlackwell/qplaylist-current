@@ -1,20 +1,19 @@
 :root {
-  --body-height: var(--ask-height);
-  --BodyHeight:  var(--AskHeight );
-  --iframe-like-width: 15.8rem; /* 0.8 for Opera */
-/**  --iframe-like-width: 3rem; /* Until dynamic hearts are ready, use this **/
-    font-size: calc(100lvh / var(--BodyHeight));
+  --iframe-like-width: 15.8rem;
+/**  --iframe-like-width: 3rem; /* Until dynamic hearts are ready, use this. **/
+    font-size: calc(100lvh / var(--AskHeight));
 }
 body {
+    height: 100lvh;
     padding: 0;
 }
 body > div {
-    height: var(--body-height);
+    height: 100lvh;
     padding: 0;
 }
 body > div > iframe {
     box-sizing: border-box;
-    height: var(--body-height);
+    height: 100lvh;
     margin: 0;
     padding: 0;
     border-style: none;

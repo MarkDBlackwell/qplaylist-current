@@ -2,7 +2,7 @@
 @import url("../playlist-player-app/LatestFiveAskDemoLikeNewCommon.css");
 
 :root {
-  --swath-first-height: 76.1rem; --SwathFirstHeight: 76.1;
-  --swath-height: 73.1rem; --SwathHeight: 73.1;
-  --swath-last-height: 72.1rem; --SwathLastHeight: 72.1;
+  --SwathFirstHeight: 76.1;
+  --SwathHeight: 73.1;
+  --SwathLastHeight: 72.1;
 }

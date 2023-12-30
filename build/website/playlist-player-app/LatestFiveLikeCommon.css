@@ -1,9 +1,8 @@
 :root {
-  --body-height: var(--ask-height);
-  --BodyHeight:  var(--AskHeight );
-    font-size: calc(100lvh / var(--BodyHeight));
+    font-size: calc(100lvh / var(--AskHeight));
 }
 body {
+    height: 100lvh;
     padding: 0;
     font-family: 'PT Sans Narrow', 'Nimbus Sans', Helvetica, sans-serif;
 }
@@ -17,7 +16,7 @@ body > div > span {
     top: 50%;
     margin: 0;
     padding: 0;
-/*    visibility: hidden;*/ /* When ready, remove this to show the hearts. */
+/**    visibility: hidden; /* When ready, remove this to show the hearts. **/
 }
 body > div > span::after {
     margin-top: -7.5rem; /* Move it up, half its height */
