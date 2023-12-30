@@ -45,6 +45,10 @@ body > div > p:nth-of-type(2) {
     height: 16.15rem;
     font-size: 14rem;
 }
+/* song title */
+body > div > p:nth-of-type(2):before {
+    display: none;
+}
 /* artist */
 body > div > p:last-of-type {
     height: 15rem;
@@ -53,4 +57,5 @@ body > div > p:last-of-type {
 }
 body > div > p:last-of-type:before {
     font-style: italic;
+    display: none;
 }

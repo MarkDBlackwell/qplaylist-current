@@ -2,7 +2,7 @@
 @import url("../playlist-player-app/LatestFiveDemoCommon.css");
 
 :root {
-  --ask-width: 250rem; --AskWidth: 250;
+  --ask-width: 215rem; --AskWidth: 215;
   --body-padding-left: 3rem; --BodyPaddingLeft: 3;
   --body-padding-right: 3rem; --BodyPaddingRight: 3;
   --body-div-padding-bottom: 0rem; --BodyDivPaddingBottom: 0;
