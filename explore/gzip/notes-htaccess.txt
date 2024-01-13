@@ -1,0 +1,29 @@
+# 06-14-17 Mark Blackwell - Enable precompressed QPlaylist song files.
+
+# See:
+# http://httpd.apache.org/docs/2.4/mod/mod_deflate.html#precompressed
+
+# See also:
+# http://httpd.apache.org/docs/2.4/filter.html
+# http://httpd.apache.org/docs/2.4/mod/core.html#locationmatch
+# http://httpd.apache.org/docs/2.4/mod/mod_ext_filter.html#extfilterdefine
+# http://httpd.apache.org/docs/2.4/mod/mod_filter.html#examples
+# http://oldblog.samat.org/2005/10/06/trying_to_emulate_mod_gunzip_with_apache_2_filters
+
+# The command, ExtFilterDefine is available only in the server config context.
+# The module, "mod_gunzip" is obsolete and probably is unavailable.
+# The command, LocationMatch is unavailable in the .htaccess context.
+
+# I couldn't get the following commands to work, properly:
+
+#<IfModule mod_deflate.c>
+#    SetOutputFilterByType INFLATE text/html
+#</IfModule>
+
+#<IfModule mod_filter.c>
+#    FilterDeclare gzip CONTENT_SET
+#    FilterProvider gzip INFLATE "%{req:Accept-Encoding} !~ /gzip/"
+#    FilterChain gzip
+#</IfModule>
+
+# (End of those things, which I couldn't get to work.)

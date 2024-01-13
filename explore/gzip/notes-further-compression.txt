@@ -1,0 +1,28 @@
+Size of RecentSongs file, when gzip-compressed by Ruby, in bytes:
+
+126,866 -             If <a> comes first.
+121,145 - 100.0% - A. Current;
+120,082 -  99.1% - B. If reorder query string items;
+117,504 -  97.0% - C. If also replace <span> with <i>.
+
+Old (version "A"):
+http://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Ddigital-music&field-keywords=Grace For Saints and Rambler+Iron And Wine&tag=wtmdradio-20
+
+New (versions "B" and "C"):
+http://www.amazon.com/s/ref=nb_sb_noss?tag=wtmdradio-20&url=search-alias%3Ddigital-music&field-keywords=Grace For Saints and Rambler+Iron And Wine
+
+Reordering the query string items gives me an 0.88% size reduction.
+
+I get a total size reduction (from the current version) of fully 3%, if I also replace the <span> tags by <i> tags (formatted as "font-style: normal").
+
+Latest Five:
+
+536 - Current
+535 - If reorder query string items;
+535 - (It lacks <span> tags.)
+
+Now Playing:
+
+368 - Current
+368 - If reorder query string items;
+366 - If also replace <span> by <i>.
