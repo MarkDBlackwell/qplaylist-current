@@ -10,6 +10,8 @@ body {
 body > div {
     height: 100lvh;
     padding: 0;
+    overflow: hidden; /* Use this in production */
+    white-space: nowrap;
 }
 body > div > iframe {
     box-sizing: border-box;
