@@ -16,7 +16,7 @@ body > div > span {
     top: 50%;
     margin: 0;
     padding: 0;
-/**    visibility: hidden; /* When ready, remove this to show the hearts. **/
+    visibility: hidden; /* When dynamic hearts are ready, show them by removing this. */
 }
 body > div > span::after {
     margin-top: -7.5rem; /* Move it up, half its height */

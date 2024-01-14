@@ -1,6 +1,6 @@
 :root {
-  --iframe-like-width: 15.8rem;
-/**  --iframe-like-width: 3rem; /* Until dynamic hearts are ready, use this. **/
+/**  --iframe-like-width: 15.8rem; /* When dynamic hearts are ready, use this. */
+  --iframe-like-width: 3rem; /* Before dynamic hearts are ready, use this. */
     font-size: calc(100lvh / var(--AskHeight));
 }
 body {
