@@ -195,7 +195,6 @@ module Playlist
           meridian: meridian, # 'AM' or 'PM'.
         }
       end
-# Songs.template_extension = 'moustache' # Allow for my error in the naming.
       Songs.template_file = './recent_songs.mustache'
       File.open 'recent_songs.html', 'w' do |f_output|
         f_output.print Songs.new(songs.reverse).render
