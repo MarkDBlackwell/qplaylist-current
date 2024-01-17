@@ -1,27 +1,24 @@
-require 'cgi'
+# require 'cgi'
 require 'json'
 require 'mustache'
 require 'pp'
 require 'time'
 require 'xmlsimple'
 # require 'yaml'
+require 'zlib'
 
 module Playlist
 # Per:
 #  http://www.ruby-doc.org/core-2.5.2/IO.html#method-c-new
-# 'a+' is "Read-write; each write call appends data at end of file. Creates a new file if necessary":
+# 'a+' is Read-write; each write call appends data at end of file; creates a new file if necessary.
+# 'w'  is Write-only; truncates existing file to zero length or creates new file.
   RW_APPEND = 'a+'
-# 'r+' is "Read-write; starts at beginning of file":
-  RW_BEGIN = 'r+'
-# 'w' is "Write-only; truncates existing file to zero length or creates new file":
-  W_BEGIN = 'w'
+  W_BEGIN   = 'w'
   NON_XML_KEYS = %i[ current_time ]
       XML_KEYS = %i[ artist  title ]
   KEYS = NON_XML_KEYS + XML_KEYS
 
   module MyFile
-    require 'zlib'
-
     extend self
 
     def make_gzipped(filename_plain)
@@ -42,43 +39,38 @@ module Playlist
   end
 
   class Snapshot
-    def initialize
-      set_non_xml_values
-      set_xml_values
-    end
-
     def blacklisted
-      return @@blacklisted_value if defined? @@blacklisted_value
+      @@blacklisted_value ||= begin
 #  Allow blacklisting of these categories of NowPlaying.XML data:
-# UWR - Underwriting Announcement
 # PRO - House Promotional Spot
+# UWR - Underwriting Announcement
       blacklist = %w[ PRO UWR ]
-      @@blacklisted_value = blacklist.include? category
+      blacklist.include? category
+      end
     end
 
     def channel_main
-      return @@channel_main_value if defined? @@channel_main_value
+      @@channel_main_value ||= begin
       main_sign = '-FM'
       channel = xml_tree['Call'].first.strip
-      @@channel_main_value = channel.end_with? main_sign
+      channel.end_with? main_sign
+      end
     end
 
     def prerecorded
-      return @@prerecorded_value if defined? @@prerecorded_value
 #  Allow additional handling of this category of NowPlaying.XML data:
 # SPL - Special Program
-      @@prerecorded_value = 'SPL' == category
+      @@prerecorded_value ||= 'SPL' == category
     end
 
     def song_automatic
-      return @@song_automatic_value if defined? @@song_automatic_value
 #  Allow additional handling of this category of NowPlaying.XML data:
 # MUS - Music
-      @@song_automatic_value = 'MUS' == category
+      @@song_automatic_value ||= 'MUS' == category
     end
 
     def values
-      @@non_xml_values + @@xml_values
+      @@values_value ||= non_xml_values + xml_values
     end
 
     protected
@@ -91,8 +83,9 @@ module Playlist
       @@relevant_hash_value ||= xml_tree['Events'].first['SS32Event'].first
     end
 
-    def set_non_xml_values
-      @@non_xml_values = NON_XML_KEYS.map do |k|
+    def non_xml_values
+      @@non_xml_values_value ||= begin
+      NON_XML_KEYS.map do |k|
         case k
         when :current_time
 # "%-l" means unpadded hour; "%M" means zero-padded minute; "%p" means uppercase meridian.
@@ -101,12 +94,11 @@ module Playlist
           "(Error: key '#{k}' unknown)"
         end
       end
-      nil # Return nothing.
+      end
     end
 
-    def set_xml_values
-      @@xml_values ||= XML_KEYS.map(&:capitalize).map(&:to_s).map{|k| relevant_hash[k].first.strip}
-      nil # Return nothing.
+    def xml_values
+      @@xml_values_value ||= XML_KEYS.map(&:capitalize).map(&:to_s).map{|k| relevant_hash[k].first.strip}
     end
 
     def xml_tree
@@ -119,7 +111,7 @@ module Playlist
     def compare_recent
       @@compare_recent_value ||= begin
       currently_playing = now_playing_values
-      remembered, artist_title, same = nil, nil, nil # Define in scope.
+      same = nil # Define in scope.
       File.open 'current-song.txt', RW_APPEND do |f_current_song|
         remembered = f_current_song.readlines.map(&:chomp)
         artist_title = currently_playing.drop 1
@@ -127,7 +119,7 @@ module Playlist
         unless same
           f_current_song.rewind
           f_current_song.truncate 0
-          artist_title.each{|e| f_current_song.print "#{e}\n"}
+          f_current_song.puts artist_title
         end
       end
       same ? 'same' : nil
@@ -136,7 +128,7 @@ module Playlist
 
     def create_output(keys, values, input_template_file, output_file)
       view = mustache input_template_file
-      keys.zip values do |key, value|
+      keys.zip(values).each do |key, value|
         view[key] = value
       end
       File.open output_file, W_BEGIN do |f_output|
@@ -148,23 +140,21 @@ module Playlist
 
     def create_output_recent_songs
       dates, times, artists, titles = recent_songs_get
-      songs = dates.zip(times,artists,titles).map do |date, time, artist, title|
-        year, month, day = date.split ' '
+      songs = dates.zip(times, artists, titles).map do |date, time, artist, title|
+        _, month, day = date.split ' '
         clock, meridian = time.split ' '
         hour, minute = clock.split ':'
         {
           artist:   artist,
-          title:    title,
-          time:     time,
-          year:     year,
-          month:    month,
           day:      day,
           hour:     hour,
-          minute:   minute,
           meridian: meridian, # 'AM' or 'PM'.
+          minute:   minute,
+          month:    month,
+          title:    title,
         }
       end
-      view = mustache './recent_songs.mustache'
+      view = mustache 'recent_songs.mustache'
 # Fill the {{#songs}} tag.
       view[:songs] = songs.reverse
       File.open 'recent_songs.html', W_BEGIN do |f_output|
@@ -182,13 +172,12 @@ module Playlist
 
     def latest_five_songs_get
       @@latest_five_songs_get_value ||= begin
-# "_org" means original:
-      dates_org, start_times_org, artists_org, titles_org = recent_songs_get
+      old_dates, old_start_times, old_artists, old_titles = recent_songs_get
       songs_to_keep = 5
-      near_end = -1 * [songs_to_keep, titles_org.length].min
-      range = near_end...titles_org.length
-      dates,          start_times,     artists,     titles =
-          [dates_org, start_times_org, artists_org, titles_org].map{|e| e.slice range}
+      near_end = -1 * [songs_to_keep, old_titles.length].min
+      range_to_keep = near_end...old_titles.length
+      dates,              start_times,     artists,     titles =
+          [old_dates, old_start_times, old_artists, old_titles].map{|e| e.slice range_to_keep}
 # "%H" means hour (on 24-hour clock), "%M" means minute.
       time_stamps = start_times.map{|e| Time.parse e}.map{|e| e.strftime '%H %M'}.zip(dates).map{|e| e.reverse.join ' '}
       a = [artists, start_times, time_stamps, titles]
@@ -222,27 +211,26 @@ module Playlist
 # All of "%4Y", "%2m" and "%2d" are zero-padded.
       year_month_day = Time.new(n.year, n.month, n.day).strftime '%4Y %2m %2d'
       dates, times, artists, titles = nil, nil, nil, nil # Define in scope.
-      File.open 'recent-songs.txt', RW_BEGIN do |f_recent_songs|
-        dates, times, artists, titles = recent_songs_read f_recent_songs
+      File.open 'recent-songs.txt', RW_APPEND do |f_recent_songs|
+        dates, times, artists, titles = recent_songs_parse f_recent_songs.readlines
 # Push current song:
+        dates.  push         year_month_day
         times.  push currently_playing.at 0
         artists.push currently_playing.at 1
         titles. push currently_playing.at 2
-        dates.  push        year_month_day
-        f_recent_songs.puts year_month_day
-        currently_playing.each{|e| f_recent_songs.print "#{e}\n"}
+        f_recent_songs.puts [year_month_day] + currently_playing
       end
       [dates, times, artists, titles]
       end
     end
 
-    def recent_songs_read(f_recent_songs)
-      @@recent_songs_read_value ||= begin
+    def recent_songs_parse(lines)
+      @@recent_songs_parse_value ||= begin
       dates, times, artists, titles = [], [], [], []
       lines_per_song = 4
-      a = f_recent_songs.readlines.map(&:chomp)
+      a = lines.map(&:chomp)
       song_count = a.length.div lines_per_song
-      (0...song_count).each do |i|
+      song_count.times do |i|
         dates.  push a.at i * lines_per_song + 0
         times.  push a.at i * lines_per_song + 1
         artists.push a.at i * lines_per_song + 2
@@ -252,21 +240,22 @@ module Playlist
       end
     end
 
-    def recent_songs_reduce(year_month_day, old_dates, old_times, old_artists, old_titles, days_ago)
-      comparison_date = year_month_day - 60 * 60 * 24 * days_ago
+    def recent_songs_reduce(year_month_day, dates, times, artists, titles, days_ago)
+      seconds_per_day = 24 * 60 * 60
+      comparison_date = year_month_day - seconds_per_day * days_ago
       big_array = []
-      (0...old_dates.length).each do |i|
-        year, month, day = old_dates.at(i).split(' ').map(&:to_i)
+      dates.length.times do |i|
+        year, month, day = dates.at(i).split(' ').map(&:to_i)
         song_time = Time.new year, month, day
         unless song_time < comparison_date
-          big_array.push old_dates.  at i
-          big_array.push old_times.  at i
-          big_array.push old_artists.at i
-          big_array.push old_titles. at i
+          big_array.push dates.  at i
+          big_array.push times.  at i
+          big_array.push artists.at i
+          big_array.push titles. at i
         end
       end
       File.open 'recent-songs.txt', W_BEGIN do |f_recent_songs|
-        big_array.each{|e| f_recent_songs.print "#{e}\n"}
+        f_recent_songs.puts big_array
       end
       nil # Return nothing.
     end
@@ -274,7 +263,7 @@ module Playlist
     def now_playing_values
       @@now_playing_values_value ||= begin
       now_playing_tall = snapshot.values
-# print 'now_playing_tall='; pp now_playing_tall
+print 'now_playing_tall='; pp now_playing_tall
       now_playing_tall.flatten
       end
     end
@@ -317,7 +306,7 @@ module Playlist
           recent_songs_reduce year_month_day, *recent_songs_get, days_ago
           f_current_hour.rewind
           f_current_hour.truncate 0
-          f_current_hour.print "#{year_month_day_hour_string}\n"
+          f_current_hour.puts year_month_day_hour_string
         end
       end
       nil # Return nothing.
