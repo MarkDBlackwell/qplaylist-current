@@ -1,7 +1,15 @@
+===============
 On WTMD_Prod computer:
 
-===============
 Ruby version:
 
-$ ruby --version
-ruby 2.0.0p353 (2013-11-22) [x64-mingw32]
+C:\Users\WTMD_Prod>ruby --version
+ruby 2.2.5p319 (2016-04-26 revision 54774) [x64-mingw32]
+
+===============
+On Mycroft Windows 7 development computer:
+
+Ruby version:
+
+>ruby --version
+ruby 2.2.5p319 (2016-04-26 revision 54774) [i386-mingw32]
