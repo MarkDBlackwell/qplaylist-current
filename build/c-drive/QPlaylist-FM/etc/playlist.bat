@@ -75,6 +75,7 @@ if %errorlevel% == 0 goto :restore
 rem Copy input files (keep WideOrbit's file last):
 start /wait cmd /C copy /B /Y  %mustache-location%\NowPlaying.mustache          now_playing.mustache
 start /wait cmd /C copy /B /Y  %mustache-location%\LatestFive.mustache          latest_five.mustache
+start /wait cmd /C copy /B /Y  %mustache-location%\LatestFiveNew.mustache       latest_five_new.mustache
 start /wait cmd /C copy /B /Y  %mustache-location%\LatestFive.json.mustache     latest_five.json.mustache
 start /wait cmd /C copy /B /Y  %mustache-location%\RecentSongs.mustache         recent_songs.mustache
 start /wait cmd /C copy /B /Y  %WideOrbit-file-location%\%now-playing-basename% now_playing.xml
