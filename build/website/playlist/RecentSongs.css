@@ -31,6 +31,7 @@ div#recent-songs > p > i:first-of-type {
     font-weight: bold;
     color: #ee7500;
 }
+/* TODO: perhaps normalize the use of <i> tags. */
 /* separate start time, from song title */
 div#recent-songs > p > i:nth-of-type(2):before {
     padding-left: 13.5px;
