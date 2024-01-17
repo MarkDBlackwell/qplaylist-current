@@ -15,8 +15,8 @@ module Playlist
   RW_BEGIN = 'r+'
 # 'w' is "Write-only; truncates existing file to zero length or creates new file":
   W_BEGIN = 'w'
-  NON_XML_KEYS = %w[ current_time ]
-      XML_KEYS = %w[ artist title ]
+  NON_XML_KEYS = %i[ current_time ]
+      XML_KEYS = %i[ artist  title ]
   KEYS = NON_XML_KEYS + XML_KEYS
 
   module MyFile
@@ -94,7 +94,7 @@ module Playlist
     def set_non_xml_values
       @@non_xml_values = NON_XML_KEYS.map do |k|
         case k
-        when 'current_time'
+        when :current_time
 # "%-l" means unpadded hour; "%M" means zero-padded minute; "%p" means uppercase meridian.
           Time.now.localtime.round.strftime '%-l:%M %p'
         else
@@ -105,7 +105,7 @@ module Playlist
     end
 
     def set_xml_values
-      @@xml_values ||= XML_KEYS.map(&:capitalize).map{|k| relevant_hash[k].first.strip}
+      @@xml_values ||= XML_KEYS.map(&:capitalize).map(&:to_s).map{|k| relevant_hash[k].first.strip}
       nil # Return nothing.
     end
 
@@ -137,7 +137,7 @@ module Playlist
     def create_output(keys, values, input_template_file, output_file)
       view = mustache input_template_file
       keys.zip values do |key, value|
-        view[key.to_sym] = value
+        view[key] = value
       end
       File.open output_file, W_BEGIN do |f_output|
         f_output.print view.render
@@ -199,9 +199,9 @@ module Playlist
 
     def latest_five_keys
       @@latest_five_keys_value ||= begin
-        key_types = %w[ artist  start_time  time_stamp  title ]
+        key_types = %i[ artist  start_time  time_stamp  title ]
         count = 5
-        count.times.to_a.product(key_types).map{|digit, key| "#{key}#{digit.succ}"}
+        count.times.to_a.product(key_types).map{|digit, key| "#{key}#{digit.succ}".to_sym}
       end
     end
 
