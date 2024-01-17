@@ -93,10 +93,12 @@ module Playlist
           "(Error: key '#{k}' unknown)"
         end
       end
+      nil # Return nothing.
     end
 
     def set_xml_values
       @@xml_values ||= XML_KEYS.map(&:capitalize).map{|k| relevant_hash[k].first.strip}
+      nil # Return nothing.
     end
 
     def xml_tree
@@ -105,56 +107,10 @@ module Playlist
     end
   end #class
 
-  class Substitutions
-    def initialize(fields, current_values)
-      @substitutions = fields.zip current_values
-    end
-
-    def run(s, for_json = false)
-      trim_quotes = 1...-1
-      backslash = "\\" # A single, backslash character.
-      @substitutions.each do |input,output_raw|
-#print '[input,output_raw]='; pp [input,output_raw]
-        output = if for_json
-          (output_raw.delete backslash).to_json.slice trim_quotes
-        else
-          CGI.escape_html output_raw
-        end
-        s = s.gsub input, output
-      end
-      s
-    end
-  end #class
-
-  class NowPlayingSubstitutions < Substitutions
-    def initialize(current_values)
-      fields = KEYS.map{|e| "{{#{e}}}"}
-      super fields, current_values
-    end
-  end #class
-
-  class LatestFiveSubstitutions < Substitutions
-    def initialize(current_values)
-      key_types = %w[ artist  start_time  time_stamp  title ]
-      count = 5
-      fields = (1..count).map(&:to_s).product(key_types).map{|digit,key| "{{#{key}#{digit}}}"}
-#print 'fields='; pp fields
-      super fields, current_values
-    end
-  end #class
-
-  class Songs < Mustache
-    def initialize(a)
-      @array_of_hashed_songs = a
-    end
-
-    def songs
-      @array_of_hashed_songs
-    end
-  end #class
-
   class Run
-    def compare_recent(currently_playing)
+    def compare_recent
+      @@compare_recent_value ||= begin
+      currently_playing = now_playing_values
       remembered, artist_title, same = nil, nil, nil # Define in scope.
       File.open 'current-song.txt', 'a+' do |f_current_song|
         remembered = f_current_song.readlines.map(&:chomp)
@@ -168,18 +124,23 @@ module Playlist
       end
       same ? 'same' : nil
     end
-
-    def create_output(substitutions, input_template_file, output_file, for_json = false)
-      File.open input_template_file, 'r' do |f_template|
-        lines = f_template.readlines
-        File.open output_file, 'w' do |f_out|
-          lines.each{|e| f_out.print substitutions.run e, for_json}
-        end
-      end
     end
 
-    def create_output_recent_songs(dates, times, artists, titles)
-      songs = dates.zip(times,artists,titles).map do |date,time,artist,title|
+    def create_output(keys, values, input_template_file, output_file)
+      view = mustache input_template_file
+      keys.zip values do |key, value|
+        view[key.to_sym] = value
+      end
+      File.open output_file, 'w' do |f_output|
+        f_output.print view.render
+      end
+      MyFile.make_gzipped output_file
+      nil # Return nothing.
+    end
+
+    def create_output_recent_songs
+      dates, times, artists, titles = recent_songs_get
+      songs = dates.zip(times,artists,titles).map do |date, time, artist, title|
         year, month, day = date.split ' '
         clock, meridian = time.split ' '
         hour, minute = clock.split ':'
@@ -195,10 +156,15 @@ module Playlist
           meridian: meridian, # 'AM' or 'PM'.
         }
       end
-      Songs.template_file = './recent_songs.mustache'
+      view = mustache './recent_songs.mustache'
+# Fill the {{#songs}} tag.
+      view[:songs] = songs.reverse
       File.open 'recent_songs.html', 'w' do |f_output|
-        f_output.print Songs.new(songs.reverse).render
+# The mustache gem (version 1.0.3) is escaping the HTML.
+        f_output.print view.render
       end
+      MyFile.make_gzipped 'recent_songs.html'
+      nil # Return nothing.
     end
 
     def directory_runner
@@ -206,8 +172,10 @@ module Playlist
       ::File.absolute_path ENV['qplaylist-runner-location']
     end
 
-    def latest_five_songs_get(dates_org, start_times_org, artists_org, titles_org)
-# "_org" means original.
+    def latest_five_songs_get
+      @@latest_five_songs_get_value ||= begin
+# "_org" means original:
+      dates_org, start_times_org, artists_org, titles_org = recent_songs_get
       songs_to_keep = 5
       near_end = -1 * [songs_to_keep, titles_org.length].min
       range = near_end...titles_org.length
@@ -219,8 +187,29 @@ module Playlist
       song_blank = [''] * a.length
       a.transpose.reverse + Array.new(songs_to_keep - titles.length){song_blank}
     end
+    end
 
-    def recent_songs_get(currently_playing)
+    def latest_five_keys
+      @@latest_five_keys_value ||= begin
+        key_types = %w[ artist  start_time  time_stamp  title ]
+        count = 5
+        (1..count).map(&:to_s).product(key_types).map{|digit, key| "#{key}#{digit}"}
+      end
+    end
+
+    def latest_five_values
+      @@latest_five_values_value ||= latest_five_songs_get.flatten
+    end
+
+    def mustache(filename)
+      klass = Class.new(Mustache)
+      klass.template_file = filename
+      klass.new
+    end
+
+    def recent_songs_get
+      @@recent_songs_get_value ||= begin
+      currently_playing = now_playing_values
 # 'r+' is "Read-write, starts at beginning of file", per:
 # http://www.ruby-doc.org/core-2.0.0/IO.html#method-c-new
       n = Time.now.localtime.round
@@ -239,8 +228,10 @@ module Playlist
       end
       [dates, times, artists, titles]
     end
+    end
 
     def recent_songs_read(f_recent_songs)
+      @@recent_songs_read_value ||= begin
       dates, times, artists, titles = [], [], [], []
       lines_per_song = 4
       a = f_recent_songs.readlines.map(&:chomp)
@@ -252,6 +243,7 @@ module Playlist
         titles. push a.at i * lines_per_song + 3
       end
       [dates, times, artists, titles]
+    end
     end
 
     def recent_songs_reduce(year_month_day, old_dates, old_times, old_artists, old_titles, days_ago)
@@ -270,51 +262,45 @@ module Playlist
       File.open 'recent-songs.txt', 'w' do |f_recent_songs|
         big_array.each{|e| f_recent_songs.print "#{e}\n"}
       end
+      nil # Return nothing.
+    end
+
+    def now_playing_values
+      @@now_playing_values_value ||= begin
+      now_playing_tall = snapshot.values
+# print 'now_playing_tall='; pp now_playing_tall
+      now_playing_tall.flatten
+    end
     end
 
     def run
-      snapshot = Playlist::Snapshot.new
-      now_playing_tall = snapshot.values
-# print 'now_playing_tall='; pp now_playing_tall
-      now_playing = now_playing_tall.flatten
-
 # If the category is Blacklisted, then indicate so, and stop:
       ::Kernel::exit 2 if snapshot.blacklisted
 
 # If the song is unchanged, then indicate so, and stop:
-      ::Kernel::exit 1 if 'same' == (compare_recent now_playing)
+      ::Kernel::exit 1 if 'same' == compare_recent
 
 # If the category is Prerecorded, and this is the main channel, then start the prerecorded-show runner:
       if snapshot.prerecorded && snapshot.channel_main
-        filename = ::File.join directory_runner, 'lib', 'runner.rb'
-        command = "start %COMSPEC% /C ruby #{filename}"
-        ::Kernel.system command
+        start_and_return_immediately 'runner.rb'
       end
 
 # If the category is Song-Automatic, and this is the main channel, then stop all running prerecorded-show runners:
       if snapshot.song_automatic && snapshot.channel_main
-        filename = ::File.join directory_runner, 'lib', 'killer.rb'
-        command = "start %COMSPEC% /C ruby #{filename}"
-        ::Kernel.system command
+        start_and_return_immediately 'killer.rb'
       end
 
-# Else
-      now_playing_substitutions = Playlist::NowPlayingSubstitutions.new now_playing
-      create_output now_playing_substitutions, 'now_playing.mustache', 'now_playing.html'
-      MyFile.make_gzipped 'now_playing.html'
-      dates, times, artists, titles = recent_songs_get now_playing
-      latest_five_tall = latest_five_songs_get dates, times, artists, titles
-# print 'latest_five_tall='; pp latest_five_tall
-      latest_five = latest_five_tall.flatten
-      latest_five_substitutions = Playlist::LatestFiveSubstitutions.new latest_five
-# print 'latest_five_substitutions='; pp latest_five_substitutions
-      create_output latest_five_substitutions, 'latest_five.mustache', 'latest_five.html'
-      MyFile.make_gzipped 'latest_five.html'
-      create_output latest_five_substitutions, 'latest_five.json.mustache', 'latest_five.json', true
-      MyFile.make_gzipped 'latest_five.json'
+# Fall through.
+      create_output_recent_songs
 
-      create_output_recent_songs dates, times, artists, titles
-      MyFile.make_gzipped 'recent_songs.html'
+      json_values = latest_five_values.map{|e| JSON.generate e}
+      create_output latest_five_keys, json_values, 'latest_five.json.mustache', 'latest_five.json'
+
+      create_output latest_five_keys, latest_five_values, 'latest_five.mustache',     'latest_five.html'
+      create_output latest_five_keys, latest_five_values, 'latest_five_new.mustache', 'latest_five_new.html'
+
+      create_output KEYS, now_playing_values, 'now_playing.mustache', 'now_playing.html'
+
       n = Time.now.localtime.round
 # All of "%4Y", "%2m", "%2d" and "%2H" are zero-padded; "%2H" means hour (of 24-hour clock).
       year_month_day_hour_string = Time.new(n.year, n.month, n.day, n.hour).strftime '%4Y %2m %2d %2H'
@@ -322,12 +308,24 @@ module Playlist
       File.open 'current-hour.txt', 'a+' do |f_current_hour|
         unless f_current_hour.readlines.push('').first.chomp == year_month_day_hour_string
           days_ago = snapshot.channel_main ? 7 : 2 # One week; or two days.
-          recent_songs_reduce year_month_day, dates, times, artists, titles, days_ago
+          recent_songs_reduce year_month_day, *recent_songs_get, days_ago
           f_current_hour.rewind
           f_current_hour.truncate 0
           f_current_hour.print "#{year_month_day_hour_string}\n"
         end
       end
+      nil # Return nothing.
+    end
+
+    def snapshot
+      @@snapshot_value ||= Playlist::Snapshot.new
+    end
+
+    def start_and_return_immediately(basename)
+      filename = ::File.join directory_runner, 'lib', basename
+      command = "start %COMSPEC% /C ruby #{filename}"
+      ::Kernel.system command
+      nil # Return nothing.
     end
   end #class
 end #module

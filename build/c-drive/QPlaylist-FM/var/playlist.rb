@@ -11,6 +11,7 @@ August 29, 2017 - Generate latest five JSON; add gzipped output;
 May 15, 2018 - Blacklist Underwriting and Promotional announcements;
                on Special Programs, start prerecord-runner
 June 20, 2018 - Any WideOrbit song kills all prerecord-runners
+January 16, 2024 - Add LatestFiveNew, use mustache gem for all
 
 Description:
 
