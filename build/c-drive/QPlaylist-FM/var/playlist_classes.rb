@@ -7,6 +7,14 @@ require 'xmlsimple'
 # require 'yaml'
 
 module Playlist
+# Per:
+#  http://www.ruby-doc.org/core-2.5.2/IO.html#method-c-new
+# 'a+' is "Read-write; each write call appends data at end of file. Creates a new file if necessary":
+  RW_APPEND = 'a+'
+# 'r+' is "Read-write; starts at beginning of file":
+  RW_BEGIN = 'r+'
+# 'w' is "Write-only; truncates existing file to zero length or creates new file":
+  W_BEGIN = 'w'
   NON_XML_KEYS = %w[ current_time ]
       XML_KEYS = %w[ artist title ]
   KEYS = NON_XML_KEYS + XML_KEYS
@@ -112,7 +120,7 @@ module Playlist
       @@compare_recent_value ||= begin
       currently_playing = now_playing_values
       remembered, artist_title, same = nil, nil, nil # Define in scope.
-      File.open 'current-song.txt', 'a+' do |f_current_song|
+      File.open 'current-song.txt', RW_APPEND do |f_current_song|
         remembered = f_current_song.readlines.map(&:chomp)
         artist_title = currently_playing.drop 1
         same = remembered == artist_title
@@ -123,7 +131,7 @@ module Playlist
         end
       end
       same ? 'same' : nil
-    end
+      end
     end
 
     def create_output(keys, values, input_template_file, output_file)
@@ -131,7 +139,7 @@ module Playlist
       keys.zip values do |key, value|
         view[key.to_sym] = value
       end
-      File.open output_file, 'w' do |f_output|
+      File.open output_file, W_BEGIN do |f_output|
         f_output.print view.render
       end
       MyFile.make_gzipped output_file
@@ -159,7 +167,7 @@ module Playlist
       view = mustache './recent_songs.mustache'
 # Fill the {{#songs}} tag.
       view[:songs] = songs.reverse
-      File.open 'recent_songs.html', 'w' do |f_output|
+      File.open 'recent_songs.html', W_BEGIN do |f_output|
 # The mustache gem (version 1.0.3) is escaping the HTML.
         f_output.print view.render
       end
@@ -186,14 +194,14 @@ module Playlist
       a = [artists, start_times, time_stamps, titles]
       song_blank = [''] * a.length
       a.transpose.reverse + Array.new(songs_to_keep - titles.length){song_blank}
-    end
+      end
     end
 
     def latest_five_keys
       @@latest_five_keys_value ||= begin
         key_types = %w[ artist  start_time  time_stamp  title ]
         count = 5
-        (1..count).map(&:to_s).product(key_types).map{|digit, key| "#{key}#{digit}"}
+        count.times.to_a.product(key_types).map{|digit, key| "#{key}#{digit.succ}"}
       end
     end
 
@@ -210,13 +218,11 @@ module Playlist
     def recent_songs_get
       @@recent_songs_get_value ||= begin
       currently_playing = now_playing_values
-# 'r+' is "Read-write, starts at beginning of file", per:
-# http://www.ruby-doc.org/core-2.0.0/IO.html#method-c-new
       n = Time.now.localtime.round
 # All of "%4Y", "%2m" and "%2d" are zero-padded.
       year_month_day = Time.new(n.year, n.month, n.day).strftime '%4Y %2m %2d'
       dates, times, artists, titles = nil, nil, nil, nil # Define in scope.
-      File.open 'recent-songs.txt', 'r+' do |f_recent_songs|
+      File.open 'recent-songs.txt', RW_BEGIN do |f_recent_songs|
         dates, times, artists, titles = recent_songs_read f_recent_songs
 # Push current song:
         times.  push currently_playing.at 0
@@ -227,7 +233,7 @@ module Playlist
         currently_playing.each{|e| f_recent_songs.print "#{e}\n"}
       end
       [dates, times, artists, titles]
-    end
+      end
     end
 
     def recent_songs_read(f_recent_songs)
@@ -243,7 +249,7 @@ module Playlist
         titles. push a.at i * lines_per_song + 3
       end
       [dates, times, artists, titles]
-    end
+      end
     end
 
     def recent_songs_reduce(year_month_day, old_dates, old_times, old_artists, old_titles, days_ago)
@@ -259,7 +265,7 @@ module Playlist
           big_array.push old_titles. at i
         end
       end
-      File.open 'recent-songs.txt', 'w' do |f_recent_songs|
+      File.open 'recent-songs.txt', W_BEGIN do |f_recent_songs|
         big_array.each{|e| f_recent_songs.print "#{e}\n"}
       end
       nil # Return nothing.
@@ -270,7 +276,7 @@ module Playlist
       now_playing_tall = snapshot.values
 # print 'now_playing_tall='; pp now_playing_tall
       now_playing_tall.flatten
-    end
+      end
     end
 
     def run
@@ -305,7 +311,7 @@ module Playlist
 # All of "%4Y", "%2m", "%2d" and "%2H" are zero-padded; "%2H" means hour (of 24-hour clock).
       year_month_day_hour_string = Time.new(n.year, n.month, n.day, n.hour).strftime '%4Y %2m %2d %2H'
       year_month_day             = Time.new n.year, n.month, n.day
-      File.open 'current-hour.txt', 'a+' do |f_current_hour|
+      File.open 'current-hour.txt', RW_APPEND do |f_current_hour|
         unless f_current_hour.readlines.push('').first.chomp == year_month_day_hour_string
           days_ago = snapshot.channel_main ? 7 : 2 # One week; or two days.
           recent_songs_reduce year_month_day, *recent_songs_get, days_ago
