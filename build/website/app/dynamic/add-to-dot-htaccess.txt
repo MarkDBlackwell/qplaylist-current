@@ -4,7 +4,7 @@
 	AddEncoding gzip .gz
 
 	# Enable uploading precompressed QPlaylist song files.
-	<FilesMatch ^LatestFive(|New)(|HD2)\.html\.gz$>
+	<FilesMatch ^LatestFiveNew(|HD2)\.html\.gz$>
 		# Serve correct encoding type.
 		Header append Content-Encoding gzip
 
@@ -18,8 +18,8 @@
 	RewriteCond "%{REQUEST_FILENAME}.gz" -s
 
 	# Append ".gz".
-	RewriteRule ^LatestFive(|New)(|HD2)\.html$ $0.gz
+	RewriteRule ^LatestFiveNew(|HD2)\.html$ $0.gz
 
 	# Serve the correct media type, and prevent mod_deflate double gzip.
-	RewriteRule ^LatestFive(|New)(|HD2)\.html\.gz$ - [T=text/html,E=no-gzip:1]
+	RewriteRule ^LatestFiveNew(|HD2)\.html\.gz$ - [T=text/html,E=no-gzip:1]
 </IfModule>

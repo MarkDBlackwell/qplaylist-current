@@ -1,25 +1,25 @@
-# 06-28-17 Mark D. Blackwell - Enable uploading precompressed QPlaylist song files.
-# Keep before the WordPress main rewrite code.
-# See: http://httpd.apache.org/docs/2.4/mod/mod_deflate.html#precompressed
 <IfModule mod_rewrite.c>
-    <IfModule mod_headers.c>
-        <FilesMatch "^(NowPlaying|LatestFive|RecentSongs)(HD2|)(\.html|\.json)\.gz$">
-            # Serve correct encoding type.
-            Header append Content-Encoding gzip
+	Header set Cache-Control "no-cache, private"
 
-            # Force proxies to cache gzipped &
-            # non-gzipped QPlaylist files separately.
-            Header append Vary Accept-Encoding
-        </FilesMatch>
+	AddEncoding gzip .gz
 
-        # If the client accepts gzip
-        # and the requested gzip-compressed QPlaylist file exists...
-        RewriteCond "%{HTTP:Accept-encoding}" gzip
-        RewriteCond "%{REQUEST_FILENAME}.gz" -s
-        # Append ".gz".
-        RewriteRule "^(NowPlaying|LatestFive|RecentSongs)(HD2|)(\.html|\.json)$" "$1$2$3.gz" [QSA]
-        # Serve the correct media type, and prevent mod_deflate double gzip.
-        RewriteRule "^(NowPlaying|LatestFive|RecentSongs)(HD2|)\.html\.gz$" "-" [T=text/html,E=no-gzip:1]
-        RewriteRule "^(NowPlaying|LatestFive|RecentSongs)(HD2|)\.json\.gz$" "-" [T=application/json,E=no-gzip:1]
-    </IfModule>
+	# Enable uploading precompressed QPlaylist song files.
+	<FilesMatch ^(LatestFive|LatestFiveNew|NowPlaying|RecentSongs)(|HD2)\.html\.gz$>
+		# Serve correct encoding type.
+		Header append Content-Encoding gzip
+
+		# Force proxies to cache gzipped & non-gzipped QPlaylist files separately.
+		Header append Vary Accept-Encoding
+	</FilesMatch>
+
+	# If the client accepts gzip
+	# and the requested gzip-compressed QPlaylist file exists...
+	RewriteCond "%{HTTP:Accept-encoding}" gzip
+	RewriteCond "%{REQUEST_FILENAME}.gz" -s
+
+	# Append ".gz".
+	RewriteRule ^(LatestFive|LatestFiveNew|NowPlaying|RecentSongs)(|HD2)\.html$ $0.gz
+
+	# Serve the correct media type, and prevent mod_deflate double gzip.
+	RewriteRule ^(LatestFive|LatestFiveNew|NowPlaying|RecentSongs)(|HD2)\.html\.gz$ - [T=text/html,E=no-gzip:1]
 </IfModule>
