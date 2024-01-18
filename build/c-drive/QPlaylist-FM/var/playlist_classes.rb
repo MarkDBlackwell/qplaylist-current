@@ -42,16 +42,16 @@ module Playlist
 #  Allow blacklisting of these categories of NowPlaying.XML data:
 # PRO - House Promotional Spot
 # UWR - Underwriting Announcement
-      blacklist = %w[ PRO UWR ]
-      blacklist.include? category
+        blacklist = %w[ PRO UWR ]
+        blacklist.include? category
       end
     end
 
     def channel_main
       @@channel_main_value ||= begin
-      main_sign = '-FM'
-      channel = xml_tree['Call'].first.strip
-      channel.end_with? main_sign
+        main_sign = '-FM'
+        channel = xml_tree['Call'].first.strip
+        channel.end_with? main_sign
       end
     end
 
@@ -79,15 +79,15 @@ module Playlist
 
     def non_xml_values
       @@non_xml_values_value ||= begin
-      NON_XML_KEYS.map do |k|
-        case k
-        when :current_time
+        NON_XML_KEYS.map do |k|
+          case k
+          when :current_time
 # "%-l" means unpadded hour; "%M" means zero-padded minute; "%p" means uppercase meridian.
-          Time.now.localtime.round.strftime '%-l:%M %p'
-        else
-          "(Error: key '#{k}' unknown)"
+            Time.now.localtime.round.strftime '%-l:%M %p'
+          else
+            "(Error: key '#{k}' unknown)"
+          end
         end
-      end
       end
     end
 
@@ -108,19 +108,19 @@ module Playlist
   class Run
     def compare_recent
       @@compare_recent_value ||= begin
-      currently_playing = now_playing_values
-      same = nil # Define in scope.
-      File.open 'current-song.txt', RW_APPEND do |f_current_song|
-        remembered = f_current_song.readlines.map(&:chomp)
-        artist_title = currently_playing.drop 1
-        same = remembered == artist_title
-        unless same
-          f_current_song.rewind
-          f_current_song.truncate 0
-          f_current_song.puts artist_title
+        currently_playing = now_playing_values
+        same = nil # Define in scope.
+        File.open 'current-song.txt', RW_APPEND do |f_current_song|
+          remembered = f_current_song.readlines.map(&:chomp)
+          artist_title = currently_playing.drop 1
+          same = remembered == artist_title
+          unless same
+            f_current_song.rewind
+            f_current_song.truncate 0
+            f_current_song.puts artist_title
+          end
         end
-      end
-      same ? 'same' : nil
+        same ? 'same' : nil
       end
     end
 
@@ -178,17 +178,17 @@ module Playlist
 
     def latest_five_songs_get
       @@latest_five_songs_get_value ||= begin
-      old_dates, old_start_times, old_artists, old_titles = recent_songs_get
-      songs_to_keep = 5
-      near_end = -1 * [songs_to_keep, old_titles.length].min
-      range_to_keep = near_end...old_titles.length
-      dates,              start_times,     artists,     titles =
-          [old_dates, old_start_times, old_artists, old_titles].map{|e| e.slice range_to_keep}
+        old_dates, old_start_times, old_artists, old_titles = recent_songs_get
+        songs_to_keep = 5
+        near_end = -1 * [songs_to_keep, old_titles.length].min
+        range_to_keep = near_end...old_titles.length
+        dates,              start_times,     artists,     titles =
+            [old_dates, old_start_times, old_artists, old_titles].map{|e| e.slice range_to_keep}
 # "%H" means hour (on 24-hour clock), "%M" means minute.
-      time_stamps = start_times.map{|e| Time.parse e}.map{|e| e.strftime '%H %M'}.zip(dates).map{|e| e.reverse.join ' '}
-      a = [artists, start_times, time_stamps, titles]
-      song_blank = [''] * a.length
-      a.transpose.reverse + Array.new(songs_to_keep - titles.length){song_blank}
+        time_stamps = start_times.map{|e| Time.parse e}.map{|e| e.strftime '%H %M'}.zip(dates).map{|e| e.reverse.join ' '}
+        a = [artists, start_times, time_stamps, titles]
+        song_blank = [''] * a.length
+        a.transpose.reverse + Array.new(songs_to_keep - titles.length){song_blank}
       end
     end
 
@@ -208,37 +208,37 @@ module Playlist
 
     def recent_songs_get
       @@recent_songs_get_value ||= begin
-      currently_playing = now_playing_values
-      n = Time.now.localtime.round
+        currently_playing = now_playing_values
+        n = Time.now.localtime.round
 # All of "%4Y", "%2m" and "%2d" are zero-padded.
-      year_month_day = Time.new(n.year, n.month, n.day).strftime '%4Y %2m %2d'
-      dates, times, artists, titles = nil, nil, nil, nil # Define in scope.
-      File.open 'recent-songs.txt', RW_APPEND do |f_recent_songs|
-        dates, times, artists, titles = recent_songs_parse f_recent_songs.readlines
+        year_month_day = Time.new(n.year, n.month, n.day).strftime '%4Y %2m %2d'
+        dates, times, artists, titles = nil, nil, nil, nil # Define in scope.
+        File.open 'recent-songs.txt', RW_APPEND do |f_recent_songs|
+          dates, times, artists, titles = recent_songs_parse f_recent_songs.readlines
 # Push current song:
-        dates.  push         year_month_day
-        times.  push currently_playing.at 0
-        artists.push currently_playing.at 1
-        titles. push currently_playing.at 2
-        f_recent_songs.puts [year_month_day] + currently_playing
-      end
-      [dates, times, artists, titles]
+          dates.  push         year_month_day
+          times.  push currently_playing.at 0
+          artists.push currently_playing.at 1
+          titles. push currently_playing.at 2
+          f_recent_songs.puts [year_month_day] + currently_playing
+        end
+        [dates, times, artists, titles]
       end
     end
 
     def recent_songs_parse(lines)
       @@recent_songs_parse_value ||= begin
-      dates, times, artists, titles = [], [], [], []
-      lines_per_song = 4
-      a = lines.map(&:chomp)
-      song_count = a.length.div lines_per_song
-      song_count.times do |i|
-        dates.  push a.at i * lines_per_song + 0
-        times.  push a.at i * lines_per_song + 1
-        artists.push a.at i * lines_per_song + 2
-        titles. push a.at i * lines_per_song + 3
-      end
-      [dates, times, artists, titles]
+        dates, times, artists, titles = [], [], [], []
+        lines_per_song = 4
+        a = lines.map(&:chomp)
+        song_count = a.length.div lines_per_song
+        song_count.times do |i|
+          dates.  push a.at i * lines_per_song + 0
+          times.  push a.at i * lines_per_song + 1
+          artists.push a.at i * lines_per_song + 2
+          titles. push a.at i * lines_per_song + 3
+        end
+        [dates, times, artists, titles]
       end
     end
 
