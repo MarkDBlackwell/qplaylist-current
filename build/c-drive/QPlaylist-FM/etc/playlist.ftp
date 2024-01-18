@@ -1,6 +1,6 @@
 open wtmdradio.org
 nowplaying@wtmd.org
-{password}
+{On the server, edit-in the password here.}
 
 cd /playlist/dynamic/
 put C:\QPlaylist-FM\var\now_playing.html.gz   NowPlaying.html.gz

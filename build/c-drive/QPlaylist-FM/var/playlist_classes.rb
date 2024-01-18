@@ -1,10 +1,8 @@
-# require 'cgi'
 require 'json'
 require 'mustache'
 require 'pp'
 require 'time'
 require 'xmlsimple'
-# require 'yaml'
 require 'zlib'
 
 module Playlist
@@ -79,10 +77,6 @@ module Playlist
       @@category_value ||= relevant_hash['CatId'].first.strip
     end
 
-    def relevant_hash
-      @@relevant_hash_value ||= xml_tree['Events'].first['SS32Event'].first
-    end
-
     def non_xml_values
       @@non_xml_values_value ||= begin
       NON_XML_KEYS.map do |k|
@@ -97,13 +91,17 @@ module Playlist
       end
     end
 
-    def xml_values
-      @@xml_values_value ||= XML_KEYS.map(&:capitalize).map(&:to_s).map{|k| relevant_hash[k].first.strip}
+    def relevant_hash
+      @@relevant_hash_value ||= xml_tree['Events'].first['SS32Event'].first
     end
 
     def xml_tree
 # See http://xml-simple.rubyforge.org/
       @@xml_tree_value ||= XmlSimple.xml_in 'now_playing.xml', { KeyAttr: 'name' }
+    end
+
+    def xml_values
+      @@xml_values_value ||= XML_KEYS.map(&:capitalize).map(&:to_s).map{|k| relevant_hash[k].first.strip}
     end
   end #class
 
@@ -170,6 +168,14 @@ module Playlist
       ::File.absolute_path ENV['qplaylist-runner-location']
     end
 
+    def latest_five_keys
+      @@latest_five_keys_value ||= begin
+        key_types = %i[ artist  start_time  time_stamp  title ]
+        count = 5
+        count.times.to_a.product(key_types).map{|digit, key| "#{key}#{digit.succ}".to_sym}
+      end
+    end
+
     def latest_five_songs_get
       @@latest_five_songs_get_value ||= begin
       old_dates, old_start_times, old_artists, old_titles = recent_songs_get
@@ -186,14 +192,6 @@ module Playlist
       end
     end
 
-    def latest_five_keys
-      @@latest_five_keys_value ||= begin
-        key_types = %i[ artist  start_time  time_stamp  title ]
-        count = 5
-        count.times.to_a.product(key_types).map{|digit, key| "#{key}#{digit.succ}".to_sym}
-      end
-    end
-
     def latest_five_values
       @@latest_five_values_value ||= latest_five_songs_get.flatten
     end
@@ -202,6 +200,10 @@ module Playlist
       klass = Class.new(Mustache)
       klass.template_file = filename
       klass.new
+    end
+
+    def now_playing_values
+      @@now_playing_values_value ||= snapshot.values
     end
 
     def recent_songs_get
@@ -260,14 +262,6 @@ module Playlist
       nil # Return nothing.
     end
 
-    def now_playing_values
-      @@now_playing_values_value ||= begin
-      now_playing_tall = snapshot.values
-print 'now_playing_tall='; pp now_playing_tall
-      now_playing_tall.flatten
-      end
-    end
-
     def run
 # If the category is Blacklisted, then indicate so, and stop:
       ::Kernel::exit 2 if snapshot.blacklisted
@@ -288,7 +282,7 @@ print 'now_playing_tall='; pp now_playing_tall
 # Fall through.
       create_output_recent_songs
 
-      json_values = latest_five_values.map{|e| JSON.generate e}
+      json_values = latest_five_values.map(&:to_json)
       create_output latest_five_keys, json_values, 'latest_five.json.mustache', 'latest_five.json'
 
       create_output latest_five_keys, latest_five_values, 'latest_five.mustache',     'latest_five.html'
