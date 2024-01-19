@@ -1,3 +1,4 @@
+require 'fileutils'
 require 'json'
 require 'mustache'
 require 'pp'
@@ -171,7 +172,8 @@ module Playlist
 
     def day_processed?(current)
       filename = 'today.txt'
-      result = current == (::IO.read filename, RW_APPEND)
+      ::FileUtils.touch filename
+      result = current == (::IO.read filename)
       ::IO.write filename, current unless result
       result
     end
