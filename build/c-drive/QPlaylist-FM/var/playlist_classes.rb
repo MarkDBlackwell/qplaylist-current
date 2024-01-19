@@ -161,21 +161,17 @@ module Playlist
       nil # Return nothing.
     end
 
-    def current_hour_check
+    def day_check
       n = ::Time.now.localtime.round
-      hour_midnight = 0
-      return unless n.hour == hour_midnight
-      year_month_day      = ::Time.new n.year, n.month, n.day
-      year_month_day_hour = ::Time.new n.year, n.month, n.day, n.hour
-# All of "%4Y", "%2m", "%2d" and "%2H" are zero-padded; "%2H" means hour (of 24-hour clock).
-      year_month_day_hour_string = year_month_day_hour.strftime '%4Y %2m %2d %2H'
-      return if current_hour_processed? year_month_day_hour_string
+      year_month_day = ::Time.new n.year, n.month, n.day
+# All of "%4Y", "%2m", "%2d" are zero-padded.
+      return if day_processed? year_month_day.strftime '%4Y %2m %2d'
       year_month_day
     end
 
-    def current_hour_processed?(current)
-      filename = 'current-hour.txt'
-      result = current == (::IO.read filename)
+    def day_processed?(current)
+      filename = 'today.txt'
+      result = current == (::IO.read filename, RW_APPEND)
       ::IO.write filename, current unless result
       result
     end
@@ -260,7 +256,7 @@ module Playlist
     end
 
     def recent_songs_reduce
-      year_month_day = current_hour_check
+      year_month_day = day_check
       return unless year_month_day
 
       dates, times, artists, titles = recent_songs_get
