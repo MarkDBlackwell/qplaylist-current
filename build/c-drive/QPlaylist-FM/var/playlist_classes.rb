@@ -180,7 +180,7 @@ module Playlist
 
     def directory_runner
 # Convert Windows backslashes to forward slashes:
-      ::File.absolute_path ENV['qplaylist-runner-location']
+      @@directory_runner_value ||= ::File.absolute_path ::ENV['qplaylist-runner-location']
     end
 
     def latest_five_keys
