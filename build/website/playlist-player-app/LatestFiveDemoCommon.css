@@ -7,8 +7,8 @@
   --ask-height: calc(var(--swath-first-height) + var(--swath-last-height) + 3 * var(--swath-height));
   --body-div-height: calc(var(--ask-height) + var(--body-div-padding-bottom) + var(--body-div-padding-top));
   --BodyDivHeight:   calc(var(--AskHeight ) + var(--BodyDivPaddingBottom   ) + var(--BodyDivPaddingTop   ));
-  --body-div-width: calc(var(--body-div-padding-left) + var(--body-div-padding-right) + var(--ask-width));
-  --BodyDivWidth:   calc(var(--BodyDivPaddingLeft   ) + var(--BodyDivPaddingRight   ) + var(--AskWidth ));
+  --body-div-width: calc(var(--ask-width) + var(--body-div-padding-left) + var(--body-div-padding-right));
+  --BodyDivWidth:   calc(var(--AskWidth ) + var(--BodyDivPaddingLeft   ) + var(--BodyDivPaddingRight   ));
   --body-height: calc(var(--body-div-height) + var(--body-padding-bottom) + var(--h4-height));
   --BodyHeight:  calc(var(--BodyDivHeight  ) + var(--BodyPaddingBottom  ) + var(--H4Height ));
   --body-padding-bottom: 3rem; --BodyPaddingBottom: 3;
@@ -16,7 +16,7 @@
   --BodyWidth:  calc(var(--BodyDivWidth  ) + var(--BodyPaddingLeft  ) + var(--BodyPaddingRight  ));
   --h4-height: calc(var(--h4-content-height) + var(--h4-padding-bottom));
   --H4Height:  calc(var(--H4ContentHeight) + var(--H4PaddingBottom));
-    font-size: min(100lvw / var(--BodyWidth), 100lvh / var(--BodyHeight));
+    font-size: min(100lvh / var(--BodyHeight), 100lvw / var(--BodyWidth));
 }
 body {
     width: var(--body-width);
