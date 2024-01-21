@@ -24,6 +24,6 @@ body > div:last-of-type {
     border-bottom-left-radius: unset;
 }
 body > div:nth-of-type(odd) {
-    background: rgba(0, 0, 0, 0.51);
+    background: rgba(0, 0, 0, 0.528);
     border-bottom-left-radius: var(--border-radius);
 }
