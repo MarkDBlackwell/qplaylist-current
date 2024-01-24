@@ -1,0 +1,25 @@
+<IfModule mod_rewrite.c>
+	Header set Cache-Control "no-cache, private"
+
+	AddEncoding gzip .gz
+
+	# Enable uploading precompressed QPlaylist song files.
+	<FilesMatch ^LatestFiveNew(|HD2)\.html\.gz$>
+		# Serve correct encoding type.
+		Header append Content-Encoding gzip
+
+		# Force proxies to cache gzipped & non-gzipped QPlaylist files separately.
+		Header append Vary Accept-Encoding
+	</FilesMatch>
+
+	# If the client accepts gzip
+	# and the requested gzip-compressed QPlaylist file exists...
+	RewriteCond "%{HTTP:Accept-encoding}" gzip
+	RewriteCond "%{REQUEST_FILENAME}.gz" -s
+
+	# Append ".gz".
+	RewriteRule ^LatestFiveNew(|HD2)\.html$ $0.gz
+
+	# Serve the correct media type, and prevent mod_deflate double gzip.
+	RewriteRule ^LatestFiveNew(|HD2)\.html\.gz$ - [T=text/html,E=no-gzip:1]
+</IfModule>
