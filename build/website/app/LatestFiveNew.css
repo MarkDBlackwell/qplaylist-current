@@ -38,7 +38,7 @@ body > div > p:first-of-type {
     padding-bottom: 1.95rem;
     font-size: 11rem;
     font-weight: bold;
-    color: rgb(0, 0, 230);
+    color: rgb(51, 165, 174);
 }
 /* song title */
 body > div > p:nth-of-type(2) {
