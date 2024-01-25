@@ -17,10 +17,12 @@ body > div:last-of-type {
     border-bottom-left-radius: var(--border-radius);
 }
 body > div:nth-of-type(even) {
-    background: rgba(195, 195, 195, 0.82);
+/*  background: rgba(195, 195, 195, 0.82); */
+    background: rgb(54, 55, 56);
 }
 body > div:nth-of-type(odd) {
-    background: rgba(255, 255, 255, 0.82);
+/*  background: rgba(255, 255, 255, 0.82); */
+    background: rgb(22, 22, 22);
 }
 body > div > span.aloof::after {
     text-shadow: 0.3rem 0.3rem black, 0.35rem 0.35rem black, 0.4rem 0.4rem black;
