@@ -1,0 +1,30 @@
+@import url("../playlist-player-app/LatestFiveAskDemoLikeNewCommon.css");
+@import url("../playlist-player-app/LatestFiveLikeCommon.css");
+
+:root {
+  --border-radius: 10rem;
+  --swath-first-height: 53.8rem; --SwathFirstHeight: 53.8;
+  --swath-height: 53.8rem; --SwathHeight: 53.8;
+  --swath-last-height: 53.8rem; --SwathLastHeight: 53.8;
+}
+body {
+    color: black;
+}
+body > div:first-of-type {
+    border-top-left-radius: var(--border-radius);
+}
+body > div:last-of-type {
+    border-bottom-left-radius: var(--border-radius);
+}
+body > div:nth-of-type(even) {
+    background: rgba(195, 195, 195, 0.82);
+}
+body > div:nth-of-type(odd) {
+    background: rgba(255, 255, 255, 0.82);
+}
+body > div > span.aloof::after {
+    text-shadow: 0.3rem 0.3rem black, 0.35rem 0.35rem black, 0.4rem 0.4rem black;
+}
+body > div > span.like::after {
+    text-shadow: 0.3rem 0.3rem red, 0.35rem 0.35rem red, 0.4rem 0.4rem red;
+}
