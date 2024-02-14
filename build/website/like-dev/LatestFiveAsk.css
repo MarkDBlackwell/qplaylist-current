@@ -5,4 +5,11 @@
   --SwathFirstHeight: 53.8;
   --SwathHeight: 53.8;
   --SwathLastHeight: 53.8;
+  --iframe-like-width: 15.8rem;
+}
+body > div > iframe#content {
+    width: calc(100lvw - var(--iframe-like-width));
+}
+body > div > iframe#like {
+    width: var(--iframe-like-width);
 }

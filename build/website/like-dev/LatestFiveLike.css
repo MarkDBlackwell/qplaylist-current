@@ -22,6 +22,9 @@ body > div:nth-of-type(even) {
 body > div:nth-of-type(odd) {
     background: rgba(255, 255, 255, 0.82);
 }
+body > div > span {
+    visibility: visible;
+}
 body > div > span.aloof::after {
     text-shadow: 0.3rem 0.3rem black, 0.35rem 0.35rem black, 0.4rem 0.4rem black;
 }
