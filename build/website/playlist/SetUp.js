@@ -1,10 +1,16 @@
-/* Copyright (C) 2023 Mark D. Blackwell.
+/* Copyright (C) 2024 Mark D. Blackwell.
     All rights reserved.
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 */
-
+/* Ref.
+https://ellie-app.com/new
+qplaylist-remember/src/remember-source/SetUp.js
+https://elm-tooling.github.io/elm-tooling-cli/
+https://discourse.elm-lang.org/t/escaping-from-npm/7597/18
+https://flaviocopes.com/javascript-async-defer/
+*/
 (function() {
     const functionDealWithElm = function() {
 
