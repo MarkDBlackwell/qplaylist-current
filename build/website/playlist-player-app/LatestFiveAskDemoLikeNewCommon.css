@@ -9,13 +9,19 @@
 body {
     box-sizing: border-box;
     margin: 0;
+    padding: 0;
+    border: 0;
     line-height: 0;
     font-size: 0;
     -webkit-text-size-adjust: none;
     -moz-text-size-adjust: none;
     text-size-adjust: none;
 }
-body > div {
+body > main {
+    margin: 0;
+    border: 0;
+}
+body > main > div {
     box-sizing: border-box;
     margin: 0;
 }

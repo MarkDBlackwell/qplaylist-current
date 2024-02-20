@@ -11,19 +11,19 @@ body {
     font-family: Arial, 'Nimbus Sans', Helvetica, sans-serif;
     color: white;
 }
-body > div {
+body > main > div {
     padding: 4rem 1.5rem 4rem 0;
 }
-body > div:nth-of-type(even) {
+body > main > div:nth-of-type(even) {
     background: rgba(86, 88, 90, 0.5);
     border-bottom-right-radius: var(--border-radius);
     border-top-right-radius: var(--border-radius);
 }
-body > div > p {
+body > main > div > p {
     line-height: 1.154;
 }
 /* start time */
-body > div > p:first-of-type {
+body > main > div > p:first-of-type {
     height: 12.7rem;
     padding-bottom: 1.95rem;
     font-size: 11rem;
@@ -31,12 +31,12 @@ body > div > p:first-of-type {
     color: rgb(238, 117, 0);
 }
 /* song title */
-body > div > p:nth-of-type(2) {
+body > main > div > p:nth-of-type(2) {
     height: 16.15rem;
     font-size: 14rem;
 }
 /* artist */
-body > div > p:last-of-type {
+body > main > div > p:last-of-type {
     height: 15rem;
     font-size: 13rem;
     color: rgb(221, 221, 221);

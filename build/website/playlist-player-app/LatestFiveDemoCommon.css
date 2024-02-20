@@ -1,14 +1,14 @@
 :root {
   --ask-height: calc(var(--swath-first-height) + var(--swath-last-height) + 3 * var(--swath-height));
-  --body-div-height: calc(var(--ask-height) + var(--body-div-padding-bottom) + var(--body-div-padding-top));
-  --BodyDivHeight:   calc(var(--AskHeight ) + var(--BodyDivPaddingBottom   ) + var(--BodyDivPaddingTop   ));
-  --body-div-width: calc(var(--ask-width) + var(--body-div-padding-left) + var(--body-div-padding-right));
-  --BodyDivWidth:   calc(var(--AskWidth ) + var(--BodyDivPaddingLeft   ) + var(--BodyDivPaddingRight   ));
-  --body-height: calc(var(--body-div-height) + var(--body-padding-bottom) + var(--h4-height));
-  --BodyHeight:  calc(var(--BodyDivHeight  ) + var(--BodyPaddingBottom  ) + var(--H4Height ));
-  --body-padding-bottom: 3rem; --BodyPaddingBottom: 3;
-  --body-width: calc(var(--body-div-width) + var(--body-padding-left) + var(--body-padding-right));
-  --BodyWidth:  calc(var(--BodyDivWidth  ) + var(--BodyPaddingLeft  ) + var(--BodyPaddingRight  ));
+  --main-div-height: calc(var(--ask-height) + var(--main-div-padding-bottom) + var(--main-div-padding-top));
+  --MainDivHeight:   calc(var(--AskHeight ) + var(--MainDivPaddingBottom   ) + var(--MainDivPaddingTop   ));
+  --main-div-width: calc(var(--ask-width) + var(--main-div-padding-left) + var(--main-div-padding-right));
+  --MainDivWidth:   calc(var(--AskWidth ) + var(--MainDivPaddingLeft   ) + var(--MainDivPaddingRight   ));
+  --body-height: calc(var(--main-div-height) + var(--main-padding-bottom) + var(--h4-height));
+  --BodyHeight:  calc(var(--MainDivHeight  ) + var(--MainPaddingBottom  ) + var(--H4Height ));
+  --main-padding-bottom: 3rem; --MainPaddingBottom: 3;
+  --body-width: calc(var(--main-div-width) + var(--main-padding-left) + var(--main-padding-right));
+  --BodyWidth:  calc(var(--MainDivWidth  ) + var(--MainPaddingLeft  ) + var(--MainPaddingRight  ));
   --h4-height: calc(var(--h4-content-height) + var(--h4-padding-bottom));
   --H4Height:  calc(var(--H4ContentHeight) + var(--H4PaddingBottom));
     font-size: min(100lvh / var(--BodyHeight), 100lvw / var(--BodyWidth));
@@ -21,15 +21,17 @@
 body {
     width: var(--body-width);
     height: var(--body-height);
-    padding: 0 var(--body-padding-right) var(--body-padding-bottom) var(--body-padding-left);
     background-color: rgb(36, 36, 36);
 }
-body > div {
-    width: var(--body-div-width);
-    height: var(--body-div-height);
-    padding: var(--body-div-padding-top) var(--body-div-padding-right) var(--body-div-padding-bottom) var(--body-div-padding-left);
+body > main {
+    padding: 0 var(--main-padding-right) var(--main-padding-bottom) var(--main-padding-left);
 }
-body > div > iframe {
+body > main > div {
+    width: var(--main-div-width);
+    height: var(--main-div-height);
+    padding: var(--main-div-padding-top) var(--main-div-padding-right) var(--main-div-padding-bottom) var(--main-div-padding-left);
+}
+body > main > div > iframe {
     box-sizing: border-box;
     width: var(--ask-width);
     height: var(--ask-height);
@@ -39,7 +41,7 @@ body > div > iframe {
     border-width: 0;
     overflow: hidden; /* Use this in production */
 }
-body > h4 {
+body > main > h4 {
     box-sizing: border-box;
     height: var(--h4-height);
     margin: 0;

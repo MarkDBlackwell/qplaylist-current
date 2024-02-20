@@ -3,12 +3,12 @@
 
 :root {
   --ask-width: 292rem; --AskWidth: 292;
-  --body-padding-left: 14rem; --BodyPaddingLeft: 14;
-  --body-padding-right: 0rem; --BodyPaddingRight: 0;
-  --body-div-padding-bottom: 0rem; --BodyDivPaddingBottom: 0;
-  --body-div-padding-left: 0rem; --BodyDivPaddingLeft: 0;
-  --body-div-padding-right: 0rem; --BodyDivPaddingRight: 0;
-  --body-div-padding-top: 0rem; --BodyDivPaddingTop: 0;
+  --main-padding-left: 14rem; --MainPaddingLeft: 14;
+  --main-padding-right: 0rem; --MainPaddingRight: 0;
+  --main-div-padding-bottom: 0rem; --MainDivPaddingBottom: 0;
+  --main-div-padding-left: 0rem; --MainDivPaddingLeft: 0;
+  --main-div-padding-right: 0rem; --MainDivPaddingRight: 0;
+  --main-div-padding-top: 0rem; --MainDivPaddingTop: 0;
   --h4-content-height: 27rem; --H4ContentHeight: 27;
   --h4-padding-bottom: 23.9rem; --H4PaddingBottom: 23.9;
   --swath-first-height: 76.1rem; --SwathFirstHeight: 76.1;
@@ -19,6 +19,6 @@ body {
     font-family: 'Open Sans Condensed', Arial, 'Nimbus Sans', Helvetica, sans-serif;
     color: white;
 }
-body > h4 {
+body > main > h4 {
     font-size: 18rem;
 }

@@ -5,15 +5,17 @@
 }
 body {
     height: 100lvh;
+}
+body > main {
     padding: 0;
 }
-body > div {
+body > main > div {
     height: 100lvh;
     padding: 0;
     overflow: hidden; /* Use this in production */
     white-space: nowrap;
 }
-body > div > iframe {
+body > main > div > iframe {
     box-sizing: border-box;
     height: 100lvh;
     margin: 0;
@@ -22,9 +24,9 @@ body > div > iframe {
     border-width: 0;
     overflow: hidden; /* Use this in production */
 }
-body > div > iframe#content {
+body > main > div > iframe#content {
     width: calc(100lvw - var(--iframe-like-width));
 }
-body > div > iframe#like {
+body > main > div > iframe#like {
     width: var(--iframe-like-width);
 }

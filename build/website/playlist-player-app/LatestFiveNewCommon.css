@@ -3,12 +3,14 @@
 }
 body {
     height: 100lvh;
+}
+body > main {
     padding: 0;
 }
-body > div {
+body > main > div {
     height: var(--swath-height);
 }
-body > div > p {
+body > main > div > p {
     margin: 0;
     padding: 0;
     overflow: hidden;
@@ -16,14 +18,14 @@ body > div > p {
     white-space: nowrap;
     hyphens: none;
 }
-body > div > p:before {
+body > main > div > p:before {
     padding-right: 4.3rem;
 }
 /* song title */
-body > div > p:nth-of-type(2):before {
+body > main > div > p:nth-of-type(2):before {
     content: "Title:";
 }
 /* artist */
-body > div > p:last-of-type:before {
+body > main > div > p:last-of-type:before {
     content: "Artist:";
 }

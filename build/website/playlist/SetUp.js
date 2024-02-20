@@ -5,33 +5,32 @@
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 */
 /* Ref.
-https://ellie-app.com/new
-qplaylist-remember/src/remember-source/SetUp.js
-https://elm-tooling.github.io/elm-tooling-cli/
 https://discourse.elm-lang.org/t/escaping-from-npm/7597/18
+https://ellie-app.com/hk5Mr29zxhza1
+https://ellie-app.com/new
+https://elm-tooling.github.io/elm-tooling-cli/
 https://flaviocopes.com/javascript-async-defer/
+https://flaviocopes.com/javascript-async-defer/#blocking-rendering
+https://gist.github.com/dbj/7a1201072d098358dea3d4c3ea13c3d9
+https://github.com/swc-project/swc
+https://guide.elm-lang.org/optimization/lazy
+https://janiczek-ellies.builtwithdark.com/
+https://learnyouahaskell.com/for-a-few-monads-more#state
+https://package.elm-lang.org/packages/elm/browser/latest/Browser#application
+https://package.elm-lang.org/packages/elm/browser/latest/Browser#element
+https://package.elm-lang.org/packages/folkertdev/elm-state/latest/State
+https://package.elm-lang.org/packages/sli/loadingstate/latest/LoadingState
+https://stackoverflow.com/questions/46428129/understanding-this-elm-url-parser-parser-type-declaration/46432677#46432677
+https://stackoverflow.com/questions/69198003/debugger-says-layout-forced-problem-in-firefox/70864558#70864558
+https://www.youtube.com/@Ellie_editor/videos
 */
 (function() {
-    const functionDealWithElm = function() {
+        let app;
 
-        const functionAttachNode = function() {
-            return Elm.Main.init({
-                node: document.querySelector('body'),
-                flags: {
-                    channel: functionChannel()
-                }
-            });
-        };
-        const functionChannel = function() {
-            //location.search always includes a leading question mark.
-            const queryParameters = window.location.search.slice(1);
-
-            //Some browsers lack the URLSearchParams function, so perhaps don't use it.
-            return queryParameters;
-        };
-
-        functionStorageSubscribe(functionAttachNode());
-    };
-
-    functionDealWithElm();
+// Prevent Firefox console warning, "Layout was forced before the page."
+        window.addEventListener('load', function() {
+                app = Elm.Main.init({
+                        node: document.querySelector('main'),
+                });
+        });
 })();
