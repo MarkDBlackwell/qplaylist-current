@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serviceInformation xmlns="http://www.worlddab.org/schemas/spi/31" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" creationTime="2014-06-13T10:32:41+01:00" originator="RadioDNS XSI Generator" xml:lang="en" xsi:schemaLocation="http://www.worlddab.org/schemas/spi/31 spi_31.xsd">
+  <services>
+    <serviceProvider>
+      <shortName>BPM</shortName>
+      <mediumName>BmorePublicMedia</mediumName>
+      <longName>Baltimore Public Media</longName>
+      <mediaDescription>
+        <shortDescription>Baltimore Public Media. Community Amplified</shortDescription>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/BPM_32x32_v1.jpg" width="32" height="32"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/BPM_112x32_v1.jpg" width="112" height="32"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/BPM_128x128_v1.jpg" width="128" height="128"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/BPM_320x240_v1.jpg" width="320" height="240"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/BPM_600X600_v1.jpg" width="600" height="600"/>
+      </mediaDescription>
+      <geolocation>
+        <country>US</country>
+      </geolocation>
+    </serviceProvider>
+    <service>
+      <shortName>WTMD</shortName>
+      <mediumName>WTMD 89.7 FM</mediumName>
+      <mediaDescription>
+        <shortDescription>Baltimore's Home for Total Music Discovery</shortDescription>
+      </mediaDescription>
+      <epg:link xmlns:epg="http://www.worlddab.org/schemas/epgDataTypes/14" url=""/>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WTMD_32X32_v1.png" mimeValue="image/jpeg" width="32" height="32"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WTMD_112X32_v1.png" mimeValue="image/jpeg" width="112" height="32"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WTMD_128X128_v1.png" mimeValue="image/jpeg" width="128" height="128"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WTMD_320X240_v1.png" mimeValue="image/jpeg" width="320" height="240"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WTMD_600X600_v1.png" mimeValue="image/jpeg" width="600" height="600"/>
+      </mediaDescription>
+      <geolocation>
+        <country>US</country>
+      </geolocation>
+      <bearer id="fm:8a0.880f.08970" cost="100"/>
+      <bearer id="hd:292.10785" cost="101"/>
+      <bearer id="https://wtmd-ice.streamguys1.com/wtmd" cost="102" mimeValue="audio/aac" bitrate="64"/>
+      <radiodns fqdn="wtmdradio.org" serviceIdentifier="1"/>
+    </service>
+    <service>
+      <shortName>WYPR</shortName>
+      <mediumName>WYPR 88.1 FM</mediumName>
+      <mediaDescription>
+        <shortDescription>Baltimore's NPR News Station</shortDescription>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_32X32_v1.jpg" width="32" height="32"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_112X32_v1.jpg" width="112" height="32"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_128X128_v1.jpg" width="128" height="128"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_320X240_v1.jpg" width="320" height="240"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_600X600_v1.jpg" width="600" height="600"/>
+      </mediaDescription>
+      <geolocation>
+        <country>US</country>
+      </geolocation>
+      <bearer id="fm:9a0.959f.08810" cost="100"/>
+      <bearer id="hd:." cost="101"/>
+      <radiodns fqdn="wtmdradio.org" serviceIdentifier="2"/>
+    </service>
+  </services>
+</serviceInformation>

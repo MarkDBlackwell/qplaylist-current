@@ -1,5 +1,9 @@
 *.jpeg
+*.jpg
+*.png
 *.tar
 *-old
 junk*
 Main.js
+!/build/website/radiodns/**/*.xml
+
