@@ -21,7 +21,7 @@
         <multimedia url="https://wtmdradio.org/radiodns/BPM_320x240_v1.jpg" width="320" height="240"/>
       </mediaDescription>
       <mediaDescription>
-        <multimedia url="https://wtmdradio.org/radiodns/BPM_600X600_v1.jpg" width="600" height="600"/>
+        <multimedia url="https://wtmdradio.org/radiodns/BPM_600x600_v1.jpg" width="600" height="600"/>
       </mediaDescription>
       <geolocation>
         <country>US</country>
@@ -35,27 +35,72 @@
       </mediaDescription>
       <epg:link xmlns:epg="http://www.worlddab.org/schemas/epgDataTypes/14" url=""/>
       <mediaDescription>
-        <multimedia url="https://wtmdradio.org/radiodns/WTMD_32X32_v1.png" mimeValue="image/jpeg" width="32" height="32"/>
+        <multimedia url="https://wtmdradio.org/radiodns/WTMD_32x32_v1.png" mimeValue="image/jpeg" width="32" height="32"/>
       </mediaDescription>
       <mediaDescription>
-        <multimedia url="https://wtmdradio.org/radiodns/WTMD_112X32_v1.png" mimeValue="image/jpeg" width="112" height="32"/>
+        <multimedia url="https://wtmdradio.org/radiodns/WTMD_112x32_v1.png" mimeValue="image/jpeg" width="112" height="32"/>
       </mediaDescription>
       <mediaDescription>
-        <multimedia url="https://wtmdradio.org/radiodns/WTMD_128X128_v1.png" mimeValue="image/jpeg" width="128" height="128"/>
+        <multimedia url="https://wtmdradio.org/radiodns/WTMD_128x128_v1.png" mimeValue="image/jpeg" width="128" height="128"/>
       </mediaDescription>
       <mediaDescription>
-        <multimedia url="https://wtmdradio.org/radiodns/WTMD_320X240_v1.png" mimeValue="image/jpeg" width="320" height="240"/>
+        <multimedia url="https://wtmdradio.org/radiodns/WTMD_320x240_v1.png" mimeValue="image/jpeg" width="320" height="240"/>
       </mediaDescription>
       <mediaDescription>
-        <multimedia url="https://wtmdradio.org/radiodns/WTMD_600X600_v1.png" mimeValue="image/jpeg" width="600" height="600"/>
+        <multimedia url="https://wtmdradio.org/radiodns/WTMD_600x600_v1.png" mimeValue="image/jpeg" width="600" height="600"/>
       </mediaDescription>
+		<genre href="urn:tva:metadata:cs:ContentCS:2011:3.6.4" type="other">Pop-rock</genre>
+		<genre href="urn:tva:metadata:cs:ContentCS:2011:3.6.4.14.6" type="main">Alternative / Indie</genre>
+		<keywords>WTMD, Baltimore, MD, music, discovery, new, alternative, indie, NPR, local,</keywords>
+		<link description="Homepage" mimeValue="text/html" uri="https://wtmd.org"/>
       <geolocation>
         <country>US</country>
+		<point>39.402885 -76.6055979</point>
       </geolocation>
-      <bearer id="fm:8a0.880f.08970" cost="100"/>
-      <bearer id="hd:292.10785" cost="101"/>
-      <bearer id="https://wtmd-ice.streamguys1.com/wtmd" cost="102" mimeValue="audio/aac" bitrate="64"/>
-      <radiodns fqdn="wtmdradio.org" serviceIdentifier="1"/>
+      <bearer id="hd:292.10785" cost="30"/>
+	  <bearer id="fm:8a0.880f.08970" cost="31"/>
+      <bearer id="https://wtmd-ice.streamguys1.com/wtmd" cost="60" mimeValue="audio/aac" bitrate="64" offset="25000"/>
+	  <bearer id="https://wtmd-ice.streamguys1.com/wtmd.mp3" cost="65" mimeValue="audio/mpeg" bitrate="128" offset="25000"/>
+      <radiodns fqdn="wtmdradio.org" serviceIdentifier="wtmd"/>
+    </service>
+	<service>
+      <shortName>WTMDHD2</shortName>
+      <mediumName>WTMD HD2</mediumName>
+      <mediaDescription>
+        <shortDescription>The Baltimore Channel</shortDescription>
+      </mediaDescription>
+      <epg:link xmlns:epg="http://www.worlddab.org/schemas/epgDataTypes/14" url=""/>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WTMD_32x32_v1.png" mimeValue="image/jpeg" width="32" height="32"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WTMD_112x32_v1.png" mimeValue="image/jpeg" width="112" height="32"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WTMD_128x128_v1.png" mimeValue="image/jpeg" width="128" height="128"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WTMD_320x240_v1.png" mimeValue="image/jpeg" width="320" height="240"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WTMD_600x600_v1.png" mimeValue="image/jpeg" width="600" height="600"/>
+      </mediaDescription>
+		<genre href="urn:tva:metadata:cs:ContentCS:2011:3.6.4" type="other">Pop-rock</genre>
+		<genre href="urn:tva:metadata:cs:ContentCS:2011:3.6.4.14.6" type="main">Alternative / Indie</genre>
+		<keywords>WTMD, Baltimore, MD, music, discovery, new, alternative, indie, NPR, local,</keywords>
+		<link description="Homepage" mimeValue="text/html" uri="https://wtmd.org"/>
+		<link description="Facebook" mimeValue="text/html" uri="https://www.facebook.com/wtmdradio"/>
+		<link description="YouTube" mimeValue="text/html" uri="https://www.youtube.com/user/WTMD897"/>
+		<link description="Instagram" mimeValue="text/html" uri="https://www.instagram.com/wtmdradio/"/>
+		<link description="TikTok" mimeValue="text/html" uri="https://www.tiktok.com/@wtmdradio"/>
+      <geolocation>
+        <country>US</country>
+		<point>39.402885 -76.6055979</point>
+      </geolocation>
+      <bearer id="hd:292.10785.2" cost="30"/>
+      <bearer id="https://wtmd-ice.streamguys1.com/hd2" cost="60" mimeValue="audio/aac" bitrate="64" offset="25000"/>
+	  <bearer id="https://wtmd-ice.streamguys1.com/hd2.mp3" cost="65" mimeValue="audio/mpeg" bitrate="128" offset="25000"/>
+      <radiodns fqdn="wtmdradio.org" serviceIdentifier="wtmdhd2"/>
     </service>
     <service>
       <shortName>WYPR</shortName>
@@ -64,26 +109,167 @@
         <shortDescription>Baltimore's NPR News Station</shortDescription>
       </mediaDescription>
       <mediaDescription>
-        <multimedia url="https://wtmdradio.org/radiodns/WYPR_32X32_v1.jpg" width="32" height="32"/>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_32x32_v1.jpg" width="32" height="32"/>
       </mediaDescription>
       <mediaDescription>
-        <multimedia url="https://wtmdradio.org/radiodns/WYPR_112X32_v1.jpg" width="112" height="32"/>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_112x32_v1.jpg" width="112" height="32"/>
       </mediaDescription>
       <mediaDescription>
-        <multimedia url="https://wtmdradio.org/radiodns/WYPR_128X128_v1.jpg" width="128" height="128"/>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_128x128_v1.jpg" width="128" height="128"/>
       </mediaDescription>
       <mediaDescription>
-        <multimedia url="https://wtmdradio.org/radiodns/WYPR_320X240_v1.jpg" width="320" height="240"/>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_320x240_v1.jpg" width="320" height="240"/>
       </mediaDescription>
       <mediaDescription>
-        <multimedia url="https://wtmdradio.org/radiodns/WYPR_600X600_v1.jpg" width="600" height="600"/>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_600x600_v1.jpg" width="600" height="600"/>
       </mediaDescription>
+		<genre href="urn:tva:metadata:cs:ContentCS:2011:3.1" type="other">NON-FICTION/INFORMATION</genre>
+		<genre href="urn:tva:metadata:cs:ContentCS:2011:3.1.1" type="main">News</genre>
+		<keywords>WYPR, Baltimore, MD, breaking, news, traffic, weather, NPR, business, local, politics,</keywords>
+		<link description="Homepage" mimeValue="text/html" uri="https://wypr.org"/>
+		<link description="Instagram" mimeValue="text/html" uri="https://www.instagram.com/wypr881fm/"/>
+		<link description="Facebook" mimeValue="text/html" uri="https://www.facebook.com/WYPR881FM/"/>
+		<link description="YouTube" mimeValue="text/html" uri="https://www.youtube.com/user/WYPR881FMBaltimore"/>
+		<link description="TikTok" mimeValue="text/html" uri="https://www.tiktok.com/@wypr881fm"/>
+      <geolocation>
+        <country>US</country>
+		<point>39.331496, -76.657470</point>		
+      </geolocation>
+      <bearer id="fm:9a0.959f.08810" cost="31"/>
+      <bearer id="hd:292.100D9" cost="30"/>
+	  <bearer id="https://playerservices.streamtheworld.com/api/livestream-redirect/WYPR_HD1AAC.aac" cost="60" mimeValue="audio/aac" bitrate="32" offset="25000"/>
+	  <bearer id="https://playerservices.streamtheworld.com/api/livestream-redirect/WYPR_HD1.mp3" cost="65" mimeValue="audio/mpeg" bitrate="96" offset="25000"/>
+      <radiodns fqdn="wtmdradio.org" serviceIdentifier="wypr"/>
+    </service>
+    <service>
+      <shortName>WYPRHD2</shortName>
+      <mediumName>WYPR HD2</mediumName>
+      <mediaDescription>
+        <shortDescription>WYPR Presents BBC World Service</shortDescription>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_32x32_v1.jpg" width="32" height="32"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_112x32_v1.jpg" width="112" height="32"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_128x128_v1.jpg" width="128" height="128"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_320x240_v1.jpg" width="320" height="240"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_600x600_v1.jpg" width="600" height="600"/>
+      </mediaDescription>
+		<genre href="urn:tva:metadata:cs:ContentCS:2011:3.1" type="other">NON-FICTION/INFORMATION</genre>
+		<genre href="urn:tva:metadata:cs:ContentCS:2011:3.1.1" type="main">News</genre>
+		<keywords>WYPR, BBC, news, world, journalism, information,</keywords>
       <geolocation>
         <country>US</country>
       </geolocation>
-      <bearer id="fm:9a0.959f.08810" cost="100"/>
-      <bearer id="hd:." cost="101"/>
-      <radiodns fqdn="wtmdradio.org" serviceIdentifier="2"/>
+      <bearer id="hd:292.100D9.2" cost="30"/>
+	  <bearer id="https://playerservices.streamtheworld.com/api/livestream-redirect/WYPR_HD2AAC.aac" cost="60" mimeValue="audio/aac" bitrate="32" offset="25000"/>
+	  <bearer id="https://playerservices.streamtheworld.com/api/livestream-redirect/WYPR_HD2.mp3" cost="65" mimeValue="audio/mpeg" bitrate="96" offset="25000"/>
+      <radiodns fqdn="wtmdradio.org" serviceIdentifier="wyprhd2"/>
+    </service>
+	<service>
+      <shortName>WYPRHD3</shortName>
+      <mediumName>WYPR HD3</mediumName>
+      <mediaDescription>
+        <shortDescription>WYPR Presents Classical24</shortDescription>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_32x32_v1.jpg" width="32" height="32"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_112x32_v1.jpg" width="112" height="32"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_128x128_v1.jpg" width="128" height="128"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_320x240_v1.jpg" width="320" height="240"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_600x600_v1.jpg" width="600" height="600"/>
+      </mediaDescription>
+		<genre href="urn:tva:metadata:cs:ContentCS:2011:3.6" type="other">Music</genre>
+		<genre href="urn:tva:metadata:cs:ContentCS:2011:3.6.1" type="main">Classical Music</genre>
+		<keywords>WYPR, music, classical,</keywords>
+      <geolocation>
+        <country>US</country>
+      </geolocation>
+      <bearer id="hd:292.100D9.3" cost="30"/>
+	  <bearer id="https://playerservices.streamtheworld.com/api/livestream-redirect/WYPR_HD3AAC.aac" cost="60" mimeValue="audio/aac" bitrate="32" offset="25000"/>
+	  <bearer id="https://playerservices.streamtheworld.com/api/livestream-redirect/WYPR_HD3.mp3" cost="65" mimeValue="audio/mpeg" bitrate="96" offset="25000"/>
+      <radiodns fqdn="wtmdradio.org" serviceIdentifier="wyprhd3"/>
+    </service>	
+    <service>
+      <shortName>WYPF</shortName>
+      <mediumName>WYPF 88.1 FM</mediumName>
+      <mediaDescription>
+        <shortDescription>Your NPR News Station</shortDescription>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_32x32_v1.jpg" width="32" height="32"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_112x32_v1.jpg" width="112" height="32"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_128x128_v1.jpg" width="128" height="128"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_320x240_v1.jpg" width="320" height="240"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_600x600_v1.jpg" width="600" height="600"/>
+      </mediaDescription>
+		<genre href="urn:tva:metadata:cs:ContentCS:2011:3.1" type="other">NON-FICTION/INFORMATION</genre>
+		<genre href="urn:tva:metadata:cs:ContentCS:2011:3.1.1" type="main">News</genre>
+		<keywords>WYPF, Frederick, MD, breaking, news, traffic, weather, NPR, business, local, politics,</keywords>
+      <geolocation>
+        <country>US</country>
+		<point>39.492045, -77.499709</point>
+      </geolocation>
+      <bearer id="fm:9a0.9593.08810" cost="31"/>
+	  <bearer id="https://playerservices.streamtheworld.com/api/livestream-redirect/WYPR_HD1AAC.aac" cost="60" mimeValue="audio/aac" bitrate="32" offset="25000"/>
+	  <bearer id="https://playerservices.streamtheworld.com/api/livestream-redirect/WYPR_HD1.mp3" cost="65" mimeValue="audio/mpeg" bitrate="96" offset="25000"/>
+      <radiodns fqdn="wtmdradio.org" serviceIdentifier="wypf"/>
+    </service>
+    <service>
+      <shortName>WYPO</shortName>
+      <mediumName>WYPO 106.9 FM</mediumName>
+      <mediaDescription>
+        <shortDescription>Your NPR News Station</shortDescription>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_32x32_v1.jpg" width="32" height="32"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_112x32_v1.jpg" width="112" height="32"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_128x128_v1.jpg" width="128" height="128"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_320x240_v1.jpg" width="320" height="240"/>
+      </mediaDescription>
+      <mediaDescription>
+        <multimedia url="https://wtmdradio.org/radiodns/WYPR_600x600_v1.jpg" width="600" height="600"/>
+      </mediaDescription>
+		<genre href="urn:tva:metadata:cs:ContentCS:2011:3.1" type="other">NON-FICTION/INFORMATION</genre>
+		<genre href="urn:tva:metadata:cs:ContentCS:2011:3.1.1" type="main">News</genre>
+		<keywords>WYPO, Ocean, City, MD, breaking, news, traffic, weather, NPR, business, local, politics,</keywords>
+      <geolocation>
+        <country>US</country>
+		<point>38.327615, -75.196855</point>
+      </geolocation>
+      <bearer id="fm:9a0.959C.10690" cost="31"/>
+	  <bearer id="https://playerservices.streamtheworld.com/api/livestream-redirect/WYPR_HD1AAC.aac" cost="60" mimeValue="audio/aac" bitrate="32" offset="25000"/>
+	  <bearer id="https://playerservices.streamtheworld.com/api/livestream-redirect/WYPR_HD1.mp3" cost="65" mimeValue="audio/mpeg" bitrate="96" offset="25000"/>
+      <radiodns fqdn="wtmdradio.org" serviceIdentifier="wypo"/>
     </service>
   </services>
 </serviceInformation>
