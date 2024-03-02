@@ -1,0 +1,5 @@
+The Heart/Like project is shared between:
+
+    * The directory, build/website/playlist; and
+
+    * The repository, qplaylist-like.
