@@ -2,31 +2,30 @@
 @import url("../playlist-player-app/LatestFiveDemoCommon.css");
 
 :root {
-  --ask-width: 215rem; --AskWidth: 215;
-  --main-padding-left: 3rem; --MainPaddingLeft: 3;
-  --main-padding-right: 3rem; --MainPaddingRight: 3;
-  --main-div-padding-bottom: 0rem; --MainDivPaddingBottom: 0;
-  --main-div-padding-left: 0rem; --MainDivPaddingLeft: 0;
-  --main-div-padding-right: 0rem; --MainDivPaddingRight: 0;
-  --main-div-padding-top: 0rem; --MainDivPaddingTop: 0;
-  --h4-content-height: 22.5rem; --H4ContentHeight: 22.5;
-  --h4-padding-bottom: 1.6rem; --H4PaddingBottom: 1.6;
-  --swath-first-height: 53.8rem; --SwathFirstHeight: 53.8;
-  --swath-height: 53.8rem; --SwathHeight: 53.8;
-  --swath-last-height: 53.8rem; --SwathLastHeight: 53.8;
+--ask-width: 215rem; --AskWidth: 215;
+--main-padding-left: 3rem; --MainPaddingLeft: 3;
+--main-padding-right: 3rem; --MainPaddingRight: 3;
+--main-div-padding-bottom: 0rem; --MainDivPaddingBottom: 0;
+--main-div-padding-left: 0rem; --MainDivPaddingLeft: 0;
+--main-div-padding-right: 0rem; --MainDivPaddingRight: 0;
+--main-div-padding-top: 0rem; --MainDivPaddingTop: 0;
+--h4-content-height: 22.5rem; --H4ContentHeight: 22.5;
+--h4-padding-bottom: 1.6rem; --H4PaddingBottom: 1.6;
+--swath-first-height: 53.8rem; --SwathFirstHeight: 53.8;
+--swath-height: 53.8rem; --SwathHeight: 53.8;
+--swath-last-height: 53.8rem; --SwathLastHeight: 53.8;
 }
 body {
-/*    background-image: url("background.jpeg");*/
-    background-origin: border-box;
-    background-clip: border-box;
-    background-attachment: fixed;
-    background-repeat: round;
-    background-size: cover;
-    background-position: center;
-    font-family: Arial, 'Nimbus Sans', Helvetica, sans-serif;
-    color: black;
+	background-origin: border-box;
+	background-clip: border-box;
+	background-attachment: fixed;
+	background-repeat: round;
+	background-size: cover;
+	background-position: center;
+	font-family: Arial, 'Nimbus Sans', Helvetica, sans-serif;
+	color: black;
 }
 body > main > h4 {
-    font-size: 15rem;
-    font-weight: bold;
+	font-size: 15rem;
+	font-weight: bold;
 }

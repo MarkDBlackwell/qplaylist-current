@@ -2,28 +2,28 @@
 @import url("../playlist-player-app/LatestFiveLikeCommon.css");
 
 :root {
-  --border-radius: 5rem;
-  --swath-first-height: 76.1rem; --SwathFirstHeight: 76.1;
-  --swath-height: 73.1rem; --SwathHeight: 73.1;
-  --swath-last-height: 72.1rem; --SwathLastHeight: 72.1;
+--border-radius: 5rem;
+--swath-first-height: 76.1rem; --SwathFirstHeight: 76.1;
+--swath-height: 73.1rem; --SwathHeight: 73.1;
+--swath-last-height: 72.1rem; --SwathLastHeight: 72.1;
 }
 body {
-    color: white;
+	color: white;
 }
 body > main > div {
-    border-bottom-style: solid;
-    border-color: rgb(99, 104, 109);
-    border-width: 1rem;
+	border-bottom-style: solid;
+	border-color: rgb(99, 104, 109);
+	border-width: 1rem;
 }
 body > main > div:first-of-type {
-    height: var(--swath-first-height);
+	height: var(--swath-first-height);
 }
 body > main > div:last-of-type {
-    height: var(--swath-last-height);
-    border-bottom-style: unset;
-    border-bottom-left-radius: unset;
+	height: var(--swath-last-height);
+	border-bottom-style: unset;
+	border-bottom-left-radius: unset;
 }
 body > main > div:nth-of-type(odd) {
-    background: rgba(0, 0, 0, 0.528);
-    border-bottom-left-radius: var(--border-radius);
+	background: rgba(0, 0, 0, 0.528);
+	border-bottom-left-radius: var(--border-radius);
 }

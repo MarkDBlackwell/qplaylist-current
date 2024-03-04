@@ -1,32 +1,32 @@
 :root {
-/**  --iframe-like-width: 15.8rem; /* When dynamic hearts are ready, use this. */
-  --iframe-like-width: 9rem; /* Before dynamic hearts are ready, use this. */
-    font-size: calc(100lvh / var(--AskHeight));
+/**--iframe-like-width: 15.8rem; /* When dynamic hearts are ready, use this. */
+--iframe-like-width: 9rem; /* Before dynamic hearts are ready, use this. */
+	font-size: calc(100lvh / var(--AskHeight));
 }
 body {
-    height: 100lvh;
+	height: 100lvh;
 }
 body > main {
-    padding: 0;
+	padding: 0;
 }
 body > main > div {
-    height: 100lvh;
-    padding: 0;
-    overflow: hidden; /* Use this in production */
-    white-space: nowrap;
+	height: 100lvh;
+	padding: 0;
+	overflow: hidden;
+	white-space: nowrap;
 }
 body > main > div > iframe {
-    box-sizing: border-box;
-    height: 100lvh;
-    margin: 0;
-    padding: 0;
-    border-style: none;
-    border-width: 0;
-    overflow: hidden; /* Use this in production */
+	box-sizing: border-box;
+	height: 100lvh;
+	margin: 0;
+	padding: 0;
+	border-style: none;
+	border-width: 0;
+	overflow: hidden;
 }
 body > main > div > iframe#content {
-    width: calc(100lvw - var(--iframe-like-width));
+	width: calc(100lvw - var(--iframe-like-width));
 }
 body > main > div > iframe#like {
-    width: var(--iframe-like-width);
+	width: var(--iframe-like-width);
 }

@@ -2,42 +2,42 @@
 @import url("../playlist-player-app/LatestFiveNewCommon.css");
 
 :root {
-  --border-radius: 5rem;
-  --swath-first-height: 76.1rem; --SwathFirstHeight: 76.1;
-  --swath-height: 73.1rem; --SwathHeight: 73.1;
-  --swath-last-height: 72.1rem; --SwathLastHeight: 72.1;
+--border-radius: 5rem;
+--swath-first-height: 76.1rem; --SwathFirstHeight: 76.1;
+--swath-height: 73.1rem; --SwathHeight: 73.1;
+--swath-last-height: 72.1rem; --SwathLastHeight: 72.1;
 }
 body {
-    font-family: 'PT Sans Narrow', Arial, 'Nimbus Sans', Helvetica, sans-serif;
-    color: white;
+	font-family: 'PT Sans Narrow', Arial, 'Nimbus Sans', Helvetica, sans-serif;
+	color: white;
 }
 body > main > div {
-    padding: 5rem 1.5rem 4rem 0;
-    border-bottom-style: solid;
-    border-width: 1rem;
-    border-color: rgb(99, 104, 109);
+	padding: 5rem 1.5rem 4rem 0;
+	border-bottom-style: solid;
+	border-width: 1rem;
+	border-color: rgb(99, 104, 109);
 }
 body > main > div:first-of-type {
-    height: var(--swath-first-height);
-    padding-top: 8rem;
+	height: var(--swath-first-height);
+	padding-top: 8rem;
 }
 body > main > div:nth-of-type(odd) {
-    background: rgba(0, 0, 0, 0.528);
-    border-bottom-right-radius: var(--border-radius);
+	background: rgba(0, 0, 0, 0.528);
+	border-bottom-right-radius: var(--border-radius);
 }
 body > main > div:last-of-type {
-    height: var(--swath-last-height);
-    border-bottom-style: unset;
+	height: var(--swath-last-height);
+	border-bottom-style: unset;
 }
 body > main > div > p {
-    line-height: 1.5;
-    font-size: 15rem;
+	line-height: 1.5;
+	font-size: 15rem;
 }
 body > main > div > p:before {
-    font-size: 12rem;
+	font-size: 12rem;
 }
 /* start time */
 body > main > div > p:first-of-type {
-    padding-bottom: 1.6rem;
-    font-size: 11rem;
+	padding-bottom: 1.6rem;
+	font-size: 11rem;
 }

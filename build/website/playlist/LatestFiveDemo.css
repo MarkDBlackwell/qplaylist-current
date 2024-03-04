@@ -2,23 +2,23 @@
 @import url("../playlist-player-app/LatestFiveDemoCommon.css");
 
 :root {
-  --ask-width: 292rem; --AskWidth: 292;
-  --main-padding-left: 14rem; --MainPaddingLeft: 14;
-  --main-padding-right: 0rem; --MainPaddingRight: 0;
-  --main-div-padding-bottom: 0rem; --MainDivPaddingBottom: 0;
-  --main-div-padding-left: 0rem; --MainDivPaddingLeft: 0;
-  --main-div-padding-right: 0rem; --MainDivPaddingRight: 0;
-  --main-div-padding-top: 0rem; --MainDivPaddingTop: 0;
-  --h4-content-height: 27rem; --H4ContentHeight: 27;
-  --h4-padding-bottom: 23.9rem; --H4PaddingBottom: 23.9;
-  --swath-first-height: 76.1rem; --SwathFirstHeight: 76.1;
-  --swath-height: 73.1rem; --SwathHeight: 73.1;
-  --swath-last-height: 72.1rem; --SwathLastHeight: 72.1;
+--ask-width: 292rem; --AskWidth: 292;
+--main-padding-left: 14rem; --MainPaddingLeft: 14;
+--main-padding-right: 0rem; --MainPaddingRight: 0;
+--main-div-padding-bottom: 0rem; --MainDivPaddingBottom: 0;
+--main-div-padding-left: 0rem; --MainDivPaddingLeft: 0;
+--main-div-padding-right: 0rem; --MainDivPaddingRight: 0;
+--main-div-padding-top: 0rem; --MainDivPaddingTop: 0;
+--h4-content-height: 27rem; --H4ContentHeight: 27;
+--h4-padding-bottom: 23.9rem; --H4PaddingBottom: 23.9;
+--swath-first-height: 76.1rem; --SwathFirstHeight: 76.1;
+--swath-height: 73.1rem; --SwathHeight: 73.1;
+--swath-last-height: 72.1rem; --SwathLastHeight: 72.1;
 }
 body {
-    font-family: 'Open Sans Condensed', Arial, 'Nimbus Sans', Helvetica, sans-serif;
-    color: white;
+	font-family: 'Open Sans Condensed', Arial, 'Nimbus Sans', Helvetica, sans-serif;
+	color: white;
 }
 body > main > h4 {
-    font-size: 18rem;
+	font-size: 18rem;
 }

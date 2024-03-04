@@ -1,34 +1,34 @@
 :root {
-    font-size: calc(100lvh / var(--AskHeight));
+	font-size: calc(100lvh / var(--AskHeight));
 }
 body {
-    height: 100lvh;
-    font-family: 'PT Sans Narrow', 'Nimbus Sans', Helvetica, sans-serif;
+	height: 100lvh;
+	font-family: 'PT Sans Narrow', 'Nimbus Sans', Helvetica, sans-serif;
 }
 body > main {
-    padding: 0;
+	padding: 0;
 }
 body > main > div {
-    position: relative;
-    height: var(--swath-height);
-    padding: 0 0 0 1rem;
+	position: relative;
+	height: var(--swath-height);
+	padding: 0 0 0 1rem;
 }
 body > main > div > span {
-    position: absolute;
-    top: 50%;
-    margin: 0;
-    padding: 0;
-    visibility: hidden; /* When dynamic hearts are ready, show them by removing this. */
+	position: absolute;
+	top: 50%;
+	margin: 0;
+	padding: 0;
+	visibility: hidden; /* When dynamic hearts are ready, show them by removing this. */
 }
 body > main > div > span::after {
-    margin-top: -7.5rem; /* Move it up, half its height */
+	margin-top: -7.5rem; /* Move it up, half its height */
 }
 body > main > div > span.aloof::after {
-    font-size: 13rem; /* At most 15 for WebKit, 13 for Safari */
-    content: "\2661";
+	font-size: 13rem; /* At most 15 for WebKit, 13 for Safari */
+	content: "\2661";
 }
 body > main > div > span.like::after {
-    color: red;
-    font-size: 11rem; /* At most 15 for WebKit, 11 for Safari */
-    content: "\2764";
+	color: red;
+	font-size: 11rem; /* At most 15 for WebKit, 11 for Safari */
+	content: "\2764";
 }

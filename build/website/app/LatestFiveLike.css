@@ -2,29 +2,29 @@
 @import url("../playlist-player-app/LatestFiveLikeCommon.css");
 
 :root {
-  --border-radius: 10rem;
-  --swath-first-height: 53.8rem; --SwathFirstHeight: 53.8;
-  --swath-height: 53.8rem; --SwathHeight: 53.8;
-  --swath-last-height: 53.8rem; --SwathLastHeight: 53.8;
+--border-radius: 10rem;
+--swath-first-height: 53.8rem; --SwathFirstHeight: 53.8;
+--swath-height: 53.8rem; --SwathHeight: 53.8;
+--swath-last-height: 53.8rem; --SwathLastHeight: 53.8;
 }
 body {
-    color: black;
+	color: black;
 }
 body > main > div:first-of-type {
-    border-top-left-radius: var(--border-radius);
+	border-top-left-radius: var(--border-radius);
 }
 body > main > div:last-of-type {
-    border-bottom-left-radius: var(--border-radius);
+	border-bottom-left-radius: var(--border-radius);
 }
 body > main > div:nth-of-type(even) {
-    background: rgba(195, 195, 195, 0.82);
+	background: rgba(195, 195, 195, 0.82);
 }
 body > main > div:nth-of-type(odd) {
-    background: rgba(255, 255, 255, 0.82);
+	background: rgba(255, 255, 255, 0.82);
 }
 body > main > div > span.aloof::after {
-    text-shadow: 0.3rem 0.3rem black, 0.35rem 0.35rem black, 0.4rem 0.4rem black;
+	text-shadow: 0.3rem 0.3rem black, 0.35rem 0.35rem black, 0.4rem 0.4rem black;
 }
 body > main > div > span.like::after {
-    text-shadow: 0.3rem 0.3rem red, 0.35rem 0.35rem red, 0.4rem 0.4rem red;
+	text-shadow: 0.3rem 0.3rem red, 0.35rem 0.35rem red, 0.4rem 0.4rem red;
 }

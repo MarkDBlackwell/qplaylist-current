@@ -2,65 +2,59 @@
 @import url("../playlist-player-app/LatestFiveNewCommon.css");
 
 :root {
-  --border-radius: 10rem;
-  --swath-first-height: 53.8rem; --SwathFirstHeight: 53.8;
-  --swath-height: 53.8rem; --SwathHeight: 53.8;
-  --swath-last-height: 53.8rem; --SwathLastHeight: 53.8;
+--border-radius: 10rem;
+--swath-first-height: 53.8rem; --SwathFirstHeight: 53.8;
+--swath-height: 53.8rem; --SwathHeight: 53.8;
+--swath-last-height: 53.8rem; --SwathLastHeight: 53.8;
 }
 body {
-    font-family: Arial, 'Nimbus Sans', Helvetica, sans-serif;
-/*  color: black; */
-    color: white;
+	font-family: Arial, 'Nimbus Sans', Helvetica, sans-serif;
+	color: white;
 }
 body > main > div {
-    padding: 4rem 1.5rem 4rem 0;
+	padding: 4rem 1.5rem 4rem 0;
 }
 body > main > div:first-of-type {
-    border-top-right-radius: var(--border-radius);
+	border-top-right-radius: var(--border-radius);
 }
 body > main > div:nth-of-type(odd) {
-/*  background: rgba(255, 255, 255, 0.82); */
-    background: rgb(22, 22, 22);
+	background: rgb(22, 22, 22);
 }
 body > main > div:nth-of-type(even) {
-/*  background: rgba(195, 195, 195, 0.82); */
-    background: rgb(54, 55, 56);
+	background: rgb(54, 55, 56);
 }
 body > main > div:last-of-type {
-    border-bottom-right-radius: var(--border-radius);
+	border-bottom-right-radius: var(--border-radius);
 }
 body > main > div > p {
-    line-height: 1.154;
+	line-height: 1.154;
 }
 body > main > div > p:before {
-    font-style: normal;
+	font-style: normal;
 }
 /* start time */
 body > main > div > p:first-of-type {
-    height: 12.7rem;
-    padding-bottom: 1.95rem;
-    font-size: 11rem;
-    font-weight: bold;
-/*  color: rgb(0, 0, 230); */
-    color: rgb(238, 117, 0);
+	height: 12.7rem;
+	padding-bottom: 1.95rem;
+	font-size: 11rem;
+	font-weight: bold;
+	color: rgb(238, 117, 0);
 }
 /* song title */
 body > main > div > p:nth-of-type(2) {
-    height: 16.15rem;
-    font-size: 14rem;
+	height: 16.15rem;
+	font-size: 14rem;
 }
-/* song title */
 body > main > div > p:nth-of-type(2):before {
-    display: none;
+	display: none;
 }
 /* artist */
 body > main > div > p:last-of-type {
-    height: 15rem;
-    font-size: 13rem;
-/*  color: rgb(34, 34, 34); */
-    color: rgb(221, 221, 221);
+	height: 15rem;
+	font-size: 13rem;
+	color: rgb(221, 221, 221);
 }
 body > main > div > p:last-of-type:before {
-    font-style: italic;
-    display: none;
+	font-style: italic;
+	display: none;
 }
