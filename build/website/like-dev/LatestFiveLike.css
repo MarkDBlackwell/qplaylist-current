@@ -8,7 +8,7 @@
 --swath-last-height: 53.8rem; --SwathLastHeight: 53.8;
 }
 body {
-	color: black;
+	color: white;
 }
 body > main > div:first-of-type {
 	border-top-left-radius: var(--border-radius);
@@ -17,16 +17,16 @@ body > main > div:last-of-type {
 	border-bottom-left-radius: var(--border-radius);
 }
 body > main > div:nth-of-type(even) {
-	background: rgba(195, 195, 195, 0.82);
+	background: rgb(54, 55, 56);
 }
 body > main > div:nth-of-type(odd) {
-	background: rgba(255, 255, 255, 0.82);
+	background: rgb(22, 22, 22);
 }
 body > main > div > span {
 	visibility: visible;
 }
 body > main > div > span.aloof::after {
-	text-shadow: 0.3rem 0.3rem black, 0.35rem 0.35rem black, 0.4rem 0.4rem black;
+	text-shadow: 0.3rem 0.3rem white, 0.35rem 0.35rem white, 0.4rem 0.4rem white;
 }
 body > main > div > span.like::after {
 	text-shadow: 0.3rem 0.3rem red, 0.35rem 0.35rem red, 0.4rem 0.4rem red;

@@ -9,7 +9,7 @@
 }
 body {
 	font-family: Arial, 'Nimbus Sans', Helvetica, sans-serif;
-	color: black;
+	color: white;
 }
 body > main > div {
 	padding: 4rem 1.5rem 4rem 0;
@@ -18,10 +18,10 @@ body > main > div:first-of-type {
 	border-top-right-radius: var(--border-radius);
 }
 body > main > div:nth-of-type(odd) {
-	background: rgba(255, 255, 255, 0.82);
+	background: rgb(22, 22, 22);
 }
 body > main > div:nth-of-type(even) {
-	background: rgba(195, 195, 195, 0.82);
+	background: rgb(54, 55, 56);
 }
 body > main > div:last-of-type {
 	border-bottom-right-radius: var(--border-radius);
@@ -38,7 +38,7 @@ body > main > div > p:first-of-type {
 	padding-bottom: 1.95rem;
 	font-size: 11rem;
 	font-weight: bold;
-	color: rgb(51, 165, 174);
+	color: rgb(238, 117, 0);
 }
 /* song title */
 body > main > div > p:nth-of-type(2) {
@@ -52,7 +52,7 @@ body > main > div > p:nth-of-type(2):before {
 body > main > div > p:last-of-type {
 	height: 15rem;
 	font-size: 13rem;
-	color: rgb(34, 34, 34);
+	color: rgb(221, 221, 221);
 }
 body > main > div > p:last-of-type:before {
 	font-style: italic;
