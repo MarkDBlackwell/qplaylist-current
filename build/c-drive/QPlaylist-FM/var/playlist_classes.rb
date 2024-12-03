@@ -68,7 +68,7 @@ module Playlist
     end
 
     def song_current
-      @@song_current_value ||= %i[artist title].map(&:capitalize).map(&:to_s).map {|k| "#{relevant_hash[k].first.strip}\n"}.join ''
+      @@song_current_value ||= %w[Artist Title CutId].map {|k| "#{relevant_hash[k].first.strip}\n"}.join ''
     end
 
     def values
