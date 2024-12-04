@@ -33,6 +33,7 @@ module Playlist
   end
 
   class Snapshot
+    DUPLICATION_WHITELIST = [['with Paul Hartman', 'Detour']] # Artist, Title.
     NON_XML_KEYS = %i[ current_time ]
         XML_KEYS = %i[ artist  title ]
     KEYS = NON_XML_KEYS + XML_KEYS
@@ -68,7 +69,15 @@ module Playlist
     end
 
     def song_current
-      @@song_current_value ||= %w[Artist Title CutId].map {|k| "#{relevant_hash[k].first.strip}\n"}.join ''
+      @@song_current_value ||= begin
+        artist, title, cut_id = %w[Artist Title CutId].map {|k| relevant_hash[k].first.strip}
+        fields = if DUPLICATION_WHITELIST.include? [artist, title]
+          [artist, title, cut_id]
+        else
+          [artist, title]
+        end
+        fields.map {|e| "#{e}\n"}.join ''
+      end
     end
 
     def values
