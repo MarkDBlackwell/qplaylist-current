@@ -1,7 +1,6 @@
 rem Author: Mark D. Blackwell
 rem Change dates:
 rem November 13, 2013 - created
-rem August 10, 2022 - Added an output file for the Internet stream
 rem
 rem Usage:
 rem   live-update.vbs {file path of WideOrbit-generated file, NowPlaying.xml}
@@ -18,36 +17,23 @@ rem   http://wiki.mcneel.com/developer/vbsstatements
 
 Const CharSpace = " "
 Const CreateIfNotExist = True
-Const EndOfLineStream = ""
 Const ErrorExitCodeFileNonexistent = 3
 Const ErrorExitCodeFilePathBad = 2
 Const ErrorExitCodeMissingArgument = 1
-Const FieldSeparatorStream = " - "
-Const FileBasenameStream = "StreamFM.txt"
 Const FilePathXmlArgumentPosition = 0
 Const ForWriting = 2
 Const MessageMissing = "The required command-line argument is missing"
 Const MessageNonexistent = "Specified by a command-line argument, the file is nonexistent"
 Const MessageTerminating = "...terminating."
 Const OpenAsAscii = 0
-Const PadWidth = 30
 Const PromptPrefix = "Current Song "
 
-rem The following contains thirty spaces:
-Const Padding = "                              "
-
 Dim artist
-Dim artistPadded
 Dim artistRaw
-Dim artistShort
-Dim filePathParentStream
-Dim filePathStream
 Dim filePathXml
 Dim n
 Dim objFilesys
-Dim objOutputTextFileHandleStream
 Dim objOutputTextFileHandleXml
-Dim outputStringStream
 Dim outputStringXml
 Dim promptArtist
 Dim promptTitle
@@ -56,9 +42,7 @@ Dim stringOne
 Dim stringThree
 Dim stringTwo
 Dim title
-Dim titlePadded
 Dim titleRaw
-Dim titleShort
 
 n = Chr(13) & Chr(10)
 
@@ -121,10 +105,6 @@ If Not objFilesys.FileExists(filePathXml) Then
     WScript.Quit(ErrorExitCodeFileNonexistent)
 End If
 
-filePathParentStream = objFilesys.GetParentFolderName(filePathXml)
-
-filePathStream = objFilesys.BuildPath(filePathParentStream, FileBasenameStream)
-
 WScript.StdOut.Write startupMessage
 
 Do While True
@@ -137,31 +117,16 @@ Do While True
     artist = Trim(Replace(artistRaw, vbTab, CharSpace))
     title  = Trim(Replace(titleRaw,  vbTab, CharSpace))
 
-    artistShort = Left(artist, PadWidth)
-    titleShort  = Left(title,  PadWidth)
-
-    artistPadded = Left(artistShort & Padding, PadWidth)
-    titlePadded  = Left(titleShort  & Padding, PadWidth)
-
     outputStringXml = _
       stringOne    & title  & _
       stringTwo    & artist & _
       stringThree  & n
 
-    outputStringStream = _
-      titlePadded           & _
-      FieldSeparatorStream  & _
-      artistPadded          & _
-      EndOfLineStream
-
     Set objOutputTextFileHandleXml    = objFilesys.OpenTextFile(filePathXml,    ForWriting, CreateIfNotExist, OpenAsAscii)
-    Set objOutputTextFileHandleStream = objFilesys.OpenTextFile(filePathStream, ForWriting, CreateIfNotExist, OpenAsAscii)
 
     objOutputTextFileHandleXml.Write    outputStringXml
-    objOutputTextFileHandleStream.Write outputStringStream
 
     objOutputTextFileHandleXml.Close
-    objOutputTextFileHandleStream.Close
 
     WScript.StdOut.Write "Updated." & n & n
 Loop
