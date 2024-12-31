@@ -1,6 +1,7 @@
 rem Author: Mark D. Blackwell
 rem Change dates:
 rem November 13, 2013 - created
+rem December 30, 2024 - Output meta info for cars
 rem
 rem Usage:
 rem   live-update.vbs {file path of WideOrbit-generated file, NowPlaying.xml}
@@ -20,6 +21,7 @@ Const CreateIfNotExist = True
 Const ErrorExitCodeFileNonexistent = 3
 Const ErrorExitCodeFilePathBad = 2
 Const ErrorExitCodeMissingArgument = 1
+Const FileBasenameMeta = "MetaNowPlayingTest.xml"
 Const FilePathXmlArgumentPosition = 0
 Const ForWriting = 2
 Const MessageMissing = "The required command-line argument is missing"
@@ -30,10 +32,14 @@ Const PromptPrefix = "Current Song "
 
 Dim artist
 Dim artistRaw
+Dim filePathParentMeta
+Dim filePathMeta
 Dim filePathXml
 Dim n
 Dim objFilesys
+Dim objOutputTextFileHandleMeta
 Dim objOutputTextFileHandleXml
+Dim outputStringMeta
 Dim outputStringXml
 Dim promptArtist
 Dim promptTitle
@@ -84,6 +90,32 @@ _
 "</Events>"                 & n & _
 "</NowPlaying>"
 
+stringOneMeta = _
+"<nowplaying>"                       & n & _
+"<sched_time>00000000</sched_time>"  & n & _
+"<air_time>00000000</air_time>"      & n & _
+"<stack_pos></stack_pos>"            & n & _
+"<title>"
+
+stringTwoMeta = _
+"</title>"  & n & _
+"<artist>"
+
+stringThreeMeta = _
+"</artist>"                                & n & _
+"<trivia></trivia>"                        & n & _
+"<category>MUS</category>"                 & n & _
+"<cart>0000</cart>"                        & n & _
+"<intro>0</intro>"                         & n & _
+"<end></end>"                              & n & _
+"<station>WTMD-FM</station>"               & n & _
+"<duration>180000</duration>"              & n & _
+"<media_type>SONG</media_type>"            & n & _
+"<milliseconds_left></milliseconds_left>"  & n & _
+"<Album></Album>"                          & n & _
+"<Label></Label>"                          & n & _
+"</nowplaying>"
+
 If WScript.Arguments.Count < 1 Then
     WScript.StdOut.Write _
     MessageMissing & _
@@ -105,6 +137,10 @@ If Not objFilesys.FileExists(filePathXml) Then
     WScript.Quit(ErrorExitCodeFileNonexistent)
 End If
 
+filePathParentMeta = objFilesys.GetParentFolderName(filePathXml)
+
+filePathMeta = objFilesys.BuildPath(filePathParentMeta, FileBasenameMeta)
+
 WScript.StdOut.Write startupMessage
 
 Do While True
@@ -122,11 +158,19 @@ Do While True
       stringTwo    & artist & _
       stringThree  & n
 
+    outputStringMeta = _
+      stringOneMeta    & title  & _
+      stringTwoMeta    & artist & _
+      stringThreeMeta  & n
+
     Set objOutputTextFileHandleXml    = objFilesys.OpenTextFile(filePathXml,    ForWriting, CreateIfNotExist, OpenAsAscii)
+    Set objOutputTextFileHandleMeta   = objFilesys.OpenTextFile(filePathMeta,   ForWriting, CreateIfNotExist, OpenAsAscii)
 
     objOutputTextFileHandleXml.Write    outputStringXml
+    objOutputTextFileHandleMeta.Write   outputStringMeta
 
     objOutputTextFileHandleXml.Close
+    objOutputTextFileHandleMeta.Close
 
     WScript.StdOut.Write "Updated." & n & n
 Loop
