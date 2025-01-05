@@ -23,8 +23,8 @@ Const CreateIfNotExist = True
 Const ErrorExitCodeFileNonexistent = 3
 Const ErrorExitCodeFilePathBad = 2
 Const ErrorExitCodeMissingArgument = 1
-Const FileBasenameMeta = "MetaNowPlaying.xml"
-Const FilePathXmlArgumentPosition = 0
+Const FileMetaBasename = "MetaNowPlaying.xml"
+Const FilePathNowPlayingArgumentPosition = 0
 Const ForWriting = 2
 Const MessageMissing = "The required command-line argument is missing"
 Const MessageNonexistent = "Specified by a command-line argument, the file is nonexistent"
@@ -34,28 +34,28 @@ Const PromptPrefix = "Current Song "
 
 Dim artist
 Dim artistRaw
-Dim filePathParentMeta
 Dim filePathMeta
-Dim filePathXml
+Dim filePathNowPlaying
+Dim filePathParentMeta
+Dim fillBeforeAirTimeMeta
+Dim fillBeforeArtistMeta
+Dim fillBeforeArtistNowPlaying
+Dim fillBeforeTitleMeta
+Dim fillBeforeTitleNowPlaying
+Dim fillFinalMeta
+Dim fillFinalNowPlaying
 Dim n
 Dim nowInMilliseconds
 Dim nowInSeconds
 Dim nowMillisecondsPart
 Dim objFilesys
 Dim objOutputTextFileHandleMeta
-Dim objOutputTextFileHandleXml
+Dim objOutputTextFileHandleNowPlaying
 Dim outputStringMeta
-Dim outputStringXml
+Dim outputStringNowPlaying
 Dim promptArtist
 Dim promptTitle
 Dim startupMessage
-Dim stringFourMeta
-Dim stringOne
-Dim stringOneMeta
-Dim stringThree
-Dim stringThreeMeta
-Dim stringTwo
-Dim stringTwoMeta
 Dim timerNow
 Dim title
 Dim titleRaw
@@ -72,7 +72,7 @@ promptTitle  = PromptPrefix &  "Title: "
 
 rem Most of the XML fields below are ignored by the Simple XML parser, but are included here for completeness:
 
-stringOne = _
+fillBeforeTitleNowPlaying = _
 "<?xml version='1.0' encoding='ISO-8859-1'?>"              & n & _
 "<?xml-stylesheet type='text/xsl' href='NowPlaying.xsl'?>" & n & _
 "<NowPlaying>"                     & n & _
@@ -86,11 +86,11 @@ _
 "<SecondsRemaining>  </SecondsRemaining>"  & n & _
 "<Title><![CDATA["
 
-stringTwo = _
+fillBeforeArtistNowPlaying = _
 "]]></Title>"       & n & _
 "<Artist><![CDATA["
 
-stringThree = _
+fillFinalNowPlaying = _
 "]]></Artist>"              & n & _
 "<Intro>00</Intro>"         & n & _
 "<Len>04:57</Len>"          & n & _
@@ -100,21 +100,21 @@ _
 "</Events>"                 & n & _
 "</NowPlaying>"
 
-stringOneMeta = _
+fillBeforeAirTimeMeta = _
 "<nowplaying>"                       & n & _
 "<sched_time>00000000</sched_time>"  & n & _
 "<air_time>"
 
-stringTwoMeta = _
+fillBeforeTitleMeta = _
 "</air_time>"              & n & _
 "<stack_pos></stack_pos>"  & n & _
 "<title>"
 
-stringThreeMeta = _
+fillBeforeArtistMeta = _
 "</title>"  & n & _
 "<artist>"
 
-stringFourMeta = _
+fillFinalMeta = _
 "</artist>"                                & n & _
 "<trivia></trivia>"                        & n & _
 "<category>MUS</category>"                 & n & _
@@ -138,21 +138,21 @@ End If
 
 Set objFilesys = CreateObject("Scripting.FileSystemObject")
 
-filePathXml = WScript.Arguments(FilePathXmlArgumentPosition)
+filePathNowPlaying = WScript.Arguments(FilePathNowPlayingArgumentPosition)
 
 rem Normally, this file will exist, already.
 rem (So, this check helps us to validate the argument.):
 
-If Not objFilesys.FileExists(filePathXml) Then
+If Not objFilesys.FileExists(filePathNowPlaying) Then
     WScript.StdOut.Write _
     MessageNonexistent & _
     MessageTerminating & n
     WScript.Quit(ErrorExitCodeFileNonexistent)
 End If
 
-filePathParentMeta = objFilesys.GetParentFolderName(filePathXml)
+filePathParentMeta = objFilesys.GetParentFolderName(filePathNowPlaying)
 
-filePathMeta = objFilesys.BuildPath(filePathParentMeta, FileBasenameMeta)
+filePathMeta = objFilesys.BuildPath(filePathParentMeta, FileMetaBasename)
 
 WScript.StdOut.Write startupMessage
 
@@ -171,24 +171,24 @@ Do While True
     nowMillisecondsPart = Fix((timerNow - nowInSeconds) * 1000)
     nowInMilliseconds = nowInSeconds & nowMillisecondsPart
 
-    outputStringXml = _
-      stringOne    & title  & _
-      stringTwo    & artist & _
-      stringThree  & n
+    outputStringNowPlaying = _
+      fillBeforeTitleNowPlaying  & title  & _
+      fillBeforeArtistNowPlaying & artist & _
+      fillFinalNowPlaying        & n
 
     outputStringMeta = _
-      stringOneMeta    & nowInMilliseconds & _
-      stringTwoMeta    & title             & _
-      stringThreeMeta  & artist            & _
-      stringFourMeta   & n
+      fillBeforeAirTimeMeta & nowInMilliseconds & _
+      fillBeforeTitleMeta   & title             & _
+      fillBeforeArtistMeta  & artist            & _
+      fillFinalMeta         & n
 
-    Set objOutputTextFileHandleXml    = objFilesys.OpenTextFile(filePathXml,    ForWriting, CreateIfNotExist, OpenAsAscii)
-    Set objOutputTextFileHandleMeta   = objFilesys.OpenTextFile(filePathMeta,   ForWriting, CreateIfNotExist, OpenAsAscii)
+    Set objOutputTextFileHandleNowPlaying = objFilesys.OpenTextFile(filePathNowPlaying, ForWriting, CreateIfNotExist, OpenAsAscii)
+    Set objOutputTextFileHandleMeta       = objFilesys.OpenTextFile(filePathMeta,       ForWriting, CreateIfNotExist, OpenAsAscii)
 
-    objOutputTextFileHandleXml.Write    outputStringXml
-    objOutputTextFileHandleMeta.Write   outputStringMeta
+    objOutputTextFileHandleNowPlaying.Write outputStringNowPlaying
+    objOutputTextFileHandleMeta.Write       outputStringMeta
 
-    objOutputTextFileHandleXml.Close
+    objOutputTextFileHandleNowPlaying.Close
     objOutputTextFileHandleMeta.Close
 
     WScript.StdOut.Write "Updated." & n & n
