@@ -107,6 +107,9 @@ rem Navigate in order to run the Ruby program:
 %script-drive%
 cd %program-location%\
 
+rem PATH=C:\Ruby\bin;%PATH%
+PATH=C:\Ruby32-x64\bin;%PATH%
+
 rem Run the Ruby program:
 start /wait cmd /C ruby playlist.rb
 
