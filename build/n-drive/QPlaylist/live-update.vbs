@@ -16,6 +16,8 @@ rem   http://www.devguru.com/technologies/VBScript/14075
 rem   http://rosettacode.org/wiki/Here_document#VBScript
 rem   http://wiki.mcneel.com/developer/vbsstatements
 
+rem Constants cannot be defined by expressions.
+
 Const CharSpace = " "
 Const CreateIfNotExist = True
 Const ErrorExitCodeFileNonexistent = 3
@@ -47,9 +49,13 @@ Dim outputStringXml
 Dim promptArtist
 Dim promptTitle
 Dim startupMessage
+Dim stringFourMeta
 Dim stringOne
+Dim stringOneMeta
 Dim stringThree
+Dim stringThreeMeta
 Dim stringTwo
+Dim stringTwoMeta
 Dim timerNow
 Dim title
 Dim titleRaw
