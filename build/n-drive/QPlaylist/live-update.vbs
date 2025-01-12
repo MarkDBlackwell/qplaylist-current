@@ -46,8 +46,6 @@ Dim fillFinalMeta
 Dim fillFinalNowPlaying
 Dim n
 Dim nowInMilliseconds
-Dim nowInSeconds
-Dim nowMillisecondsPart
 Dim objFilesys
 Dim objOutputTextFileHandleMeta
 Dim objOutputTextFileHandleNowPlaying
@@ -167,9 +165,7 @@ Do While True
     title  = Trim(Replace(titleRaw,  vbTab, CharSpace))
 
     timerNow = Timer()
-    nowInSeconds = Fix(timerNow)
-    nowMillisecondsPart = Fix((timerNow - nowInSeconds) * 1000)
-    nowInMilliseconds = nowInSeconds & nowMillisecondsPart
+    nowInMilliseconds = CLng(Fix(timerNow * 1000))
 
     outputStringNowPlaying = _
       fillBeforeTitleNowPlaying  & title  & _
