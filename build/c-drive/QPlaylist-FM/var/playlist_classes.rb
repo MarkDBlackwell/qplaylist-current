@@ -120,7 +120,7 @@ module Playlist
 
   class Run
 # Convert Windows backslashes to forward slashes:
-    DIRECTORY_RUNNER = ::File.absolute_path ::ENV['qplaylist-runner-location']
+    DIRECTORY_RUNNER = ::File.absolute_path ::ENV['qplaylist_runner_location']
 
     NOW_PLAYING_KEYS = Snapshot::KEYS
     SONG_KEYS        = %i[date   start_time artist     title] # Keep order.

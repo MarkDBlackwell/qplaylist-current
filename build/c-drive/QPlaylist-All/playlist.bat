@@ -12,25 +12,25 @@ rem       streams.
 
 rem --------------
 rem %cd:~0,2% is the current drive:
-set original-working-drive=%cd:~0,2%
+set original_working_drive=%cd:~0,2%
 
 rem %cd% is the current drive and working directory, without trailing
 rem  backslash:
-set original-working-location=%cd%
+set original_working_location=%cd%
 
 rem %~d0 is the drive containing this Windows batch script:
-set script-drive=%~d0
+set script_drive=%~d0
 
 rem %~p0 is the path to the directory containing this Windows batch
 rem script. It includes a trailing backslash:
-set script-directory-path=%~p0
+set script_directory_path=%~p0
 
 rem --------------
 rem Process the FM song stream:
 
 rem Navigate to the directory containing the song stream's batch file:
-%script-drive%
-cd %script-directory-path%..\QPlaylist-FM\etc\
+%script_drive%
+cd %script_directory_path%..\QPlaylist-FM\etc\
 
 start /wait playlist.bat
 
@@ -38,12 +38,12 @@ rem --------------
 rem Process the HD2 song stream:
 
 rem Navigate to the directory containing the song stream's batch file:
-%script-drive%
-cd %script-directory-path%..\QPlaylist-HD2\etc\
+%script_drive%
+cd %script_directory_path%..\QPlaylist-HD2\etc\
 
 start /wait playlist.bat
 
 rem --------------
 rem In the parent console, restore the original working drive and directory:
-%original-working-drive%
-cd %original-working-location%\
+%original_working_drive%
+cd %original_working_location%\
