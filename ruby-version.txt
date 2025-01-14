@@ -3,8 +3,8 @@ On WTMD_Prod computer:
 
 Ruby version:
 
-C:\Users\WTMD_Prod>ruby --version
-ruby 2.2.5p319 (2016-04-26 revision 54774) [x64-mingw32]
+C:\Users\WTMD_Prod>\Ruby32-x64\bin\ruby --version
+ruby 3.2.3 (2024-01-18 revision 52bb2ac0a6) [x64-mingw-ucrt]
 
 ===============
 On Mycroft Windows 7 development computer:
@@ -12,4 +12,11 @@ On Mycroft Windows 7 development computer:
 Ruby version:
 
 >ruby --version
-ruby 2.2.5p319 (2016-04-26 revision 54774) [i386-mingw32]
+ruby 3.2.3 (2024-01-18 revision 52bb2ac0a6) [x64-mingw-ucrt]
+
+===============
+On laptop Linux development computer:
+
+Ruby version:
+
+ruby 3.2.3 (2024-01-18 revision 52bb2ac0a6) [x86_64-linux]
