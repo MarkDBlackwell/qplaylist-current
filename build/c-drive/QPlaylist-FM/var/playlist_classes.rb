@@ -48,6 +48,10 @@ module Playlist
       end
     end
 
+    def cart_number
+      @@cart_number_value ||= relevant_hash['CutId'].first.strip
+    end
+
     def channel_main
       @@channel_main_value ||= begin
         main_sign = '-FM'
@@ -70,9 +74,9 @@ module Playlist
 
     def song_current
       @@song_current_value ||= begin
-        artist, title, cut_id = %w[Artist Title CutId].map {|k| relevant_hash[k].first.strip}
+        artist, title = %w[Artist Title].map {|k| relevant_hash[k].first.strip}
         fields = if DUPLICATION_WHITELIST.include? [artist, title]
-          [artist, title, cut_id]
+          [artist, title, cart_number]
         else
           [artist, title]
         end
@@ -304,7 +308,7 @@ module Playlist
 
     def start_and_return_immediately(basename)
       filename = ::File.join DIRECTORY_RUNNER, 'lib', basename
-      command = "start %COMSPEC% /C ruby #{filename}"
+      command = "start %COMSPEC% /C ruby #{filename} #{snapshot.cart_number}"
       ::Kernel.system command
       nil # Return nothing.
     end
