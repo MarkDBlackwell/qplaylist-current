@@ -56,6 +56,9 @@ set program_location=%volatiles_location%
 rem WideOrbit NowPlaying XML input file basename:
 set now_playing_basename=NowPlaying.xml
 
+rem WideOrbit Meta NowPlaying XML output file basename:
+set now_playing_meta_basename=MetaNowPlaying.xml
+
 rem QPlaylist-runner location:
 set qplaylist_runner_location=%WideOrbit_drive%\QPlaylist-runner
 
