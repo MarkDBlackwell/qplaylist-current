@@ -39,7 +39,7 @@ module Playlist
     KEYS = NON_XML_KEYS + XML_KEYS
 
     def blacklisted
-      @@blacklisted_value ||= begin
+      @@blacklisted ||= begin
 #  Allow blacklisting of these categories of NowPlaying.XML data:
 # PRO - House Promotional Spot
 # UWR - Underwriting Announcement
@@ -49,11 +49,11 @@ module Playlist
     end
 
     def cartridge_number
-      @@cartridge_number_value ||= relevant_hash['CutId'].first.strip
+      @@cartridge_number ||= relevant_hash['CutId'].first.strip
     end
 
     def channel_main
-      @@channel_main_value ||= begin
+      @@channel_main ||= begin
         main_sign = '-FM'
         channel = xml_tree['Call'].first.strip
         channel.end_with? main_sign
@@ -63,17 +63,17 @@ module Playlist
     def prerecorded
 #  Allow additional handling of this category of NowPlaying.XML data:
 # SPL - Special Program
-      @@prerecorded_value ||= 'SPL' == category
+      @@prerecorded ||= 'SPL' == category
     end
 
     def song_automatic
 #  Allow additional handling of this category of NowPlaying.XML data:
 # MUS - Music
-      @@song_automatic_value ||= 'MUS' == category
+      @@song_automatic ||= 'MUS' == category
     end
 
     def song_current
-      @@song_current_value ||= begin
+      @@song_current ||= begin
         artist, title = %w[Artist Title].map {|k| relevant_hash[k].first.strip}
         fields = if DUPLICATION_WHITELIST.include? [artist, title]
           [artist, title, cartridge_number]
@@ -85,17 +85,17 @@ module Playlist
     end
 
     def values
-      @@values_value ||= non_xml_values + xml_values
+      @@values ||= non_xml_values + xml_values
     end
 
     protected
 
     def category
-      @@category_value ||= relevant_hash['CatId'].first.strip
+      @@category ||= relevant_hash['CatId'].first.strip
     end
 
     def non_xml_values
-      @@non_xml_values_value ||= begin
+      @@non_xml_values ||= begin
         NON_XML_KEYS.map do |k|
           case k
           when :current_time
@@ -109,16 +109,16 @@ module Playlist
     end
 
     def relevant_hash
-      @@relevant_hash_value ||= xml_tree['Events'].first['SS32Event'].first
+      @@relevant_hash ||= xml_tree['Events'].first['SS32Event'].first
     end
 
     def xml_tree
 # See http://xml-simple.rubyforge.org/
-      @@xml_tree_value ||= ::XmlSimple.xml_in 'now_playing.xml', { KeyAttr: 'name' }
+      @@xml_tree ||= ::XmlSimple.xml_in 'now_playing.xml', { KeyAttr: 'name' }
     end
 
     def xml_values
-      @@xml_values_value ||= XML_KEYS.map(&:capitalize).map(&:to_s).map {|k| relevant_hash[k].first.strip}
+      @@xml_values ||= XML_KEYS.map(&:capitalize).map(&:to_s).map {|k| relevant_hash[k].first.strip}
     end
   end #class
 
@@ -138,7 +138,7 @@ module Playlist
     SONG_LATEST_BLANK = SongLatest.new *([''] * SONG_LATEST_KEYS.length)
 
     def compare_recent
-      @@compare_recent_value ||= begin
+      @@compare_recent ||= begin
         filename = 'current-song.txt'
         ::FileUtils.touch filename
         current = snapshot.song_current
@@ -196,7 +196,7 @@ module Playlist
     end
 
     def latest_few_songs_get
-      @@latest_few_songs_get_value ||= begin
+      @@latest_few_songs_get ||= begin
         songs = recent_songs_get.last LATEST_FEW_COUNT
         keys_common = SONG_KEYS & SONG_LATEST_KEYS
         latest = songs.map do |song|
@@ -212,7 +212,7 @@ module Playlist
     end
 
     def latest_few_values
-      @@latest_few_values_value ||= latest_few_songs_get.reverse.map(&:values).flatten
+      @@latest_few_values ||= latest_few_songs_get.reverse.map(&:values).flatten
     end
 
     def mustache(filename)
@@ -222,11 +222,11 @@ module Playlist
     end
 
     def now_playing_values
-      @@now_playing_values_value ||= snapshot.values
+      @@now_playing_values ||= snapshot.values
     end
 
     def recent_songs_get
-      @@recent_songs_get_value ||= begin
+      @@recent_songs_get ||= begin
         n = ::Time.now.localtime.round
 # All of "%4Y", "%2m" and "%2d" are zero-padded.
         year_month_day = ::Time.new(n.year, n.month, n.day).strftime '%4Y %2m %2d'
@@ -240,7 +240,7 @@ module Playlist
     end
 
     def recent_songs_parse(lines_raw)
-      @@recent_songs_parse_value ||= begin
+      @@recent_songs_parse ||= begin
         lines_per_song = SONG_KEYS.length
         lines = lines_raw.map &:chomp
         safe = lines.length - lines.length % lines_per_song
@@ -303,7 +303,7 @@ module Playlist
     end
 
     def snapshot
-      @@snapshot_value ||= ::Playlist::Snapshot.new
+      @@snapshot ||= ::Playlist::Snapshot.new
     end
 
     def start_and_return_immediately(basename)
