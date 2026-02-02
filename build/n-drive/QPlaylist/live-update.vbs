@@ -2,6 +2,7 @@ rem Author: Mark D. Blackwell
 rem Change dates:
 rem November 13, 2013 - created
 rem December 30, 2024 - Output meta info for cars
+rem February 2, 2026  - Expand meta info for album art
 rem
 rem Usage:
 rem   live-update.vbs {file path of WideOrbit-generated file, NowPlaying.xml}
@@ -40,6 +41,8 @@ Dim filePathParentMeta
 Dim fillBeforeAirTimeMeta
 Dim fillBeforeArtistMeta
 Dim fillBeforeArtistNowPlaying
+Dim fillBeforeScheduledArtistMeta
+Dim fillBeforeScheduledTitleMeta
 Dim fillBeforeTitleMeta
 Dim fillBeforeTitleNowPlaying
 Dim fillFinalMeta
@@ -84,9 +87,13 @@ _
 "<SecondsRemaining>  </SecondsRemaining>"  & n & _
 "<Title><![CDATA["
 
+rem Messy
+
 fillBeforeArtistNowPlaying = _
 "]]></Title>"       & n & _
 "<Artist><![CDATA["
+
+rem Lola Young
 
 fillFinalNowPlaying = _
 "]]></Artist>"              & n & _
@@ -108,11 +115,15 @@ fillBeforeTitleMeta = _
 "<stack_pos></stack_pos>"  & n & _
 "<title>"
 
+rem Messy
+
 fillBeforeArtistMeta = _
 "</title>"  & n & _
 "<artist>"
 
-fillFinalMeta = _
+rem Lola Young
+
+fillBeforeScheduledTitleMeta = _
 "</artist>"                                & n & _
 "<trivia></trivia>"                        & n & _
 "<category>MUS</category>"                 & n & _
@@ -125,7 +136,25 @@ fillFinalMeta = _
 "<milliseconds_left></milliseconds_left>"  & n & _
 "<Album></Album>"                          & n & _
 "<Label></Label>"                          & n & _
+"<scheduled_title>"
+
+rem Messy
+
+fillBeforeScheduledArtistMeta = _
+"</scheduled_title>"                       & n & _
+"<scheduled_artist>"
+
+rem Lola Young
+
+fillFinalMeta = _
+"</scheduled_artist>"                           & n & _
+"<scheduled_trivia></scheduled_trivia>"         & n & _
+"<scheduled_category>MUS</scheduled_category>"  & n & _
+"<scheduled_cart>0000</scheduled_cart>"         & n & _
+"<server>WO-TOWSON-RSX</server>"                & n & _
+"<date>0000000000</date>"                       & n & _
 "</nowplaying>"
+
 
 If WScript.Arguments.Count < 1 Then
     WScript.StdOut.Write _
@@ -176,6 +205,8 @@ Do While True
       fillBeforeAirTimeMeta & nowInMilliseconds & _
       fillBeforeTitleMeta   & title             & _
       fillBeforeArtistMeta  & artist            & _
+      fillBeforeScheduledTitleMeta   & title    & _
+      fillBeforeScheduledArtistMeta  & artist   & _
       fillFinalMeta         & n
 
     Set objOutputTextFileHandleNowPlaying = objFilesys.OpenTextFile(filePathNowPlaying, ForWriting, CreateIfNotExist, OpenAsAscii)
