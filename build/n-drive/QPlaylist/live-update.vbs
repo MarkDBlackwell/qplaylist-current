@@ -107,7 +107,7 @@ _
 
 fillBeforeAirTimeMeta = _
 "<nowplaying>"                       & n & _
-"<sched_time>00000000</sched_time>"  & n & _
+"<sched_time></sched_time>"  & n & _
 "<air_time>"
 
 fillBeforeTitleMeta = _
